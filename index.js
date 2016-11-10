@@ -1,19 +1,15 @@
 var assert = require('assert')
 
 module.exports = {
-  call (f, inState) {
-    return f.call(f, ...inState)
-  },
-
   given (inState, matcher) {
     return (f) => {
-      matcher(f, inState)
+      matcher(f.bind(f, inState))
     }
   },
 
   returns (outState) {
-    return (f, inState) => {
-      assert.deepStrictEqual(this.call(f, inState), outState)
+    return (f) => {
+      assert.deepStrictEqual(f(), outState)
     }
   },
 
@@ -22,8 +18,8 @@ module.exports = {
   },
 
   throws (exception) {
-    return (f, inState) => {
-      assert.throws(() => this.call(f, inState), exception)
+    return (f) => {
+      assert.throws(() => f(), exception)
     }
   }
 }
