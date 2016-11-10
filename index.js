@@ -5,12 +5,15 @@ module.exports = {
     assert.deepStrictEqual(this.call(f, inState), outState)
   },
 
-  assertMany(f, map) {
+  assertMany (f, map) {
     map.forEach((outState, inState) => this.assert(f, inState, outState))
   },
 
   call (f, inState) {
-    try { return { return: f.call(f, ...inState) } }
-    catch (exception) { return { exception } }
+    try {
+      return { return: f.call(f, ...inState) }
+    } catch (exception) {
+      return { exception }
+    }
   }
 }

@@ -3,11 +3,14 @@
   "version": "0.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "node example"
+    "test": "standard && node example"
   },
   "repository": "nickmccurdy/purified",
   "author": "Nick McCurdy <thenickperson@gmail.com> (http://nickmccurdy.com/)",
   "license": "ISC",
   "bugs": "https://github.com/nickmccurdy/purified/issues",
-  "homepage": "https://github.com/nickmccurdy/purified#readme"
+  "homepage": "https://github.com/nickmccurdy/purified#readme",
+  "devDependencies": {
+    "standard": "^8.5.0"
+  }
 }
