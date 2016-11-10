@@ -1,25 +1,25 @@
 var assert = require('assert')
 
 module.exports = {
-  given (inState, matcher) {
-    return (f) => {
-      matcher(f.bind(f, inState))
+  given (args, matcher) {
+    return (subject) => {
+      matcher(subject.bind(subject, args))
     }
   },
 
-  returns (outState) {
-    return (f) => {
-      assert.deepStrictEqual(f(), outState)
+  returns (result) {
+    return (subject) => {
+      assert.deepStrictEqual(subject(), result)
     }
   },
 
-  test (f, ...matchers) {
-    matchers.forEach((matcher) => matcher(f))
+  test (subject, ...matchers) {
+    matchers.forEach((matcher) => matcher(subject))
   },
 
   throws (exception) {
-    return (f) => {
-      assert.throws(() => f(), exception)
+    return (subject) => {
+      assert.throws(() => subject(), exception)
     }
   }
 }
