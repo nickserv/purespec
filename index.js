@@ -13,7 +13,8 @@ module.exports = {
     }
   },
 
-  test (subject, ...matchers) {
+  test (subject) {
+    var matchers = Array.from(arguments).slice(0, 1)
     matchers.forEach((matcher) => matcher(subject))
   },
 
