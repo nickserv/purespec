@@ -5,7 +5,7 @@
   "scripts": {
     "test": "node example"
   },
-  "repository": "nickmccurdy/purified.git",
+  "repository": "nickmccurdy/purified",
   "author": "Nick McCurdy <thenickperson@gmail.com> (http://nickmccurdy.com/)",
   "license": "ISC",
   "bugs": "https://github.com/nickmccurdy/purified/issues",
