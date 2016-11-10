@@ -1,5 +1,6 @@
 {
   "name": "purified",
+  "description" : "A declarative test framework for pure JavaScript.",
   "version": "0.0.0",
   "main": "index.js",
   "scripts": {
@@ -12,5 +13,8 @@
   "homepage": "https://github.com/nickmccurdy/purified#readme",
   "devDependencies": {
     "standard": "^8.5.0"
+  },
+  "engines": {
+    "node": ">=4"
   }
 }
