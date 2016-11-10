@@ -1,11 +1,11 @@
-var purified = require('.')
+/* global test, given, returns, throws */
+Object.assign(global, require('.'))
 
 function hello (name) {
   if (name) return `Hello, ${name}!`
   else throw new Error('Missing name.')
 }
 
-purified.assertMany(hello, new Map([
-  [['Nick'], { return: 'Hello, Nick!' }],
-  [[], { exception: new Error('Missing name.') }]
-]))
+test(hello,
+     given(['Nick'], returns('Hello, Nick!')),
+     throws('Missing name'))

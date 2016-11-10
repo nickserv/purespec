@@ -1,19 +1,29 @@
 var assert = require('assert')
 
 module.exports = {
-  assert (f, inState, outState) {
-    assert.deepStrictEqual(this.call(f, inState), outState)
-  },
-
-  assertMany (f, map) {
-    map.forEach((outState, inState) => this.assert(f, inState, outState))
-  },
-
   call (f, inState) {
-    try {
-      return { return: f.call(f, ...inState) }
-    } catch (exception) {
-      return { exception }
+    return f.call(f, ...inState)
+  },
+
+  given (inState, matcher) {
+    return (f) => {
+      matcher(f, inState)
+    }
+  },
+
+  returns (outState) {
+    return (f, inState) => {
+      assert.deepStrictEqual(this.call(f, inState), outState)
+    }
+  },
+
+  test (f, ...matchers) {
+    matchers.forEach((matcher) => matcher(f))
+  },
+
+  throws (exception) {
+    return (f, inState) => {
+      assert.throws(() => this.call(f, inState), exception)
     }
   }
 }
