@@ -1,0 +1,13 @@
+{
+  "name": "purified",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node example"
+  },
+  "repository": "nickmccurdy/purified.git",
+  "author": "Nick McCurdy <thenickperson@gmail.com> (http://nickmccurdy.com/)",
+  "license": "ISC",
+  "bugs": "https://github.com/nickmccurdy/purified/issues",
+  "homepage": "https://github.com/nickmccurdy/purified#readme"
+}
