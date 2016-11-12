@@ -1,5 +1,5 @@
 /* global test, given, returns, throws */
-Object.assign(global, require('.'))
+require('.').setup()
 
 function hello (name) {
   if (name) return `Hello, ${name}!`

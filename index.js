@@ -13,6 +13,10 @@ module.exports = {
     }
   },
 
+  setup (target) {
+    Object.assign(target || global, this)
+  },
+
   test (subject) {
     var matchers = Array.from(arguments).slice(0, 1)
     matchers.forEach((matcher) => matcher(subject))
