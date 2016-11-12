@@ -2,12 +2,24 @@ var assert = require('assert')
 
 module.exports = {
   setup (target) {
-    Object.assign(target || global, this.matchers, this)
+    Object.assign(target || global,
+                  this.matchers,
+                  this.withoutProperty(this, 'setup'))
   },
 
   test (subject) {
     var matchers = Array.from(arguments).slice(0, 1)
     matchers.forEach((matcher) => matcher(subject))
+  },
+
+  withoutProperty (object, property) {
+    return Object.keys(object).reduce((memo, key) => {
+      if (key === property) {
+        return memo
+      } else {
+        return Object.assign({}, memo, { [key]: object[key] })
+      }
+    }, {})
   },
 
   matchers: {
