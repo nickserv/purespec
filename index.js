@@ -20,7 +20,7 @@ module.exports = {
 
   throws (exception) {
     return (subject) => {
-      assert.throws(() => subject(), exception)
+      assert.throws(subject, exception)
     }
   }
 }
