@@ -1,20 +1,8 @@
 var assert = require('assert')
 
 module.exports = {
-  given (args, matcher) {
-    return (subject) => {
-      matcher(subject.bind(subject, args))
-    }
-  },
-
-  returns (result) {
-    return (subject) => {
-      assert.deepStrictEqual(subject(), result)
-    }
-  },
-
   setup (target) {
-    Object.assign(target || global, this)
+    Object.assign(target || global, this.matchers, this)
   },
 
   test (subject) {
@@ -22,9 +10,23 @@ module.exports = {
     matchers.forEach((matcher) => matcher(subject))
   },
 
-  throws (exception) {
-    return (subject) => {
-      assert.throws(subject, exception)
+  matchers: {
+    given (args, matcher) {
+      return (subject) => {
+        matcher(subject.bind(subject, args))
+      }
+    },
+
+    returns (result) {
+      return (subject) => {
+        assert.deepStrictEqual(subject(), result)
+      }
+    },
+
+    throws (exception) {
+      return (subject) => {
+        assert.throws(subject, exception)
+      }
     }
   }
 }
