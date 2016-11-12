@@ -8,8 +8,10 @@ module.exports = {
   },
 
   test (subject) {
-    var matchers = Array.from(arguments).slice(0, 1)
-    matchers.forEach((matcher) => matcher(subject))
+    return () => {
+      var matchers = Array.from(arguments).slice(0, 1)
+      matchers.forEach((matcher) => matcher(subject))
+    }
   },
 
   withoutProperty (object, property) {

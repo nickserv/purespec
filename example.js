@@ -6,6 +6,7 @@ function hello (name) {
   else throw new Error('Missing name.')
 }
 
-test(hello,
-     given(['Nick'], returns('Hello, Nick!')),
-     throws('Missing name'))
+var suite = test(hello,
+                 given(['Nick'], returns('Hello, Nick!')),
+                 throws('Missing name'))
+suite()
