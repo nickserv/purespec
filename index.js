@@ -47,7 +47,7 @@ module.exports = {
   setup (target) {
     Object.assign(target || global,
                   this.matchers,
-                  this.withoutProperty(this, 'setup'))
+                  this.withoutProperties(this, 'setup', 'withoutProperties', 'matcher'))
   },
 
   test (name, subject) {
@@ -61,9 +61,10 @@ module.exports = {
     }
   },
 
-  withoutProperty (object, property) {
+  withoutProperties (object) {
+    var properties = Array.from(arguments).slice(1)
     return Object.keys(object).reduce((memo, key) => {
-      if (key === property) {
+      if (properties.includes(key)) {
         return memo
       } else {
         return Object.assign({}, memo, { [key]: object[key] })
