@@ -30,7 +30,7 @@ class Returns {
 }
 
 class Throws {
-  constructor(exception) {
+  constructor (exception) {
     this.exception = exception
   }
 
