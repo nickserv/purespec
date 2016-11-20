@@ -9,7 +9,7 @@ module.exports = {
 
   test (subject) {
     return () => {
-      var matchers = Array.from(arguments).slice(0, 1)
+      var matchers = Array.from(arguments).slice(1)
       matchers.forEach((matcher) => matcher(subject))
     }
   },
