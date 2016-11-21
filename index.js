@@ -1,51 +1,11 @@
 'use strict'
-var assert = require('assert')
-
-class Given {
-  constructor (args, matcher) {
-    this.args = args
-    this.matcher = matcher
-  }
-
-  match (subject) {
-    this.matcher.match(() => subject.apply(null, this.args))
-  }
-
-  toString () {
-    return `given ${this.args} ${this.matcher}`
-  }
-}
-
-class Returns {
-  constructor (result) {
-    this.result = result
-  }
-
-  match (subject) {
-    assert.deepStrictEqual(subject(), this.result)
-  }
-
-  toString () {
-    return `returns ${this.result}`
-  }
-}
-
-class Throws {
-  constructor (exception) {
-    this.exception = exception
-  }
-
-  match (subject) {
-    assert.throws(subject, this.exception)
-  }
-
-  toString () {
-    return `throws ${this.exception}`
-  }
-}
 
 module.exports = {
-  matchers: { Given, Returns, Throws },
+  matchers: {
+    Given: require('./matchers/Given'),
+    Returns: require('./matchers/Returns'),
+    Throws: require('./matchers/Throws')
+  },
 
   setup (target) {
     var matchers = Object.keys(this.matchers).reduce((memo, key) => {
