@@ -45,6 +45,8 @@ class Throws {
 }
 
 module.exports = {
+  matchers: { Given, Returns, Throws },
+
   setup (target) {
     var matchers = Object.keys(this.matchers).reduce((memo, key) => {
       var MatcherClass = this.matchers[key]
@@ -66,7 +68,5 @@ module.exports = {
         matcher.match(subject)
       })
     }
-  },
-
-  matchers: { Given, Returns, Throws }
+  }
 }
