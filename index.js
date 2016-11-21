@@ -46,8 +46,14 @@ class Throws {
 
 module.exports = {
   setup (target) {
+    var matchers = Object.keys(this.matchers).reduce((memo, key) => {
+      var MatcherClass = this.matchers[key]
+      return Object.assign({}, memo, {
+        [key.toLowerCase()]: (arg1, arg2) => new MatcherClass(arg1, arg2)
+      })
+    }, {})
     Object.assign(target || global,
-                  this.matchers,
+                  matchers,
                   { test: this.test })
   },
 
@@ -62,17 +68,5 @@ module.exports = {
     }
   },
 
-  matchers: {
-    given (args, matcher) {
-      return new Given(args, matcher)
-    },
-
-    returns (result) {
-      return new Returns(result)
-    },
-
-    throws (exception) {
-      return new Throws(exception)
-    }
-  }
+  matchers: { Given, Returns, Throws }
 }
