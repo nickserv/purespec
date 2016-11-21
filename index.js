@@ -1,11 +1,11 @@
 'use strict'
 
 module.exports = {
-  matchers: {
-    Given: require('./matchers/Given'),
-    Returns: require('./matchers/Returns'),
-    Throws: require('./matchers/Throws')
-  },
+  matchers: ['Given', 'Returns', 'Throws'].reduce((memo, className) => {
+    return Object.assign({}, memo, {
+      [className]: require(`./matchers/${className}`)
+    })
+  }, {}),
 
   setup (target) {
     var matchers = Object.keys(this.matchers).reduce((memo, key) => {
