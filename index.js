@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = {
-  matchers: ['Given', 'Returns', 'Throws'].reduce((memo, className) => {
+  matchers: ['Given', 'Rejects', 'Resolves', 'Returns', 'Throws'].reduce((memo, className) => {
     return Object.assign({}, memo, {
       [className]: require(`./matchers/${className}`)
     })
@@ -23,9 +23,13 @@ module.exports = {
     return () => {
       console.log(name)
       var matchers = Array.from(arguments).slice(2)
-      matchers.forEach(matcher => {
+      var promises = matchers.map(matcher => {
         console.log(`  ${matcher}`)
-        matcher.match(subject)
+        return matcher.match(subject)
+      })
+      return Promise.all(promises).catch(reason => {
+        console.error(reason instanceof Error ? reason.message : reason)
+        process.exit(1)
       })
     }
   }
