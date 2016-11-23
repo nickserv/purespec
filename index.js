@@ -1,4 +1,5 @@
 'use strict'
+var Test = require('./Test')
 
 module.exports = {
   matchers: ['Given', 'Rejects', 'Resolves', 'Returns', 'Throws'].reduce((memo, className) => {
@@ -19,18 +20,10 @@ module.exports = {
                   { test: this.test })
   },
 
+  Test,
+
   test (name, subject) {
-    return () => {
-      console.log(name)
-      var matchers = Array.from(arguments).slice(2)
-      var promises = matchers.map(matcher => {
-        console.log(`  ${matcher}`)
-        return matcher.run(subject)
-      })
-      return Promise.all(promises).catch(reason => {
-        console.error(reason instanceof Error ? reason.message : reason)
-        process.exit(1)
-      })
-    }
+    var runnables = Array.from(arguments).slice(2)
+    return new Test(name, subject, runnables)
   }
 }

@@ -16,18 +16,16 @@ var hello = {
   }
 }
 
-var suite
+var tests = test('hello',
+                 hello,
+                 test('#sync()',
+                      hello.sync,
+                      given(['Nick'], returns('Hello, Nick!')),
+                      throws('Missing name')),
+                 test('#promise()',
+                      hello.promise,
+                      given(['Nick'], resolves('Hello, Nick!')),
+                      rejects('Missing name')))
 
-// Synchronous suite
-suite = test('hello.sync',
-             hello.sync,
-             given(['Nick'], returns('Hello, Nick!')),
-             throws('Missing name'))
-suite()
-
-// Asynchronous suite with Promises
-suite = test('hello.promise',
-             hello.promise,
-             given(['Nick'], resolves('Hello, Nick!')),
-             rejects('Missing name'))
-suite()
+console.log(tests.toString())
+tests.run()
