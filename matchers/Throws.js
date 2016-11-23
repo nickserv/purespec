@@ -6,7 +6,7 @@ module.exports = class Throws {
     this.exception = exception
   }
 
-  match (subject) {
+  run (subject) {
     assert.throws(subject, this.exception)
   }
 

@@ -6,7 +6,7 @@ module.exports = class Rejects {
     this.reason = reason
   }
 
-  match (subject) {
+  run (subject) {
     return subject()
       .then(actual => assert(false))
       .catch(reason => {

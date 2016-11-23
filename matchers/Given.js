@@ -6,8 +6,8 @@ module.exports = class Given {
     this.matcher = matcher
   }
 
-  match (subject) {
-    this.matcher.match(() => subject.apply(null, this.args))
+  run (subject) {
+    this.matcher.run(() => subject.apply(null, this.args))
   }
 
   toString () {

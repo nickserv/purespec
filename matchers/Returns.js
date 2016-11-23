@@ -6,7 +6,7 @@ module.exports = class Returns {
     this.result = result
   }
 
-  match (subject) {
+  run (subject) {
     assert.deepStrictEqual(subject(), this.result)
   }
 

@@ -25,7 +25,7 @@ module.exports = {
       var matchers = Array.from(arguments).slice(2)
       var promises = matchers.map(matcher => {
         console.log(`  ${matcher}`)
-        return matcher.match(subject)
+        return matcher.run(subject)
       })
       return Promise.all(promises).catch(reason => {
         console.error(reason instanceof Error ? reason.message : reason)
