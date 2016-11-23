@@ -1,5 +1,7 @@
 # Purified
 [![Build Status](https://travis-ci.org/nickmccurdy/purified.svg?branch=master)](https://travis-ci.org/nickmccurdy/purified)
+[![Dependency Status](https://david-dm.org/nickmccurdy/purified.svg)](https://david-dm.org/nickmccurdy/purified)
+[![devDependency Status](https://david-dm.org/nickmccurdy/purified/dev-status.svg)](https://david-dm.org/nickmccurdy/purified/?type=dev)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 A declarative test framework for pure JavaScript.
