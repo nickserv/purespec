@@ -5,7 +5,4 @@ node_js:
   - 5
   - 4
 cache: node_modules
-after_success:
-  - nyc report --reporter text-lcov | codeclimate-test-reporter
-  - nyc report --reporter lcov && codecov
-  - nyc report --reporter text-lcov | coveralls
+after_success: npm run upload-coverage
