@@ -5,3 +5,7 @@ node_js:
   - 5
   - 4
 cache: node_modules
+after_success:
+  - node_modules/.bin/nyc report --reporter text-lcov | codeclimate-test-reporter
+  - node_modules/.bin/nyc report --reporter text-lcov | codecov
+  - node_modules/.bin/nyc report --reporter text-lcov | coveralls
