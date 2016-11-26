@@ -1,15 +1,8 @@
 'use strict'
-var fs = require('fs')
-var path = require('path')
 var Test = require('./Test')
 
 module.exports = {
-  matchers: fs.readdirSync(path.join(__dirname, 'matchers'))
-              .map(file => path.basename(file, '.js'))
-              .reduce((memo, matcher) => {
-                memo[matcher] = require(`./matchers/${matcher}`)
-                return memo
-              }, {}),
+  matchers: require('./matchers'),
 
   setup (target) {
     var matchers = Object.keys(this.matchers).reduce((memo, matcher) => {
