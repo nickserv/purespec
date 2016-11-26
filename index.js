@@ -1,10 +1,14 @@
 'use strict'
+var fs = require('fs')
+var path = require('path')
 var Test = require('./Test')
 
+var MATCHERS_DIR = path.join(__dirname, 'matchers')
+
 module.exports = {
-  matchers: ['Given', 'Rejects', 'Resolves', 'Returns', 'Throws'].reduce((memo, className) => {
+  matchers: fs.readdirSync(MATCHERS_DIR).reduce((memo, file) => {
     return Object.assign({}, memo, {
-      [className]: require(`./matchers/${className}`)
+      [path.basename(file, '.js')]: require(`${MATCHERS_DIR}/${file}`)
     })
   }, {}),
 
