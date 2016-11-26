@@ -7,5 +7,5 @@ node_js:
 cache: node_modules
 after_success:
   - node_modules/.bin/nyc report --reporter text-lcov | codeclimate-test-reporter
-  - node_modules/.bin/nyc report --reporter lcov > coverage.lcov && codecov
+  - node_modules/.bin/nyc report --reporter lcov && codecov
   - node_modules/.bin/nyc report --reporter text-lcov | coveralls
