@@ -11,8 +11,7 @@ var hello = {
 
   // Asynchronous with Promises
   promise (name) {
-    return new Promise(resolve => setTimeout(resolve, 1000))
-      .then(() => hello.sync(name))
+    return new Promise(setTimeout).then(() => hello.sync(name))
   }
 }
 
