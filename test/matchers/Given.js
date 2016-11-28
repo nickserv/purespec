@@ -15,8 +15,14 @@ describe('Given matcher', () => {
   })
 
   describe('.prototype.toString()', () => {
+    it('returns a String representation with its args', () => {
+      assert.strictEqual(given.toString(), 'given Nick')
+    })
+  })
+
+  describe('.prototype.toTree()', () => {
     it('returns a String representation with its args and matcher', () => {
-      assert.strictEqual(given.toString(), 'given Nick returns Hello, Nick!')
+      assert.strictEqual(given.toTree(), 'given Nick\n  returns Hello, Nick!')
     })
   })
 })

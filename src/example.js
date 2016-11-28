@@ -28,6 +28,5 @@ exports.tests = test('hello',
 
 // istanbul ignore next
 if (require.main === module) {
-  console.log(exports.tests.toString())
-  exports.tests.run()
+  exports.tests.run().then(result => console.log(result.toTree()))
 }

@@ -1,5 +1,3 @@
-var sinon = require('sinon')
-
 describe('Test', () => {
   var name = 'hello'
   var subject = example.hello.sync
@@ -24,40 +22,44 @@ describe('Test', () => {
     })
 
     context('given failing tests', () => {
-      var sandbox
       var runnables = [new purespec.matchers.Returns()]
 
-      beforeEach(() => {
-        sandbox = sinon.sandbox.create()
-        sandbox.stub(console, 'error')
-        sandbox.stub(process, 'exit')
-      })
-      afterEach(() => sandbox.restore())
+      function returnsARejectedPromise (thrown) {
+        it('returns a Promise resolving with an errored Result', () => {
+          var test = new purespec.Test(name, () => { throw thrown }, runnables)
 
-      function returnsARejectedPromise (subject) {
-        it('returns a rejected Promise', () => {
-          var test = new purespec.Test(name, subject, runnables)
-
-          return test.run().then(() => {
-            sinon.assert.calledWithExactly(console.error, 'message')
-            sinon.assert.calledWithExactly(process.exit, 1)
+          return test.run().then(result => {
+            assert.strictEqual(result.runnable, test)
+            assert.strictEqual(result.error, null)
+            assert.deepEqual(result.results, [
+              new purespec.Result(
+                new purespec.matchers.Returns(undefined),
+                thrown
+              )
+            ])
           })
         })
       }
 
       context('given a subject that throws a String', () => {
-        returnsARejectedPromise(() => { throw 'message' }) // eslint-disable-line no-throw-literal
+        returnsARejectedPromise('message') // eslint-disable-line no-throw-literal
       })
 
       context('given a subject that throws an Error', () => {
-        returnsARejectedPromise(() => { throw new Error('message') })
+        returnsARejectedPromise(new Error('message'))
       })
     })
   })
 
   describe('.prototype.toString()', () => {
+    it('returns its name', () => {
+      assert.equal(test.toString(), 'hello')
+    })
+  })
+
+  describe('.prototype.toTree()', () => {
     it('returns a nested String of the Test and its runnables', () => {
-      assert.equal(test.toString(), 'hello\n  given Nick returns Hello, Nick!\n  throws Missing name')
+      assert.equal(test.toTree(), 'hello\n  given Nick\n    returns Hello, Nick!\n  throws Missing name')
     })
   })
 })
