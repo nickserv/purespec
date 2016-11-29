@@ -12,7 +12,7 @@ module.exports = class Given {
   run (subject) {
     return Promise
       .resolve(this.matcher.run(() => subject.apply(null, this.args)))
-      .then(result => new Result(this, null, [result]))
+      .then(result => new Result(this, { results: [result] }))
   }
 
   toString () {

@@ -10,7 +10,7 @@ module.exports = class Resolves {
   run (subject) {
     return subject().then(actual => {
       var isEqual = deepEqual(actual, this.result, { strict: true })
-      return new Result(this, !isEqual)
+      return new Result(this, { error: !isEqual })
     })
   }
 

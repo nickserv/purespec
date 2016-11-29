@@ -9,11 +9,11 @@ module.exports = class Rejects {
 
   run (subject) {
     return subject()
-      .then(actual => new Result(this, true))
+      .then(actual => new Result(this, { error: true }))
       .catch(reason => {
         var error = reason instanceof Error ? reason : new Error(reason)
         var isEqual = deepEqual(error, new Error(this.reason), { strict: true })
-        return new Result(this, !isEqual)
+        return new Result(this, { error: !isEqual })
       })
   }
 

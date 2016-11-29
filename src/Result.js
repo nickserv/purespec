@@ -7,10 +7,10 @@ const CHECK = '\u2713'
 const CROSS = '\u2717'
 
 module.exports = class Result {
-  constructor (runnable, error, results) {
+  constructor (runnable, options) {
     this.runnable = runnable
-    this.error = error
-    this.results = results || []
+    this.error = options.error
+    this.results = options.results || []
   }
 
   isErroring () {

@@ -10,10 +10,10 @@ module.exports = class Throws {
   run (subject) {
     try {
       subject()
-      return new Result(this, true)
+      return new Result(this, { error: true })
     } catch (err) {
       var isEqual = deepEqual(err, new Error(this.exception), { strict: true })
-      return new Result(this, !isEqual)
+      return new Result(this, { error: !isEqual })
     }
   }
 

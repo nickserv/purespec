@@ -9,7 +9,7 @@ module.exports = class Returns {
 
   run (subject) {
     var isEqual = deepEqual(subject(), this.result, { strict: true })
-    return new Result(this, !isEqual)
+    return new Result(this, { error: !isEqual })
   }
 
   toString () {
