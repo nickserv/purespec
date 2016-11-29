@@ -1,5 +1,5 @@
 'use strict'
-var assert = require('assert')
+var deepEqual = require('deep-equal')
 var Result = require('../Result')
 
 module.exports = class Throws {
@@ -9,10 +9,11 @@ module.exports = class Throws {
 
   run (subject) {
     try {
-      assert.throws(subject, this.exception)
-      return new Result(this)
+      subject()
+      return new Result(this, true)
     } catch (err) {
-      return new Result(this, err)
+      var isEqual = deepEqual(err, new Error(this.exception), { strict: true })
+      return new Result(this, !isEqual)
     }
   }
 

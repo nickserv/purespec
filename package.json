@@ -14,6 +14,9 @@
   "license": "ISC",
   "bugs": "https://github.com/nickmccurdy/purespec/issues",
   "homepage": "https://github.com/nickmccurdy/purespec#readme",
+  "dependencies": {
+    "deep-equal": "^1.0.1"
+  },
   "devDependencies": {
     "coveralls": "^2.11.15",
     "eslint": "^3.13.0",
@@ -21,7 +24,8 @@
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
     "mocha": "^3.2.0",
-    "nyc": "^10.0.0"
+    "nyc": "^10.0.0",
+    "sinon": "^1.17.7"
   },
   "engines": {
     "node": ">=4"

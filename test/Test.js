@@ -1,3 +1,5 @@
+var sinon = require('sinon')
+
 describe('Test', () => {
   var name = 'hello'
   var subject = example.hello.sync
@@ -22,31 +24,33 @@ describe('Test', () => {
     })
 
     context('given failing tests', () => {
+      var sandbox
       var runnables = [new purespec.matchers.Returns()]
 
-      function returnsARejectedPromise (thrown) {
-        it('returns a Promise resolving with an errored Result', () => {
-          var test = new purespec.Test(name, () => { throw thrown }, runnables)
+      beforeEach(() => {
+        sandbox = sinon.sandbox.create()
+        sandbox.stub(console, 'error')
+        sandbox.stub(process, 'exit')
+      })
+      afterEach(() => sandbox.restore())
 
-          return test.run().then(result => {
-            assert.strictEqual(result.runnable, test)
-            assert.strictEqual(result.error, null)
-            assert.deepEqual(result.results, [
-              new purespec.Result(
-                new purespec.matchers.Returns(undefined),
-                thrown
-              )
-            ])
+      function returnsARejectedPromise (subject) {
+        it('returns a rejected Promise', () => {
+          var test = new purespec.Test(name, subject, runnables)
+
+          return test.run().then(() => {
+            sinon.assert.calledWithExactly(console.error, 'message')
+            sinon.assert.calledWithExactly(process.exit, 1)
           })
         })
       }
 
       context('given a subject that throws a String', () => {
-        returnsARejectedPromise('message') // eslint-disable-line no-throw-literal
+        returnsARejectedPromise(() => { throw 'message' }) // eslint-disable-line no-throw-literal
       })
 
       context('given a subject that throws an Error', () => {
-        returnsARejectedPromise(new Error('message'))
+        returnsARejectedPromise(() => { throw new Error('message') })
       })
     })
   })
