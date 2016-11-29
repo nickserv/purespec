@@ -1,5 +1,4 @@
 'use strict'
-var deepEqual = require('deep-equal')
 var Result = require('../Result')
 
 module.exports = class Throws {
@@ -12,8 +11,7 @@ module.exports = class Throws {
       subject()
       return new Result(this, { error: true })
     } catch (err) {
-      var isEqual = deepEqual(err, new Error(this.exception), { strict: true })
-      return new Result(this, { error: !isEqual })
+      return new Result(this, { actual: err, expected: new Error(this.exception) })
     }
   }
 
