@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "main": "index.js",
   "scripts": {
+    "prepare": "webpack",
     "pretest": "standard",
-    "test": "nyc node example",
+    "test": "nyc node bundle",
     "upload-coverage": "nyc report --reporter text-lcov | coveralls"
   },
   "repository": "nickmccurdy/purified",
@@ -19,7 +20,8 @@
   "devDependencies": {
     "coveralls": "^2.11.15",
     "nyc": "^10.0.0",
-    "standard": "^8.5.0"
+    "standard": "^8.5.0",
+    "webpack": "^1.13.3"
   },
   "engines": {
     "node": ">=4"
