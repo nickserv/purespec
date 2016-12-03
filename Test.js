@@ -1,4 +1,3 @@
-'use strict'
 var indentString = require('indent-string')
 var os = require('os')
 

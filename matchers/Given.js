@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = class Given {
   constructor (args, matcher) {
     this.args = args

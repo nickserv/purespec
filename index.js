@@ -1,4 +1,3 @@
-'use strict'
 var Test = require('./Test')
 
 module.exports = {

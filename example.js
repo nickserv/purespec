@@ -1,5 +1,4 @@
 /* global test, given, rejects, resolves, returns, throws */
-'use strict'
 require('.').setup()
 
 var hello = {
