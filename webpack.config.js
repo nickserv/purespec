@@ -5,7 +5,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'strict'
+        loader: 'babel-loader'
       }
     ]
   },
