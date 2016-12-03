@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "main": "index.js",
   "scripts": {
-    "prepare": "webpack",
+    "prepublish": "webpack",
     "pretest": "standard",
     "test": "node bundle"
   },
