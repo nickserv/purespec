@@ -1,6 +1,6 @@
 /* global test, given, rejects, resolves, returns, throws */
 'use strict'
-require('.').dsl.setup()
+require('.').dsl()
 
 var hello = {
   // Synchronous
