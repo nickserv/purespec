@@ -14,19 +14,18 @@ module.exports = class Result {
     this.actual = options.actual
     this.expected = options.expected
 
-    if (this.error === undefined && (this.actual !== undefined || this.expected !== undefined)) {
-      this.error = !deepEqual(this.actual, this.expected, { strict: true })
+    if (this.error === undefined) {
+      if (this.actual !== undefined || this.expected !== undefined) {
+        this.error = !deepEqual(this.actual, this.expected, { strict: true })
+      } else {
+        this.error = this.results.some(result => result.error)
+      }
     }
   }
 
-  isErroring () {
-    return Boolean(this.error || this.results.some(result => result.isErroring()))
-  }
-
   toString () {
-    var isErroring = this.isErroring()
-    var status = isErroring ? '✗' : '✓'
-    var color = isErroring ? 'red' : 'green'
+    var status = this.error ? '✗' : '✓'
+    var color = this.error ? 'red' : 'green'
 
     return chalk[color](`${status} ${this.runnable}`)
   }
