@@ -1,6 +1,6 @@
-var assert = require('assert')
+import assert from 'assert'
 
-module.exports = class Throws {
+export default class Throws {
   constructor (exception) {
     this.exception = exception
   }

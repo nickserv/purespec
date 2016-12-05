@@ -1,5 +1,6 @@
 /* global test, given, rejects, resolves, returns, throws */
-require('.').setup()
+import { setup } from '.'
+setup()
 
 var hello = {
   // Synchronous

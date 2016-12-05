@@ -1,9 +1,9 @@
-var indentString = require('indent-string')
-var os = require('os')
+import indentString from 'indent-string'
+import os from 'os'
 
 const INDENT_LEVEL = 2
 
-module.exports = class Test {
+export default class Test {
   constructor (name, subject, runnables) {
     this.name = name
     this.subject = subject

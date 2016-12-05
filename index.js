@@ -1,20 +1,17 @@
-var Test = require('./Test')
+import * as matchers from './matchers'
+import Test from './Test'
 
-module.exports = {
-  matchers: require('./matchers'),
+export { matchers, Test }
 
-  setup (target) {
-    var matchers = Object.keys(this.matchers).reduce((memo, matcher) => {
-      var Class = this.matchers[matcher]
-      memo[matcher.toLowerCase()] = (arg1, arg2) => new Class(arg1, arg2)
-      return memo
-    }, {})
-    Object.assign(target || global, matchers, { test: this.test })
-  },
+export function setup (target) {
+  var matchersDSL = Object.keys(matchers).reduce((memo, matcher) => {
+    var Class = matchers[matcher]
+    memo[matcher.toLowerCase()] = (arg1, arg2) => new Class(arg1, arg2)
+    return memo
+  }, {})
+  Object.assign(target || global, matchersDSL, { test })
+}
 
-  Test,
-
-  test (name, subject) {
-    return new Test(name, subject, Array.from(arguments).slice(2))
-  }
+export function test (name, subject) {
+  return new Test(name, subject, Array.from(arguments).slice(2))
 }

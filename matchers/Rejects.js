@@ -1,6 +1,6 @@
-var assert = require('assert')
+import assert from 'assert'
 
-module.exports = class Rejects {
+export default class Rejects {
   constructor (reason) {
     this.reason = reason
   }

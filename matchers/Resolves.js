@@ -1,6 +1,6 @@
-var assert = require('assert')
+import assert from 'assert'
 
-module.exports = class Resolves {
+export default class Resolves {
   constructor (result) {
     this.result = result
   }

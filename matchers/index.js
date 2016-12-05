@@ -1,10 +1,5 @@
-var path = require('path')
-
-function requireNamespace (requireContext) {
-  return requireContext.keys().reduce((memo, key) => {
-    memo[path.basename(key, '.js')] = requireContext(key)
-    return memo
-  }, {})
-}
-
-module.exports = requireNamespace(require.context('.', false, /\/(?!index)/))
+export {default as Given} from './Given'
+export {default as Rejects} from './Rejects'
+export {default as Resolves} from './Resolves'
+export {default as Returns} from './Returns'
+export {default as Throws} from './Throws'
