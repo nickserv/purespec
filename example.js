@@ -2,7 +2,7 @@
 import { setup } from '.'
 setup()
 
-var hello = {
+const hello = {
   // Synchronous
   sync (name) {
     if (name) return `Hello, ${name}!`
@@ -15,16 +15,16 @@ var hello = {
   }
 }
 
-var tests = test('hello',
-                 hello,
-                 test('#sync()',
-                      hello.sync,
-                      given(['Nick'], returns('Hello, Nick!')),
-                      throws('Missing name')),
-                 test('#promise()',
-                      hello.promise,
-                      given(['Nick'], resolves('Hello, Nick!')),
-                      rejects('Missing name')))
+const tests = test('hello',
+                   hello,
+                   test('#sync()',
+                        hello.sync,
+                        given(['Nick'], returns('Hello, Nick!')),
+                        throws('Missing name')),
+                   test('#promise()',
+                        hello.promise,
+                        given(['Nick'], resolves('Hello, Nick!')),
+                        rejects('Missing name')))
 
 console.log(tests.toString())
 tests.run()

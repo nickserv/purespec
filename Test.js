@@ -11,7 +11,7 @@ export default class Test {
   }
 
   run () {
-    var promises = this.runnables.map(runnable => runnable.run(this.subject))
+    const promises = this.runnables.map(runnable => runnable.run(this.subject))
     return Promise.all(promises).catch(reason => {
       console.error(reason instanceof Error ? reason.message : reason)
       process.exit(1)
@@ -19,7 +19,7 @@ export default class Test {
   }
 
   toString () {
-    var indented = this.runnables.map(runnable =>
+    const indented = this.runnables.map(runnable =>
       indentString(runnable.toString(), INDENT_LEVEL))
     return [this.name].concat(indented).join(os.EOL)
   }

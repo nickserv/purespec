@@ -9,7 +9,7 @@ export default class Rejects {
     return subject()
       .then(actual => assert(false))
       .catch(reason => {
-        var error = reason instanceof Error ? reason : new Error(reason)
+        const error = reason instanceof Error ? reason : new Error(reason)
         assert.deepStrictEqual(error, new Error(this.reason))
       })
   }
