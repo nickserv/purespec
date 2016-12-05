@@ -15,6 +15,7 @@
   "bugs": "https://github.com/nickmccurdy/purespec/issues",
   "homepage": "https://github.com/nickmccurdy/purespec#readme",
   "dependencies": {
+    "chalk": "^1.1.3",
     "deep-equal": "^1.0.1"
   },
   "devDependencies": {

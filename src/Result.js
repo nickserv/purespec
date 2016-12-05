@@ -1,11 +1,14 @@
 'use strict'
 
+var chalk = require('chalk')
 var deepEqual = require('deep-equal')
 var indent = require('./indent')
 var os = require('os')
 
 const CHECK = '\u2713'
 const CROSS = '\u2717'
+const PASS_COLOR = 'green'
+const FAIL_COLOR = 'red'
 
 module.exports = class Result {
   constructor (runnable, options) {
@@ -26,8 +29,11 @@ module.exports = class Result {
   }
 
   toString () {
-    var status = this.isErroring() ? CROSS : CHECK
-    return `${status} ${this.runnable}`
+    var isErroring = this.isErroring()
+    var status = isErroring ? CROSS : CHECK
+    var color = isErroring ? FAIL_COLOR : PASS_COLOR
+
+    return chalk[color](`${status} ${this.runnable}`)
   }
 
   toTree () {
