@@ -1,7 +1,5 @@
-import indentString from 'indent-string'
+import indent from './indent'
 import os from 'os'
-
-const INDENT_LEVEL = 2
 
 export default class Test {
   constructor (name, subject, runnables) {
@@ -19,8 +17,7 @@ export default class Test {
   }
 
   toString () {
-    const indented = this.runnables.map(runnable =>
-      indentString(runnable.toString(), INDENT_LEVEL))
+    const indented = this.runnables.map(runnable => indent(runnable.toString()))
     return [this.name].concat(indented).join(os.EOL)
   }
 }
