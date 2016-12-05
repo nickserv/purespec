@@ -1,7 +1,12 @@
-var os = require('os')
-
+const EOL = require('os').EOL
 const INDENT = ' '.repeat(2)
 
-module.exports = (string) => {
-  return string.split(os.EOL).map(line => INDENT + line).join(os.EOL)
+function mapLines (string, callback) {
+  return string.split(EOL).map(callback).join(EOL)
 }
+
+function indent (string) {
+  return mapLines(string, line => INDENT + line)
+}
+
+module.exports = indent
