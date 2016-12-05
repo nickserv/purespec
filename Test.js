@@ -1,18 +1,15 @@
-'use strict'
-var indentString = require('indent-string')
-var os = require('os')
+import indent from './indent'
+import os from 'os'
 
-const INDENT_LEVEL = 2
-
-module.exports = class Test {
+export default class Test {
   constructor (name, subject, runnables) {
     this.name = name
     this.subject = subject
-    this.runnables = runnables
+    this.runnables = runnables || []
   }
 
   run () {
-    var promises = this.runnables.map(runnable => runnable.run(this.subject))
+    const promises = this.runnables.map(runnable => runnable.run(this.subject))
     return Promise.all(promises).catch(reason => {
       console.error(reason instanceof Error ? reason.message : reason)
       process.exit(1)
@@ -20,8 +17,7 @@ module.exports = class Test {
   }
 
   toString () {
-    var indented = this.runnables.map(runnable =>
-      indentString(runnable.toString(), INDENT_LEVEL))
+    const indented = this.runnables.map(runnable => indent(runnable.toString()))
     return [this.name].concat(indented).join(os.EOL)
   }
 }

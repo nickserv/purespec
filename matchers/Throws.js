@@ -1,7 +1,6 @@
-'use strict'
-var assert = require('assert')
+import assert from 'core-assert'
 
-module.exports = class Throws {
+export default class Throws {
   constructor (exception) {
     this.exception = exception
   }

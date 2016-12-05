@@ -4,5 +4,8 @@ node_js:
   - 6
   - 5
   - 4
+  - 3
+  - 2
+  - 1
+  - 0.12
 cache: node_modules
-after_success: npm run upload-coverage

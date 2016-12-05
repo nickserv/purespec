@@ -1,7 +1,6 @@
-'use strict'
-var assert = require('assert')
+import assert from 'core-assert'
 
-module.exports = class Resolves {
+export default class Resolves {
   constructor (result) {
     this.result = result
   }

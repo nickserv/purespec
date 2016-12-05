@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = class Given {
+export default class Given {
   constructor (args, matcher) {
     this.args = args
     this.matcher = matcher

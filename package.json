@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "main": "index.js",
   "scripts": {
+    "prepublish": "webpack",
     "pretest": "standard",
-    "test": "nyc node example",
-    "upload-coverage": "nyc report --reporter text-lcov | coveralls"
+    "test": "node bundle"
   },
   "repository": "nickmccurdy/purified",
   "author": "Nick McCurdy <thenickperson@gmail.com> (http://nickmccurdy.com/)",
@@ -14,14 +14,17 @@
   "bugs": "https://github.com/nickmccurdy/purified/issues",
   "homepage": "https://github.com/nickmccurdy/purified#readme",
   "dependencies": {
-    "indent-string": "^3.0.0"
+    "core-assert": "^0.2.1"
   },
   "devDependencies": {
-    "coveralls": "^2.11.15",
-    "nyc": "^10.0.0",
-    "standard": "^8.5.0"
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-env": "0.0.9",
+    "standard": "^8.5.0",
+    "webpack": "^1.13.3"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=.12"
   }
 }

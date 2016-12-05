@@ -1,7 +1,6 @@
-'use strict'
-var assert = require('assert')
+import assert from 'core-assert'
 
-module.exports = class Rejects {
+export default class Rejects {
   constructor (reason) {
     this.reason = reason
   }
@@ -10,7 +9,7 @@ module.exports = class Rejects {
     return subject()
       .then(actual => assert(false))
       .catch(reason => {
-        var error = reason instanceof Error ? reason : new Error(reason)
+        const error = reason instanceof Error ? reason : new Error(reason)
         assert.deepStrictEqual(error, new Error(this.reason))
       })
   }

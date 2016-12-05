@@ -1,11 +1,5 @@
-'use strict'
-var fs = require('fs')
-var path = require('path')
-
-module.exports = fs.readdirSync(__dirname)
-                   .map(file => path.basename(file, '.js'))
-                   .filter(file => file !== 'index')
-                   .reduce((memo, matcher) => {
-                     memo[matcher] = require(`./${matcher}`)
-                     return memo
-                   }, {})
+export {default as Given} from './Given'
+export {default as Rejects} from './Rejects'
+export {default as Resolves} from './Resolves'
+export {default as Returns} from './Returns'
+export {default as Throws} from './Throws'
