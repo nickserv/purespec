@@ -5,8 +5,8 @@ var deepEqual = require('deep-equal')
 var indent = require('./indent')
 var os = require('os')
 
-const CHECK = '\u2713'
-const CROSS = '\u2717'
+const CHECK = '✓'
+const CROSS = '✗'
 const PASS_COLOR = 'green'
 const FAIL_COLOR = 'red'
 
