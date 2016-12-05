@@ -5,11 +5,6 @@ var deepEqual = require('deep-equal')
 var indent = require('./indent')
 var os = require('os')
 
-const CHECK = '✓'
-const CROSS = '✗'
-const PASS_COLOR = 'green'
-const FAIL_COLOR = 'red'
-
 module.exports = class Result {
   constructor (runnable, options) {
     options = options || {}
@@ -30,8 +25,8 @@ module.exports = class Result {
 
   toString () {
     var isErroring = this.isErroring()
-    var status = isErroring ? CROSS : CHECK
-    var color = isErroring ? FAIL_COLOR : PASS_COLOR
+    var status = isErroring ? '✗' : '✓'
+    var color = isErroring ? 'red' : 'green'
 
     return chalk[color](`${status} ${this.runnable}`)
   }
