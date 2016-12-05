@@ -6,12 +6,12 @@ export { matchers, Test }
 export function setup (target) {
   const matchersDSL = Object.keys(matchers).reduce((memo, matcher) => {
     const Class = matchers[matcher]
-    memo[matcher.toLowerCase()] = (arg1, arg2) => new Class(arg1, arg2)
+    memo[matcher.toLowerCase()] = (...args) => new Class(...args)
     return memo
   }, {})
   Object.assign(target || global, matchersDSL, { test })
 }
 
-export function test (name, subject) {
-  return new Test(name, subject, Array.from(arguments).slice(2))
+export function test (name, subject, ...args) {
+  return new Test(name, subject, args)
 }

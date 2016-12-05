@@ -7,7 +7,7 @@ export default class Test {
   constructor (name, subject, runnables) {
     this.name = name
     this.subject = subject
-    this.runnables = runnables
+    this.runnables = runnables || []
   }
 
   run () {
