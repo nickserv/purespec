@@ -2,9 +2,10 @@
   "name": "purified",
   "description": "A declarative test framework for pure JavaScript.",
   "version": "0.0.0",
+  "main": "src",
   "scripts": {
     "pretest": "standard",
-    "test": "nyc node example",
+    "test": "nyc node src/example",
     "upload-coverage": "nyc report --reporter text-lcov | coveralls"
   },
   "repository": "nickmccurdy/purified",
