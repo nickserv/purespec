@@ -27,7 +27,8 @@ module.exports = class Result {
     var status = this.error ? '✗' : '✓'
     var color = this.error ? 'red' : 'green'
 
-    return chalk[color](`${status} ${this.runnable}`)
+    var item = chalk[color](`${status} ${this.runnable}`)
+    return this.error ? item + os.EOL + this.error : item
   }
 
   toTree () {
