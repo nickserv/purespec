@@ -1,8 +1,6 @@
 'use strict'
-var indentString = require('indent-string')
+var indent = require('./indent')
 var os = require('os')
-
-const INDENT_LEVEL = 2
 
 module.exports = class Test {
   constructor (name, subject, runnables) {
@@ -20,8 +18,7 @@ module.exports = class Test {
   }
 
   toString () {
-    var indented = this.runnables.map(runnable =>
-      indentString(runnable.toString(), INDENT_LEVEL))
+    var indented = this.runnables.map(runnable => indent(runnable.toString()))
     return [this.name].concat(indented).join(os.EOL)
   }
 }
