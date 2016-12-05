@@ -2,7 +2,6 @@
   "name": "purified",
   "description": "A declarative test framework for pure JavaScript.",
   "version": "0.0.0",
-  "main": "index.js",
   "scripts": {
     "pretest": "standard",
     "test": "nyc node example",
