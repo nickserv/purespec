@@ -1,4 +1,4 @@
-import assert from 'assert'
+import assert from 'core-assert'
 
 export default class Rejects {
   constructor (reason) {
