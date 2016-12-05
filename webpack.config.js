@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './example',
+  entry: ['babel-polyfill', './example'],
   module: {
     loaders: [
       {
