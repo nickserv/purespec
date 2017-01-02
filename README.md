@@ -7,7 +7,7 @@
 
 A declarative test framework for pure JavaScript.
 
-## [Example](./lib/example.js)
+## [Example](./src/example.js)
 
 ## Development
 This is still very experimental, but the example above is executable and is temporarily being used in place of a real test suite.
