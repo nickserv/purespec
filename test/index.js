@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 var assert = require('assert')
 var purified = require('../src')
+var sinon = require('sinon')
 
 var hello = {
   // Synchronous
@@ -33,8 +34,33 @@ describe('purified', () => {
     })
 
     describe('.prototype.run()', () => {
-      it('returns a Promise of the Test\'s execution', () => {
-        return test.run()
+      context('given passing tests', () => {
+        it('returns a resolved Promise', () => {
+          return test.run()
+        })
+      })
+
+      context('given failing tests', () => {
+        var sandbox
+        beforeEach(() => {
+          sandbox = sinon.sandbox.create()
+          sandbox.stub(console, 'error')
+          sandbox.stub(process, 'exit')
+        })
+        afterEach(() => sandbox.restore())
+
+        var test = new purified.Test(
+          'failing',
+          () => { throw new Error('message') },
+          [new purified.matchers.Returns()]
+        )
+
+        it('returns a rejected Promise', () => {
+          return test.run().then(() => {
+            sinon.assert.calledWithExactly(console.error, 'message')
+            sinon.assert.calledWithExactly(process.exit, 1)
+          })
+        })
       })
     })
 
