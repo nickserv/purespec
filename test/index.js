@@ -1,25 +1,13 @@
 /* eslint-env mocha */
 var assert = require('assert')
+var example = require('../src/example')
 var purified = require('../src')
 var sinon = require('sinon')
-
-var hello = {
-  // Synchronous
-  sync (name) {
-    if (name) return `Hello, ${name}!`
-    else throw new Error('Missing name.')
-  },
-
-  // Asynchronous with Promises
-  promise (name) {
-    return new Promise(setTimeout).then(() => hello.sync(name))
-  }
-}
 
 describe('purified', () => {
   describe('.Test', () => {
     var name = 'hello'
-    var subject = hello.sync
+    var subject = example.hello.sync
     var given = new purified.matchers.Given(['Nick'], new purified.matchers.Returns('Hello, Nick!'))
     var throws = new purified.matchers.Throws('Missing name')
     var runnables = [given, throws]
@@ -146,7 +134,7 @@ describe('purified', () => {
 
       describe('.prototype.run()', () => {
         it('run its matcher with its args', () => {
-          given.run(hello.sync)
+          given.run(example.hello.sync)
         })
       })
 
@@ -168,7 +156,7 @@ describe('purified', () => {
 
       describe('.prototype.run()', () => {
         it('runs its subject as a Promise, asserting a rejection with the given reason', () => {
-          return rejects.run(hello.promise)
+          return rejects.run(example.hello.promise)
         })
       })
 
@@ -190,7 +178,7 @@ describe('purified', () => {
 
       describe('.prototype.run()', () => {
         it('runs its subject as a Promise, asserting its actual result equals its expected result', () => {
-          return resolves.run(hello.promise)
+          return resolves.run(example.hello.promise)
         })
       })
 
@@ -212,7 +200,7 @@ describe('purified', () => {
 
       describe('.prototype.run()', () => {
         it('asserts its subject\'s return value to equal its result', () => {
-          returns.run(hello.sync)
+          returns.run(example.hello.sync)
         })
       })
 
@@ -234,7 +222,7 @@ describe('purified', () => {
 
       describe('.prototype.run()', () => {
         it('asserts its subject throws an exception matching its exception', () => {
-          throws.run(hello.sync)
+          throws.run(example.hello.sync)
         })
       })
 
@@ -247,10 +235,45 @@ describe('purified', () => {
   })
 })
 
-describe('example', () => {
-  it('constructs a Test')
+describe('example Test suite', () => {
+  it('constructs a Test', () => {
+    var expected = new purified.Test(
+      'hello',
+      example.hello,
+      [
+        new purified.Test(
+          '#sync()',
+          example.hello.sync,
+          [
+            new purified.matchers.Given(
+              ['Nick'],
+              new purified.matchers.Returns('Hello, Nick!')
+            ),
+            new purified.matchers.Throws('Missing name')
+          ]
+        ),
+        new purified.Test(
+          '#promise()',
+          example.hello.promise,
+          [
+            new purified.matchers.Given(
+              ['Nick'],
+              new purified.matchers.Resolves('Hello, Nick!')
+            ),
+            new purified.matchers.Rejects('Missing name')
+          ]
+        )
+      ]
+    )
 
-  it('prints the Test')
+    assert.deepStrictEqual(example.tests, expected)
+  })
 
-  it('runs the Test')
+  it('has a string representation', () => {
+    assert.strictEqual(example.tests.toString(), 'hello\n  #sync()\n    given Nick returns Hello, Nick!\n    throws Missing name\n  #promise()\n    given Nick resolves with Hello, Nick!\n    rejects with Missing name')
+  })
+
+  it('runs successfully', () => {
+    example.tests.run()
+  })
 })

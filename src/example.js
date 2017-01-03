@@ -2,7 +2,7 @@
 'use strict'
 require('.').dsl()
 
-var hello = {
+exports.hello = {
   // Synchronous
   sync (name) {
     if (name) return `Hello, ${name}!`
@@ -11,20 +11,23 @@ var hello = {
 
   // Asynchronous with Promises
   promise (name) {
-    return new Promise(setTimeout).then(() => hello.sync(name))
+    return new Promise(setTimeout).then(() => exports.hello.sync(name))
   }
 }
 
-var tests = test('hello',
-                 hello,
-                 test('#sync()',
-                      hello.sync,
-                      given(['Nick'], returns('Hello, Nick!')),
-                      throws('Missing name')),
-                 test('#promise()',
-                      hello.promise,
-                      given(['Nick'], resolves('Hello, Nick!')),
-                      rejects('Missing name')))
+exports.tests = test('hello',
+                     exports.hello,
+                     test('#sync()',
+                          exports.hello.sync,
+                          given(['Nick'], returns('Hello, Nick!')),
+                          throws('Missing name')),
+                     test('#promise()',
+                          exports.hello.promise,
+                          given(['Nick'], resolves('Hello, Nick!')),
+                          rejects('Missing name')))
 
-console.log(tests.toString())
-tests.run()
+// istanbul ignore next
+if (require.main === module) {
+  console.log(exports.tests.toString())
+  exports.tests.run()
+}
