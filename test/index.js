@@ -22,11 +22,10 @@ describe('purified', () => {
     var given = new purified.matchers.Given(['Nick'], new purified.matchers.Returns('Hello, Nick!'))
     var throws = new purified.matchers.Throws('Missing name')
     var runnables = [given, throws]
-    var test = new purified.Test('hello', hello.sync, runnables)
+    var test = new purified.Test(name, subject, runnables)
 
     describe('.prototype.constructor()', () => {
       it('returns a new Test with the given data', () => {
-        var test = new purified.Test(name, subject, runnables)
         assert.strictEqual(test.name, name)
         assert.strictEqual(test.subject, subject)
         assert.strictEqual(test.runnables, runnables)
