@@ -23,5 +23,13 @@
   },
   "engines": {
     "node": ">=4"
+  },
+  "standard": {
+    "globals": [
+      "assert",
+      "example",
+      "purified",
+      "sinon"
+    ]
   }
 }
