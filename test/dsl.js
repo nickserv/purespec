@@ -1,4 +1,3 @@
-/* eslint-env mocha */
 describe('dsl', () => {
   describe('()', () => {
     it('assigns properties to the given target', () => {

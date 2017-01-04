@@ -1,4 +1,3 @@
-/* eslint-env mocha */
 describe('example Test suite', () => {
   it('constructs a Test', () => {
     var expected = new purified.Test(

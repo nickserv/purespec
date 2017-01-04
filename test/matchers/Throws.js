@@ -1,4 +1,3 @@
-/* eslint-env mocha */
 describe('Throws matcher', () => {
   var throws = new purified.matchers.Throws('Missing name')
 

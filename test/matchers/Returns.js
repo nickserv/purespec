@@ -1,4 +1,3 @@
-/* eslint-env mocha */
 describe('Returns matcher', () => {
   var returns = new purified.matchers.Given(['Nick'], new purified.matchers.Returns('Hello, Nick!'))
 

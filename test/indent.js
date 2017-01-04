@@ -1,4 +1,3 @@
-/* eslint-env mocha */
 describe('indent()', () => {
   context('given empty text', () => {
     it('returns whitespace for an indent', () => {

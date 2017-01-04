@@ -1,4 +1,3 @@
-/* eslint-env mocha */
 var sinon = require('sinon')
 
 describe('Test', () => {
