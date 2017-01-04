@@ -1,4 +1,6 @@
 /* eslint-env mocha */
+var sinon = require('sinon')
+
 describe('Test', () => {
   var name = 'hello'
   var subject = example.hello.sync

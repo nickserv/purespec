@@ -28,8 +28,7 @@
     "globals": [
       "assert",
       "example",
-      "purified",
-      "sinon"
+      "purified"
     ]
   }
 }
