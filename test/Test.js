@@ -26,6 +26,8 @@ describe('Test', () => {
 
     context('given failing tests', () => {
       var sandbox
+      var runnables = [new purified.matchers.Returns()]
+
       beforeEach(() => {
         sandbox = sinon.sandbox.create()
         sandbox.stub(console, 'error')
@@ -33,17 +35,23 @@ describe('Test', () => {
       })
       afterEach(() => sandbox.restore())
 
-      var test = new purified.Test(
-        'failing',
-        () => { throw new Error('message') },
-        [new purified.matchers.Returns()]
-      )
+      function returnsARejectedPromise (subject) {
+        it('returns a rejected Promise', () => {
+          var test = new purified.Test(name, subject, runnables)
 
-      it('returns a rejected Promise', () => {
-        return test.run().then(() => {
-          sinon.assert.calledWithExactly(console.error, 'message')
-          sinon.assert.calledWithExactly(process.exit, 1)
+          return test.run().then(() => {
+            sinon.assert.calledWithExactly(console.error, 'message')
+            sinon.assert.calledWithExactly(process.exit, 1)
+          })
         })
+      }
+
+      context('given a subject that throws a String', () => {
+        returnsARejectedPromise(() => { throw 'message' }) // eslint-disable-line no-throw-literal
+      })
+
+      context('given a subject that throws an Error', () => {
+        returnsARejectedPromise(() => { throw new Error('message') })
       })
     })
   })
