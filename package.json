@@ -5,7 +5,7 @@
   "main": "src",
   "scripts": {
     "pretest": "standard",
-    "test": "nyc mocha",
+    "test": "nyc mocha --recursive",
     "test:watch": "npm test -- --watch",
     "upload-coverage": "nyc report --reporter text-lcov | coveralls"
   },
