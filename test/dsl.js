@@ -1,9 +1,12 @@
 describe('dsl', () => {
   describe('()', () => {
     context('without a target', () => {
-      var properties = []
+      var assigns = false
       var globalProxy = new Proxy(global, {
-        set: (target, property) => properties.push(property)
+        set () {
+          assigns = true
+          return true
+        }
       })
       var oldGlobal = global
 
@@ -12,7 +15,7 @@ describe('dsl', () => {
 
       it('assigns properties to the global object', () => {
         purified.dsl()
-        assert(properties.length)
+        assert(assigns)
       })
     })
 
