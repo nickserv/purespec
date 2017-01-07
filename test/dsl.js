@@ -1,21 +1,13 @@
 describe('dsl', () => {
   describe('()', () => {
     context('without a target', () => {
-      var assigns = false
-      var globalProxy = new Proxy(global, {
-        set () {
-          assigns = true
-          return true
-        }
-      })
       var oldGlobal = global
-
-      before(() => { global = globalProxy }) // eslint-disable-line
+      before(() => { global = {} }) // eslint-disable-line
       after(() => { global = oldGlobal }) // eslint-disable-line
 
       it('assigns properties to the global object', () => {
         purified.dsl()
-        assert(assigns)
+        assert(Object.keys(global).length)
       })
     })
 
