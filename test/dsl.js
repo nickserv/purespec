@@ -1,9 +1,28 @@
 describe('dsl', () => {
   describe('()', () => {
-    it('assigns properties to the given target', () => {
+    context('without a target', () => {
+      var properties = []
+      var globalProxy = new Proxy(global, {
+        set: (target, property) => properties.push(property)
+      })
+      var oldGlobal = global
+
+      before(() => { global = globalProxy }) // eslint-disable-line
+      after(() => { global = oldGlobal }) // eslint-disable-line
+
+      it('assigns properties to the global object', () => {
+        purified.dsl()
+        assert(properties.length)
+      })
+    })
+
+    context('given a target', () => {
       var target = {}
-      purified.dsl(target)
-      assert.notEqual(Object.keys(target).length, 0)
+
+      it('assigns properties to the given target', () => {
+        purified.dsl(target)
+        assert(Object.keys(target).length)
+      })
     })
   })
 
