@@ -13,9 +13,8 @@ This executable example is meant to showcase what purified tests will look like,
 __Experimental.__ There is a unit test suite so it should be at least somewhat stable, but it may undergo frequent redesigns and API breakages.
 
 ## Development
-1. Install [Node](https://nodejs.org/en/download/) 4 or later (preferred)
-2. `npm install`
-3. `npm test`
+1. Install [Node](https://nodejs.org/en/download/) 4 or later (preferred).
+2. `npm install-test`
 
 ## Contributing
 - Use [JavaScript Standard Style](http://standardjs.com/). The test commands will run a compliant linter for you.
