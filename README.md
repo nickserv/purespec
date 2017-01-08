@@ -18,6 +18,6 @@ __Experimental.__ There is a unit test suite so it should be at least somewhat s
 3. `npm test`
 
 ## Contributing
-1. Use [JavaScript Standard Style](http://standardjs.com/). The test commands will run a compliant linter for you.
-2. Keep compatability with the Node engine versions (see `package.json`).
-3. Maintain test coverage for existing code and add at least partial unit tests for new code.
+- Use [JavaScript Standard Style](http://standardjs.com/). The test commands will run a compliant linter for you.
+- Keep compatability with the Node engine versions (see `package.json`).
+- Maintain test coverage for existing code and add at least partial unit tests for new code.
