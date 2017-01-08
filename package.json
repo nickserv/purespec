@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "main": "src",
   "scripts": {
-    "pretest": "standard",
-    "test": "nyc node src/example",
+    "pretest": "eslint .",
+    "test": "nyc mocha",
+    "test:watch": "npm test -- --watch",
     "upload-coverage": "nyc report --reporter text-lcov | coveralls"
   },
   "repository": "nickmccurdy/purified",
@@ -15,8 +16,12 @@
   "homepage": "https://github.com/nickmccurdy/purified#readme",
   "devDependencies": {
     "coveralls": "^2.11.15",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "mocha": "^3.2.0",
     "nyc": "^10.0.0",
-    "standard": "^8.5.0"
+    "sinon": "^1.17.7"
   },
   "engines": {
     "node": ">=4"

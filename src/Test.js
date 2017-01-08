@@ -10,7 +10,9 @@ module.exports = class Test {
   }
 
   run () {
-    var promises = this.runnables.map(runnable => runnable.run(this.subject))
+    var promises = this.runnables.map(runnable =>
+      new Promise(resolve => resolve(runnable.run(this.subject)))
+    )
     return Promise.all(promises).catch(reason => {
       console.error(reason instanceof Error ? reason.message : reason)
       process.exit(1)
