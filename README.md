@@ -8,10 +8,12 @@
 A declarative test framework for pure JavaScript.
 
 ## [Example](./src/example.js)
+This executable example is meant to showcase what purified tests will look like, and it also doubles as an integration test.
+
+## Status
+__Experimental.__ There is a unit test suite so it should be at least somewhat stable, but it may undergo frequent redesigns and API breakages.
 
 ## Development
-This is still very experimental, but there is an executable example above and a unit test suite.
-
 1. Install [Node](https://nodejs.org/en/download/) 4 or later (preferred)
 2. `npm install`
 3. `npm test`
