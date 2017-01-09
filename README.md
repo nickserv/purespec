@@ -1,13 +1,13 @@
-# Purified
-[![Build Status](https://travis-ci.org/nickmccurdy/purified.svg?branch=master)](https://travis-ci.org/nickmccurdy/purified)
+# PureSpec
+[![Build Status](https://travis-ci.org/nickmccurdy/purespec.svg?branch=master)](https://travis-ci.org/nickmccurdy/purespec)
 [![Coverage Status](https://coveralls.io/repos/github/nickmccurdy/purified/badge.svg?branch=master)](https://coveralls.io/github/nickmccurdy/purified?branch=master)
-[![Dependency Status](https://david-dm.org/nickmccurdy/purified.svg)](https://david-dm.org/nickmccurdy/purified)
-[![devDependency Status](https://david-dm.org/nickmccurdy/purified/dev-status.svg)](https://david-dm.org/nickmccurdy/purified/?type=dev)
+[![Dependency Status](https://david-dm.org/nickmccurdy/purespec.svg)](https://david-dm.org/nickmccurdy/purespec)
+[![devDependency Status](https://david-dm.org/nickmccurdy/purespec/dev-status.svg)](https://david-dm.org/nickmccurdy/purespec/?type=dev)
 
 A declarative test framework for pure JavaScript.
 
 ## [Example](./src/example.js)
-This executable example is meant to showcase what purified tests will look like, and it also doubles as an integration test.
+This executable example is meant to showcase what PureSpec tests will look like, and it also doubles as an integration test.
 
 ## Status
 __Experimental.__ There is a unit test suite so it should be at least somewhat stable, but it may undergo frequent redesigns and API breakages.

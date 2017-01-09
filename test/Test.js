@@ -3,10 +3,10 @@ var sinon = require('sinon')
 describe('Test', () => {
   var name = 'hello'
   var subject = example.hello.sync
-  var given = new purified.matchers.Given(['Nick'], new purified.matchers.Returns('Hello, Nick!'))
-  var throws = new purified.matchers.Throws('Missing name')
+  var given = new purespec.matchers.Given(['Nick'], new purespec.matchers.Returns('Hello, Nick!'))
+  var throws = new purespec.matchers.Throws('Missing name')
   var runnables = [given, throws]
-  var test = new purified.Test(name, subject, runnables)
+  var test = new purespec.Test(name, subject, runnables)
 
   describe('.prototype.constructor()', () => {
     it('returns a new Test with the given data', () => {
@@ -25,7 +25,7 @@ describe('Test', () => {
 
     context('given failing tests', () => {
       var sandbox
-      var runnables = [new purified.matchers.Returns()]
+      var runnables = [new purespec.matchers.Returns()]
 
       beforeEach(() => {
         sandbox = sinon.sandbox.create()
@@ -36,7 +36,7 @@ describe('Test', () => {
 
       function returnsARejectedPromise (subject) {
         it('returns a rejected Promise', () => {
-          var test = new purified.Test(name, subject, runnables)
+          var test = new purespec.Test(name, subject, runnables)
 
           return test.run().then(() => {
             sinon.assert.calledWithExactly(console.error, 'message')

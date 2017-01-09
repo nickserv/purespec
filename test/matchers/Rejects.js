@@ -1,5 +1,5 @@
 describe('Rejects matcher', () => {
-  var rejects = new purified.matchers.Rejects('Missing name')
+  var rejects = new purespec.matchers.Rejects('Missing name')
 
   describe('.prototype.constructor()', () => {
     it('returns a new Rejects with the given reason', () => {
