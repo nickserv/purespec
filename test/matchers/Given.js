@@ -1,10 +1,10 @@
 describe('Given matcher', () => {
-  var given = new purified.matchers.Given(['Nick'], new purified.matchers.Returns('Hello, Nick!'))
+  var given = new purespec.matchers.Given(['Nick'], new purespec.matchers.Returns('Hello, Nick!'))
 
   describe('.prototype.constructor()', () => {
     it('returns a new Given with the given args and matcher', () => {
       assert.deepEqual(given.args, ['Nick'])
-      assert.deepStrictEqual(given.matcher, new purified.matchers.Returns('Hello, Nick!'))
+      assert.deepStrictEqual(given.matcher, new purespec.matchers.Returns('Hello, Nick!'))
     })
   })
 

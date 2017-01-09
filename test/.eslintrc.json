@@ -5,6 +5,6 @@
   "globals": {
     "assert": false,
     "example": false,
-    "purified": false
+    "purespec": false
   }
 }

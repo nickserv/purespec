@@ -1,29 +1,29 @@
 describe('example Test suite', () => {
   it('constructs a Test', () => {
-    var expected = new purified.Test(
+    var expected = new purespec.Test(
       'hello',
       example.hello,
       [
-        new purified.Test(
+        new purespec.Test(
           '#sync()',
           example.hello.sync,
           [
-            new purified.matchers.Given(
+            new purespec.matchers.Given(
               ['Nick'],
-              new purified.matchers.Returns('Hello, Nick!')
+              new purespec.matchers.Returns('Hello, Nick!')
             ),
-            new purified.matchers.Throws('Missing name')
+            new purespec.matchers.Throws('Missing name')
           ]
         ),
-        new purified.Test(
+        new purespec.Test(
           '#promise()',
           example.hello.promise,
           [
-            new purified.matchers.Given(
+            new purespec.matchers.Given(
               ['Nick'],
-              new purified.matchers.Resolves('Hello, Nick!')
+              new purespec.matchers.Resolves('Hello, Nick!')
             ),
-            new purified.matchers.Rejects('Missing name')
+            new purespec.matchers.Rejects('Missing name')
           ]
         )
       ]

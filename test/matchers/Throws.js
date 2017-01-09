@@ -1,5 +1,5 @@
 describe('Throws matcher', () => {
-  var throws = new purified.matchers.Throws('Missing name')
+  var throws = new purespec.matchers.Throws('Missing name')
 
   describe('.prototype.constructor()', () => {
     it('returns a new Throws with the given exception', () => {
