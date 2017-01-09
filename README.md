@@ -1,8 +1,8 @@
 # Purified
-[![Build Status](https://travis-ci.org/nickmccurdy/purified.svg?branch=master)](https://travis-ci.org/nickmccurdy/purified)
+[![Build Status](https://travis-ci.org/nickmccurdy/purespec.svg?branch=master)](https://travis-ci.org/nickmccurdy/purespec)
 [![Coverage Status](https://coveralls.io/repos/github/nickmccurdy/purified/badge.svg?branch=master)](https://coveralls.io/github/nickmccurdy/purified?branch=master)
-[![Dependency Status](https://david-dm.org/nickmccurdy/purified.svg)](https://david-dm.org/nickmccurdy/purified)
-[![devDependency Status](https://david-dm.org/nickmccurdy/purified/dev-status.svg)](https://david-dm.org/nickmccurdy/purified/?type=dev)
+[![Dependency Status](https://david-dm.org/nickmccurdy/purespec.svg)](https://david-dm.org/nickmccurdy/purespec)
+[![devDependency Status](https://david-dm.org/nickmccurdy/purespec/dev-status.svg)](https://david-dm.org/nickmccurdy/purespec/?type=dev)
 
 A declarative test framework for pure JavaScript.
 
