@@ -1,18 +1,19 @@
 describe('Throws matcher', () => {
-  var throws = new purespec.matchers.Throws('Missing name')
+  var subject = () => { throw new Error('Invalid') }
+  var throws = new purespec.matchers.Throws('Invalid')
 
   describe('.prototype.constructor()', () => {
     it('returns a new Throws with the given exception', () => {
-      assert.deepEqual(throws.exception, 'Missing name')
+      assert.deepEqual(throws.exception, 'Invalid')
     })
   })
 
   describe('.prototype.run()', () => {
     context('given a subject that throws the given exception', () => {
       it('returns a passing Result', () => {
-        assert.deepStrictEqual(throws.run(example.hello.sync), new purespec.Result(throws, {
-          actual: new Error('Missing name'),
-          expected: new Error('Missing name')
+        assert.deepStrictEqual(throws.run(subject), new purespec.Result(throws, {
+          actual: new Error('Invalid'),
+          expected: new Error('Invalid')
         }))
       })
     })
@@ -30,7 +31,7 @@ describe('Throws matcher', () => {
 
   describe('.prototype.toString()', () => {
     it('returns a String representation with its exception', () => {
-      assert.deepEqual(throws.toString(), 'throws Missing name')
+      assert.deepEqual(throws.toString(), 'throws Invalid')
     })
   })
 })

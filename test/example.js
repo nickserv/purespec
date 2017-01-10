@@ -1,38 +1,20 @@
+var example = require('../example')
+
 describe('example Test suite', () => {
   it('constructs a Test', () => {
     var expected = new purespec.Test(
-      'hello',
-      example.hello,
+      'Math.round()',
+      Math.round,
       [
-        new purespec.Test(
-          '#sync()',
-          example.hello.sync,
-          [
-            new purespec.matchers.Given(
-              'Nick',
-              new purespec.matchers.Returns('Hello, Nick!')
-            ),
-            new purespec.matchers.Throws('Missing name')
-          ]
-        ),
-        new purespec.Test(
-          '#promise()',
-          example.hello.promise,
-          [
-            new purespec.matchers.Given(
-              'Nick',
-              new purespec.matchers.Resolves('Hello, Nick!')
-            ),
-            new purespec.matchers.Rejects('Missing name')
-          ]
-        )
+        new purespec.matchers.Given(1, new purespec.matchers.Returns(1)),
+        new purespec.matchers.Given(1.5, new purespec.matchers.Returns(2))
       ]
     )
 
-    assert.deepStrictEqual(example.tests, expected)
+    assert.deepStrictEqual(example, expected)
   })
 
   it('has a string representation', () => {
-    assert.strictEqual(example.tests.toTree(), 'hello\n  #sync()\n    given Nick\n      returns Hello, Nick!\n    throws Missing name\n  #promise()\n    given Nick\n      resolves with Hello, Nick!\n    rejects with Missing name')
+    assert.strictEqual(example.toTree(), 'Math.round()\n  given 1\n    returns 1\n  given 1.5\n    returns 2')
   })
 })

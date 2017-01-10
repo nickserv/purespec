@@ -1,9 +1,12 @@
 describe('Rejects matcher', () => {
-  var rejects = new purespec.matchers.Rejects('Missing name')
+  var subject = () => new Promise(setTimeout).then(() => {
+    throw new Error('Invalid')
+  })
+  var rejects = new purespec.matchers.Rejects('Invalid')
 
   describe('.prototype.constructor()', () => {
     it('returns a new Rejects with the given reason', () => {
-      assert.deepEqual(rejects.reason, 'Missing name')
+      assert.deepEqual(rejects.reason, 'Invalid')
     })
   })
 
@@ -14,10 +17,10 @@ describe('Rejects matcher', () => {
 
     context('given a subject that rejects with an Error', () => {
       it('runs its subject as a Promise, asserting a rejection with the given reason', () => {
-        return rejects.run(example.hello.promise).then(result => {
+        return rejects.run(subject).then(result => {
           assert.deepStrictEqual(result, new purespec.Result(rejects, {
-            actual: new Error('Missing name'),
-            expected: new Error('Missing name')
+            actual: new Error('Invalid'),
+            expected: new Error('Invalid')
           }))
         })
       })
@@ -30,7 +33,7 @@ describe('Rejects matcher', () => {
 
   describe('.prototype.toString()', () => {
     it('returns a String representation with its reason', () => {
-      assert.strictEqual(rejects.toString(), 'rejects with Missing name')
+      assert.strictEqual(rejects.toString(), 'rejects with Invalid')
     })
   })
 })

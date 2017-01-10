@@ -1,32 +1,13 @@
-/* global test, given, rejects, resolves, returns, throws */
+/* global test, given, returns */
 'use strict'
 require('.').dsl()
 
-exports.hello = {
-  // Synchronous
-  sync (name) {
-    if (name) return `Hello, ${name}!`
-    else throw new Error('Missing name.')
-  },
-
-  // Asynchronous with Promises
-  promise (name) {
-    return new Promise(setTimeout).then(() => exports.hello.sync(name))
-  }
-}
-
-exports.tests = test('hello',
-                     exports.hello,
-                     test('#sync()',
-                          exports.hello.sync,
-                          given('Nick', returns('Hello, Nick!')),
-                          throws('Missing name')),
-                     test('#promise()',
-                          exports.hello.promise,
-                          given('Nick', resolves('Hello, Nick!')),
-                          rejects('Missing name')))
+module.exports = test('Math.round()',
+                      Math.round,
+                      given(1, returns(1)),
+                      given(1.5, returns(2)))
 
 // istanbul ignore next
 if (require.main === module) {
-  exports.tests.run().then(result => console.log(result.toTree()))
+  module.exports.run().then(result => console.log(result.toTree()))
 }
