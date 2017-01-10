@@ -1,6 +1,6 @@
 describe('Given matcher', () => {
   var returns = new purespec.matchers.Returns('Hello, Nick!')
-  var given = new purespec.matchers.Given(['Nick'], returns)
+  var given = new purespec.matchers.Given('Nick', returns)
 
   describe('.prototype.constructor()', () => {
     it('returns a new Given with the given args and matcher', () => {

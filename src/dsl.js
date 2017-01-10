@@ -11,14 +11,11 @@ function dsl (target) {
 dsl.matchers = () => {
   return Object.keys(matchers).reduce((memo, matcher) => {
     var Class = matchers[matcher]
-    memo[matcher.toLowerCase()] = (arg1, arg2) => new Class(arg1, arg2)
+    memo[matcher.toLowerCase()] = (...args) => new Class(...args)
     return memo
   }, {})
 }
 
-// Use function instead of arrow to support arguments
-dsl.test = function (name, subject) {
-  return new Test(name, subject, Array.from(arguments).slice(2))
-}
+dsl.test = (name, subject, ...runnables) => new Test(name, subject, runnables)
 
 module.exports = dsl
