@@ -1,6 +1,6 @@
 # PureSpec
 [![Build Status](https://travis-ci.org/nickmccurdy/purespec.svg?branch=master)](https://travis-ci.org/nickmccurdy/purespec)
-[![Coverage Status](https://coveralls.io/repos/github/nickmccurdy/purified/badge.svg?branch=master)](https://coveralls.io/github/nickmccurdy/purified?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/nickmccurdy/purespec/badge.svg?branch=master)](https://coveralls.io/github/nickmccurdy/purespec?branch=master)
 [![Dependency Status](https://david-dm.org/nickmccurdy/purespec.svg)](https://david-dm.org/nickmccurdy/purespec)
 [![devDependency Status](https://david-dm.org/nickmccurdy/purespec/dev-status.svg)](https://david-dm.org/nickmccurdy/purespec/?type=dev)
 
