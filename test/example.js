@@ -33,10 +33,6 @@ describe('example Test suite', () => {
   })
 
   it('has a string representation', () => {
-    assert.strictEqual(example.tests.toString(), 'hello\n  #sync()\n    given Nick returns Hello, Nick!\n    throws Missing name\n  #promise()\n    given Nick resolves with Hello, Nick!\n    rejects with Missing name')
-  })
-
-  it('runs successfully', () => {
-    example.tests.run()
+    assert.strictEqual(example.tests.toTree(), 'hello\n  #sync()\n    given Nick\n      returns Hello, Nick!\n    throws Missing name\n  #promise()\n    given Nick\n      resolves with Hello, Nick!\n    rejects with Missing name')
   })
 })

@@ -1,5 +1,5 @@
 'use strict'
-var assert = require('assert')
+var Result = require('../Result')
 
 module.exports = class Throws {
   constructor (exception) {
@@ -7,7 +7,12 @@ module.exports = class Throws {
   }
 
   run (subject) {
-    assert.throws(subject, this.exception)
+    try {
+      subject()
+      return new Result(this, { error: true })
+    } catch (err) {
+      return new Result(this, { actual: err, expected: new Error(this.exception) })
+    }
   }
 
   toString () {

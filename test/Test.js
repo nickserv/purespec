@@ -3,7 +3,8 @@ var sinon = require('sinon')
 describe('Test', () => {
   var name = 'hello'
   var subject = example.hello.sync
-  var given = new purespec.matchers.Given(['Nick'], new purespec.matchers.Returns('Hello, Nick!'))
+  var returns = new purespec.matchers.Returns('Hello, Nick!')
+  var given = new purespec.matchers.Given(['Nick'], returns)
   var throws = new purespec.matchers.Throws('Missing name')
   var runnables = [given, throws]
   var test = new purespec.Test(name, subject, runnables)
@@ -18,8 +19,25 @@ describe('Test', () => {
 
   describe('.prototype.run()', () => {
     context('given passing tests', () => {
-      it('returns a resolved Promise', () => {
-        return test.run()
+      it('returns a Promise resolving with a Result', () => {
+        return test.run().then(result => {
+          assert.deepStrictEqual(result, new purespec.Result(test, {
+            results: [
+              new purespec.Result(given, {
+                results: [
+                  new purespec.Result(returns, {
+                    actual: 'Hello, Nick!',
+                    expected: 'Hello, Nick!'
+                  })
+                ]
+              }),
+              new purespec.Result(throws, {
+                actual: new Error('Missing name'),
+                expected: new Error('Missing name')
+              })
+            ]
+          }))
+        })
       })
     })
 
@@ -56,8 +74,14 @@ describe('Test', () => {
   })
 
   describe('.prototype.toString()', () => {
+    it('returns its name', () => {
+      assert.equal(test.toString(), 'hello')
+    })
+  })
+
+  describe('.prototype.toTree()', () => {
     it('returns a nested String of the Test and its runnables', () => {
-      assert.equal(test.toString(), 'hello\n  given Nick returns Hello, Nick!\n  throws Missing name')
+      assert.equal(test.toTree(), 'hello\n  given Nick\n    returns Hello, Nick!\n  throws Missing name')
     })
   })
 })

@@ -1,5 +1,5 @@
 'use strict'
-var assert = require('assert')
+var Result = require('../Result')
 
 module.exports = class Returns {
   constructor (result) {
@@ -7,7 +7,7 @@ module.exports = class Returns {
   }
 
   run (subject) {
-    assert.deepStrictEqual(subject(), this.result)
+    return new Result(this, { actual: subject(), expected: this.result })
   }
 
   toString () {

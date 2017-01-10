@@ -1,5 +1,5 @@
 'use strict'
-var assert = require('assert')
+var Result = require('../Result')
 
 module.exports = class Rejects {
   constructor (reason) {
@@ -8,10 +8,10 @@ module.exports = class Rejects {
 
   run (subject) {
     return subject()
-      .then(actual => assert(false))
+      .then(actual => new Result(this, { error: true }))
       .catch(reason => {
         var error = reason instanceof Error ? reason : new Error(reason)
-        assert.deepStrictEqual(error, new Error(this.reason))
+        return new Result(this, { actual: error, expected: new Error(this.reason) })
       })
   }
 
