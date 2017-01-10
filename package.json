@@ -3,9 +3,10 @@
   "description": "A declarative test framework for pure JavaScript.",
   "version": "0.0.0",
   "main": "src",
+  "bin": "src/cli.js",
   "watch": {
     "test": {
-      "patterns": ["example.js", "src", "test"],
+      "patterns": ["*.js", "src", "test"],
       "quiet": true
     }
   },

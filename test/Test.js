@@ -2,7 +2,7 @@ var sinon = require('sinon')
 
 describe('Test', () => {
   var name = 'hello'
-  var subject = example.hello.sync
+  var subject = hello.sync
   var returns = new purespec.matchers.Returns('Hello, Nick!')
   var given = new purespec.matchers.Given('Nick', returns)
   var throws = new purespec.matchers.Throws('Missing name')

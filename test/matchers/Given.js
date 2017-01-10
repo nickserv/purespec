@@ -11,7 +11,7 @@ describe('Given matcher', () => {
 
   describe('.prototype.run()', () => {
     it('run its matcher with its args and returns a Promise with a Result', () => {
-      return given.run(example.hello.sync).then(result => {
+      return given.run(hello.sync).then(result => {
         assert.deepStrictEqual(result, new purespec.Result(given, {
           results: [
             new purespec.Result(returns, {
