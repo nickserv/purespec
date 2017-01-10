@@ -18,7 +18,7 @@ describe('Rejects matcher', () => {
     context('given a subject that rejects with an Error', () => {
       it('runs its subject as a Promise, asserting a rejection with the given reason', () => {
         return rejects.run(subject).then(result => {
-          assert.deepStrictEqual(result, new purespec.Result(rejects, {
+          assert.deepEqual(result, new purespec.Result(rejects, {
             actual: new Error('Invalid'),
             expected: new Error('Invalid')
           }))

@@ -11,7 +11,7 @@ describe('example Test suite', () => {
       ]
     )
 
-    assert.deepStrictEqual(example, expected)
+    assert.deepEqual(example, expected)
   })
 
   it('has a string representation', () => {

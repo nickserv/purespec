@@ -19,6 +19,7 @@
     "deep-equal": "^1.0.1"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "coveralls": "^2.11.15",
     "eslint": "^3.13.0",
     "eslint-config-standard": "^6.2.1",

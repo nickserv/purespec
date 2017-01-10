@@ -11,7 +11,7 @@ describe('Resolves matcher', () => {
   describe('.prototype.run()', () => {
     it('runs its subject as a Promise, asserting its actual result equals its expected result', () => {
       return resolves.run(subject).then(result => {
-        assert.deepStrictEqual(result, new purespec.Result(resolves, {
+        assert.deepEqual(result, new purespec.Result(resolves, {
           actual: 'Hello, World!',
           expected: 'Hello, World!'
         }))

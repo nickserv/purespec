@@ -6,14 +6,14 @@ describe('Given matcher', () => {
   describe('.prototype.constructor()', () => {
     it('returns a new Given with the given args and matcher', () => {
       assert.deepEqual(given.args, ['World'])
-      assert.deepStrictEqual(given.matcher, new purespec.matchers.Returns('Hello, World!'))
+      assert.deepEqual(given.matcher, new purespec.matchers.Returns('Hello, World!'))
     })
   })
 
   describe('.prototype.run()', () => {
     it('run its matcher with its args and returns a Promise with a Result', () => {
       return given.run(subject).then(result => {
-        assert.deepStrictEqual(result, new purespec.Result(given, {
+        assert.deepEqual(result, new purespec.Result(given, {
           results: [
             new purespec.Result(returns, {
               actual: 'Hello, World!',

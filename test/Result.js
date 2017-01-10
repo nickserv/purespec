@@ -10,7 +10,7 @@ describe('Result', () => {
 
       it('returns Result with runnable, empty results, and a falsy error', () => {
         assert.strictEqual(result.runnable, runnable)
-        assert.deepStrictEqual(result.results, [])
+        assert.deepEqual(result.results, [])
         assert.strictEqual(result.error, false)
       })
     })
@@ -26,7 +26,7 @@ describe('Result', () => {
 
       it('returns Result with runnable, results, and a falsy error', () => {
         assert.strictEqual(result.runnable, runnable)
-        assert.deepStrictEqual(result.results, results)
+        assert.deepEqual(result.results, results)
         assert.strictEqual(result.error, false)
       })
     })
@@ -42,7 +42,7 @@ describe('Result', () => {
 
       it('returns Result with runnable, results, and a truthy error', () => {
         assert.strictEqual(result.runnable, runnable)
-        assert.deepStrictEqual(result.results, results)
+        assert.deepEqual(result.results, results)
         assert.strictEqual(result.error, true)
       })
     })
@@ -53,7 +53,7 @@ describe('Result', () => {
 
       it('returns Result with runnable, empty results, and error', () => {
         assert.strictEqual(result.runnable, runnable)
-        assert.deepStrictEqual(result.results, [])
+        assert.deepEqual(result.results, [])
         assert.strictEqual(result.error, error)
       })
     })

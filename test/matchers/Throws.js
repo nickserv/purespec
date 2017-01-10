@@ -11,7 +11,7 @@ describe('Throws matcher', () => {
   describe('.prototype.run()', () => {
     context('given a subject that throws the given exception', () => {
       it('returns a passing Result', () => {
-        assert.deepStrictEqual(throws.run(subject), new purespec.Result(throws, {
+        assert.deepEqual(throws.run(subject), new purespec.Result(throws, {
           actual: new Error('Invalid'),
           expected: new Error('Invalid')
         }))
@@ -22,7 +22,7 @@ describe('Throws matcher', () => {
       var subject = () => 1
 
       it('returns a failing Result', () => {
-        assert.deepStrictEqual(throws.run(subject), new purespec.Result(throws, {
+        assert.deepEqual(throws.run(subject), new purespec.Result(throws, {
           error: true
         }))
       })

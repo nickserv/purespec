@@ -19,7 +19,7 @@ describe('Test', () => {
     context('given passing tests', () => {
       it('returns a Promise resolving with a Result', () => {
         return test.run().then(result => {
-          assert.deepStrictEqual(result, new purespec.Result(test, {
+          assert.deepEqual(result, new purespec.Result(test, {
             results: [
               new purespec.Result(returns, {
                 actual: 'Hello, World!',

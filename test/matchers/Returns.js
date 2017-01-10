@@ -10,7 +10,7 @@ describe('Returns matcher', () => {
 
   describe('.prototype.run()', () => {
     it('asserts its subject\'s return value to equal its result', () => {
-      assert.deepStrictEqual(returns.run(subject), new purespec.Result(returns, {
+      assert.deepEqual(returns.run(subject), new purespec.Result(returns, {
         actual: 'Hello, World!',
         expected: 'Hello, World!'
       }))
