@@ -8,11 +8,23 @@ describe('Throws matcher', () => {
   })
 
   describe('.prototype.run()', () => {
-    it('asserts its subject throws an exception matching its exception', () => {
-      assert.deepStrictEqual(throws.run(example.hello.sync), new purespec.Result(throws, {
-        actual: new Error('Missing name'),
-        expected: new Error('Missing name')
-      }))
+    context('given a subject that throws the given exception', () => {
+      it('returns a passing Result', () => {
+        assert.deepStrictEqual(throws.run(example.hello.sync), new purespec.Result(throws, {
+          actual: new Error('Missing name'),
+          expected: new Error('Missing name')
+        }))
+      })
+    })
+
+    context('given a subject that doesn\'t throw an exception', () => {
+      var subject = () => 1
+
+      it('returns a failing Result', () => {
+        assert.deepStrictEqual(throws.run(subject), new purespec.Result(throws, {
+          error: true
+        }))
+      })
     })
   })
 
