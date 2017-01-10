@@ -13,7 +13,7 @@ This executable example is meant to showcase what PureSpec tests will look like,
 __Experimental.__ There is a unit test suite so it should be at least somewhat stable, but it may undergo frequent redesigns and API breakages.
 
 ## Development
-1. Install [Node](https://nodejs.org/en/download/) 4 or later (preferred).
+1. Install [Node](https://nodejs.org/en/download/) 6 or later (preferred).
 2. `npm install`
 3. `npm run watch`
 
