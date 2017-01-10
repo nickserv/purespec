@@ -1,31 +1,27 @@
 describe('Result', () => {
   describe('.prototype.constructor()', () => {
     context('given a runnable', () => {
-      it('returns a new Result with the given runnable, empty results, and a falsy error')
+      it('returns Result with runnable, empty results, and a falsy error')
     })
 
-    context('given a runnable and results', () => {
-      context('when the results are passing', () => {
-        it('returns a new Result with the given runnable, results, and a falsy error')
-      })
+    context('given a runnable and passing results', () => {
+      it('returns Result with runnable, results, and a falsy error')
+    })
 
-      context('when the results are failing', () => {
-        it('returns a new Result with the given runnable, results, and a truthy error')
-      })
+    context('given a runnable and failing results', () => {
+      it('returns Result with runnable, results, and a truthy error')
     })
 
     context('given a runnable and an error', () => {
-      it('returns a new Result with the given runnable, empty results, and the given error')
+      it('returns Result with runnable, empty results, and error')
     })
 
-    context('given a runnable and an actual or expected option', () => {
-      context('when the actual and expected option are deeply equal', () => {
-        it('returns a new Result with the given runnable, actual, expected, and a falsy error')
-      })
+    context('given a runnable and equivalent actual and expected options', () => {
+      it('returns Result with runnable, actual, expected, and a falsy error')
+    })
 
-      context('when the actual and expected option are not deeply equal', () => {
-        it('returns a new Result with the given runnable, actual, expected, and a truthy error')
-      })
+    context('given a runnable and nonequivalent actual and expected options', () => {
+      it('returns Result with runnable, actual, expected, and a truthy error')
     })
   })
 
