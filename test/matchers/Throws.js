@@ -9,7 +9,10 @@ describe('Throws matcher', () => {
 
   describe('.prototype.run()', () => {
     it('asserts its subject throws an exception matching its exception', () => {
-      throws.run(example.hello.sync)
+      assert.deepStrictEqual(throws.run(example.hello.sync), new purespec.Result(throws, {
+        actual: new Error('Missing name'),
+        expected: new Error('Missing name')
+      }))
     })
   })
 
