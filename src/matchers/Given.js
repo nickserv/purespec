@@ -4,9 +4,11 @@ var os = require('os')
 var Result = require('../Result')
 
 module.exports = class Given {
-  constructor (args, matcher) {
+  constructor () {
+    var args = Array.from(arguments)
+
+    this.matcher = args.pop()
     this.args = args
-    this.matcher = matcher
   }
 
   run (subject) {

@@ -9,7 +9,7 @@ describe('example Test suite', () => {
           example.hello.sync,
           [
             new purespec.matchers.Given(
-              ['Nick'],
+              'Nick',
               new purespec.matchers.Returns('Hello, Nick!')
             ),
             new purespec.matchers.Throws('Missing name')
@@ -20,7 +20,7 @@ describe('example Test suite', () => {
           example.hello.promise,
           [
             new purespec.matchers.Given(
-              ['Nick'],
+              'Nick',
               new purespec.matchers.Resolves('Hello, Nick!')
             ),
             new purespec.matchers.Rejects('Missing name')

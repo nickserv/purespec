@@ -19,11 +19,11 @@ exports.tests = test('hello',
                      exports.hello,
                      test('#sync()',
                           exports.hello.sync,
-                          given(['Nick'], returns('Hello, Nick!')),
+                          given('Nick', returns('Hello, Nick!')),
                           throws('Missing name')),
                      test('#promise()',
                           exports.hello.promise,
-                          given(['Nick'], resolves('Hello, Nick!')),
+                          given('Nick', resolves('Hello, Nick!')),
                           rejects('Missing name')))
 
 // istanbul ignore next
