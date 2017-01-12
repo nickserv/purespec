@@ -9,9 +9,9 @@ describe('Result', () => {
       var result = new purespec.Result(runnable)
 
       it('returns Result with runnable, empty results, and a falsy error', () => {
-        assert.strictEqual(result.runnable, runnable)
-        assert.deepEqual(result.results, [])
-        assert.strictEqual(result.error, false)
+        expect(result.runnable).to.equal(runnable)
+        expect(result.results).to.be.empty
+        expect(result.error).to.be.false
       })
     })
 
@@ -25,9 +25,9 @@ describe('Result', () => {
       var result = new purespec.Result(runnable, { results })
 
       it('returns Result with runnable, results, and a falsy error', () => {
-        assert.strictEqual(result.runnable, runnable)
-        assert.deepEqual(result.results, results)
-        assert.strictEqual(result.error, false)
+        expect(result.runnable).to.equal(runnable)
+        expect(result.results).to.deep.equal(results)
+        expect(result.error).to.be.false
       })
     })
 
@@ -41,9 +41,9 @@ describe('Result', () => {
       var result = new purespec.Result(runnable, { results })
 
       it('returns Result with runnable, results, and a truthy error', () => {
-        assert.strictEqual(result.runnable, runnable)
-        assert.deepEqual(result.results, results)
-        assert.strictEqual(result.error, true)
+        expect(result.runnable).to.equal(runnable)
+        expect(result.results).to.deep.equal(results)
+        expect(result.error).to.be.true
       })
     })
 
@@ -52,9 +52,9 @@ describe('Result', () => {
       var result = new purespec.Result(runnable, { error })
 
       it('returns Result with runnable, empty results, and error', () => {
-        assert.strictEqual(result.runnable, runnable)
-        assert.deepEqual(result.results, [])
-        assert.strictEqual(result.error, error)
+        expect(result.runnable).to.equal(runnable)
+        expect(result.results).to.be.empty
+        expect(result.error).to.equal(error)
       })
     })
 
@@ -65,10 +65,10 @@ describe('Result', () => {
       })
 
       it('returns Result with runnable, actual, expected, and a falsy error', () => {
-        assert.strictEqual(result.runnable, runnable)
-        assert.strictEqual(result.actual, 1)
-        assert.strictEqual(result.expected, 1)
-        assert.strictEqual(result.error, false)
+        expect(result.runnable).to.equal(runnable)
+        expect(result.actual).to.equal(1)
+        expect(result.expected).to.equal(1)
+        expect(result.error).to.be.false
       })
     })
 
@@ -79,10 +79,10 @@ describe('Result', () => {
       })
 
       it('returns Result with runnable, actual, expected, and a truthy error', () => {
-        assert.strictEqual(result.runnable, runnable)
-        assert.strictEqual(result.actual, 2)
-        assert.strictEqual(result.expected, 1)
-        assert.strictEqual(result.error, true)
+        expect(result.runnable).to.equal(runnable)
+        expect(result.actual).to.equal(2)
+        expect(result.expected).to.equal(1)
+        expect(result.error).to.be.true
       })
     })
   })
@@ -95,7 +95,7 @@ describe('Result', () => {
       })
 
       it('returns a red String with a cross, its runnable, a newline, and its error', () => {
-        assert.strictEqual(result.toString(), `${chalk.red('✗ returns 1')}\ntrue`)
+        expect(result.toString()).to.equal(`${chalk.red('✗ returns 1')}\ntrue`)
       })
     })
 
@@ -106,7 +106,7 @@ describe('Result', () => {
       })
 
       it('returns a green String with a check and its runnable', () => {
-        assert.strictEqual(result.toString(), chalk.green('✓ returns 1'))
+        expect(result.toString()).to.equal(chalk.green('✓ returns 1'))
       })
     })
   })
@@ -119,7 +119,7 @@ describe('Result', () => {
       })
 
       it('returns the result of .prototype.toString()', () => {
-        assert.strictEqual(result.toTree(), chalk.green('✓ returns 1'))
+        expect(result.toTree()).to.equal(chalk.green('✓ returns 1'))
       })
     })
 
@@ -135,7 +135,7 @@ describe('Result', () => {
       })
 
       it('returns its String representation with the indented representations of its children', () => {
-        assert.strictEqual(result.toTree(), `${chalk.green('✓ test')}\n  ${chalk.green('✓ returns 1')}`)
+        expect(result.toTree()).equal(`${chalk.green('✓ test')}\n  ${chalk.green('✓ returns 1')}`)
       })
     })
   })

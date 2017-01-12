@@ -4,14 +4,14 @@ describe('Throws matcher', () => {
 
   describe('.prototype.constructor()', () => {
     it('returns a new Throws with the given exception', () => {
-      assert.deepEqual(throws.exception, 'Invalid')
+      expect(throws.exception).to.equal('Invalid')
     })
   })
 
   describe('.prototype.run()', () => {
     context('given a subject that throws the given exception', () => {
       it('returns a passing Result', () => {
-        assert.deepEqual(throws.run(subject), new purespec.Result(throws, {
+        expect(throws.run(subject)).to.deep.equal(new purespec.Result(throws, {
           actual: new Error('Invalid'),
           expected: new Error('Invalid')
         }))
@@ -22,7 +22,7 @@ describe('Throws matcher', () => {
       var subject = () => 1
 
       it('returns a failing Result', () => {
-        assert.deepEqual(throws.run(subject), new purespec.Result(throws, {
+        expect(throws.run(subject)).to.deep.equal(new purespec.Result(throws, {
           error: true
         }))
       })
@@ -31,7 +31,7 @@ describe('Throws matcher', () => {
 
   describe('.prototype.toString()', () => {
     it('returns a String representation with its exception', () => {
-      assert.deepEqual(throws.toString(), 'throws Invalid')
+      expect(throws.toString()).to.equal('throws Invalid')
     })
   })
 })

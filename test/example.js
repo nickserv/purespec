@@ -11,10 +11,10 @@ describe('example Test suite', () => {
       ]
     )
 
-    assert.deepEqual(example, expected)
+    expect(example).to.deep.equal(expected)
   })
 
   it('has a string representation', () => {
-    assert.strictEqual(example.toTree(), 'Math.round()\n  given 1\n    returns 1\n  given 1.5\n    returns 2')
+    expect(example.toTree()).to.equal('Math.round()\n  given 1\n    returns 1\n  given 1.5\n    returns 2')
   })
 })

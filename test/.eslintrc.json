@@ -3,7 +3,7 @@
    "mocha": true
   },
   "globals": {
-    "assert": false,
+    "expect": false,
     "purespec": false,
     "sinon": false
   }

@@ -6,7 +6,7 @@ describe('Rejects matcher', () => {
 
   describe('.prototype.constructor()', () => {
     it('returns a new Rejects with the given reason', () => {
-      assert.deepEqual(rejects.reason, 'Invalid')
+      expect(rejects.reason).to.equal('Invalid')
     })
   })
 
@@ -18,7 +18,7 @@ describe('Rejects matcher', () => {
     context('given a subject that rejects with an Error', () => {
       it('runs its subject as a Promise, asserting a rejection with the given reason', () => {
         return rejects.run(subject).then(result => {
-          assert.deepEqual(result, new purespec.Result(rejects, {
+          expect(result).to.deep.equal(new purespec.Result(rejects, {
             actual: new Error('Invalid'),
             expected: new Error('Invalid')
           }))
@@ -33,7 +33,7 @@ describe('Rejects matcher', () => {
 
   describe('.prototype.toString()', () => {
     it('returns a String representation with its reason', () => {
-      assert.strictEqual(rejects.toString(), 'rejects with Invalid')
+      expect(rejects.toString()).to.equal('rejects with Invalid')
     })
   })
 })

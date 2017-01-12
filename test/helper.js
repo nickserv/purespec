@@ -1,8 +1,8 @@
 global.purespec = require('..')
 
 var chai = require('chai')
-global.assert = chai.assert
+global.expect = chai.expect
 
 var sinon = require('sinon')
-sinon.assert.expose(chai.assert, { prefix: '' })
+chai.use(require('sinon-chai'))
 global.sinon = sinon

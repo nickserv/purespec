@@ -7,9 +7,9 @@ describe('Test', () => {
 
   describe('.prototype.constructor()', () => {
     it('returns a new Test with the given data', () => {
-      assert.strictEqual(test.name, name)
-      assert.strictEqual(test.subject, subject)
-      assert.strictEqual(test.runnables, runnables)
+      expect(test.name).to.equal(name)
+      expect(test.subject).to.equal(subject)
+      expect(test.runnables).to.equal(runnables)
     })
   })
 
@@ -17,7 +17,7 @@ describe('Test', () => {
     context('given passing tests', () => {
       it('returns a Promise resolving with a Result', () => {
         return test.run().then(result => {
-          assert.deepEqual(result, new purespec.Result(test, {
+          expect(result).to.deep.equal(new purespec.Result(test, {
             results: [
               new purespec.Result(returns, {
                 actual: 'Hello, World!',
@@ -45,8 +45,8 @@ describe('Test', () => {
           var test = new purespec.Test(name, subject, runnables)
 
           return test.run().then(() => {
-            assert.calledWithExactly(console.error, 'message')
-            assert.calledWithExactly(process.exit, 1)
+            expect(console.error).to.have.been.calledWithExactly('message')
+            expect(process.exit).to.have.been.calledWithExactly(1)
           })
         })
       }
@@ -63,13 +63,13 @@ describe('Test', () => {
 
   describe('.prototype.toString()', () => {
     it('returns its name', () => {
-      assert.equal(test.toString(), 'hello')
+      expect(test.toString()).to.equal('hello')
     })
   })
 
   describe('.prototype.toTree()', () => {
     it('returns a nested String of the Test and its runnables', () => {
-      assert.equal(test.toTree(), 'hello\n  returns Hello, World!')
+      expect(test.toTree()).to.equal('hello\n  returns Hello, World!')
     })
   })
 })

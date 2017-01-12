@@ -4,14 +4,14 @@ describe('Resolves matcher', () => {
 
   describe('.prototype.constructor()', () => {
     it('returns a new Resolves with the given result', () => {
-      assert.deepEqual(resolves.result, 'Hello, World!')
+      expect(resolves.result).to.equal('Hello, World!')
     })
   })
 
   describe('.prototype.run()', () => {
     it('runs its subject as a Promise, asserting its actual result equals its expected result', () => {
       return resolves.run(subject).then(result => {
-        assert.deepEqual(result, new purespec.Result(resolves, {
+        expect(result).to.deep.equal(new purespec.Result(resolves, {
           actual: 'Hello, World!',
           expected: 'Hello, World!'
         }))
@@ -21,7 +21,7 @@ describe('Resolves matcher', () => {
 
   describe('.prototype.toString()', () => {
     it('returns a String representation with its result', () => {
-      assert.strictEqual(resolves.toString(), 'resolves with Hello, World!')
+      expect(resolves.toString()).to.equal('resolves with Hello, World!')
     })
   })
 })
