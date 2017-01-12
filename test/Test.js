@@ -1,5 +1,3 @@
-var sinon = require('sinon')
-
 describe('Test', () => {
   var name = 'hello'
   var subject = name => `Hello, World!`
@@ -47,8 +45,8 @@ describe('Test', () => {
           var test = new purespec.Test(name, subject, runnables)
 
           return test.run().then(() => {
-            sinon.assert.calledWithExactly(console.error, 'message')
-            sinon.assert.calledWithExactly(process.exit, 1)
+            assert.calledWithExactly(console.error, 'message')
+            assert.calledWithExactly(process.exit, 1)
           })
         })
       }

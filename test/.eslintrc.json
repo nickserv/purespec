@@ -4,6 +4,7 @@
   },
   "globals": {
     "assert": false,
-    "purespec": false
+    "purespec": false,
+    "sinon": false
   }
 }
