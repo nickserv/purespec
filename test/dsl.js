@@ -1,28 +1,28 @@
-describe('dsl', () => {
-  describe('()', () => {
-    context('without a target', () => {
+describe('dsl', function () {
+  describe('()', function () {
+    context('without a target', function () {
       var oldGlobal = global
-      before(() => { global = {} }) // eslint-disable-line
-      after(() => { global = oldGlobal }) // eslint-disable-line
+      before(function () { global = {} }) // eslint-disable-line
+      after(function () { global = oldGlobal }) // eslint-disable-line
 
-      it('assigns properties to the global object', () => {
+      it('assigns properties to the global object', function () {
         purespec.dsl()
         expect(Object.keys(global)).not.to.be.empty
       })
     })
 
-    context('given a target', () => {
+    context('given a target', function () {
       var target = {}
 
-      it('assigns properties to the given target', () => {
+      it('assigns properties to the given target', function () {
         purespec.dsl(target)
         expect(Object.keys(target)).not.to.be.empty
       })
     })
   })
 
-  describe('.matchers()', () => {
-    it('returns an Object of matcher shortcuts', () => {
+  describe('.matchers()', function () {
+    it('returns an Object of matcher shortcuts', function () {
       var matchers = Object.keys(purespec.matchers)
                            .map(key => purespec.matchers[key])
       var dslMatchers = purespec.dsl.matchers()
@@ -35,8 +35,8 @@ describe('dsl', () => {
     })
   })
 
-  describe('.test()', () => {
-    it('returns a new Test using the given constructor arguments', () => {
+  describe('.test()', function () {
+    it('returns a new Test using the given constructor arguments', function () {
       var name = 'name'
       function subject () {}
       var given = new purespec.matchers.Given()

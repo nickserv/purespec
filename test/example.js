@@ -1,7 +1,7 @@
 var example = require('../example')
 
-describe('example Test suite', () => {
-  it('constructs a Test', () => {
+describe('example Test suite', function () {
+  it('constructs a Test', function () {
     var expected = new purespec.Test(
       'Math.round()',
       Math.round,
@@ -14,7 +14,7 @@ describe('example Test suite', () => {
     expect(example).to.deep.equal(expected)
   })
 
-  it('has a string representation', () => {
+  it('has a string representation', function () {
     expect(example.toTree()).to.equal('Math.round()\n  given 1\n    returns 1\n  given 1.5\n    returns 2')
   })
 })
