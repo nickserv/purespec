@@ -3,17 +3,11 @@
   "description": "A declarative test framework for pure JavaScript.",
   "version": "0.0.0",
   "main": "src",
-  "watch": {
-    "test": {
-      "patterns": ["example.js", "src", "test"],
-      "quiet": true
-    }
-  },
   "scripts": {
     "pretest": "eslint .",
     "test": "nyc mocha",
     "upload-coverage": "nyc report --reporter text-lcov | coveralls",
-    "watch": "npm-watch"
+    "watch": "nodemon --exec npm test"
   },
   "repository": "nickmccurdy/purespec",
   "author": "Nick McCurdy <thenickperson@gmail.com> (http://nickmccurdy.com/)",
@@ -31,7 +25,7 @@
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
     "mocha": "^3.2.0",
-    "npm-watch": "^0.1.7",
+    "nodemon": "^1.11.0",
     "nyc": "^10.0.0",
     "sinon": "^1.17.7"
   },
