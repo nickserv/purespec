@@ -1,9 +1,9 @@
 describe('dsl', () => {
   describe('()', () => {
-    context('without a target', () => {
+    describe.skip('without a target', () => {
       var oldGlobal = global
-      before(() => { global = {} }) // eslint-disable-line
-      after(() => { global = oldGlobal }) // eslint-disable-line
+      beforeEach(() => { global = {} }) // eslint-disable-line
+      afterEach(() => { global = oldGlobal }) // eslint-disable-line
 
       it('assigns properties to the global object', () => {
         purespec.dsl()
@@ -11,7 +11,7 @@ describe('dsl', () => {
       })
     })
 
-    context('given a target', () => {
+    describe('given a target', () => {
       var target = {}
 
       it('assigns properties to the given target', () => {

@@ -8,11 +8,11 @@ describe('Rejects matcher', () => {
   })
 
   describe('.prototype.run()', () => {
-    context('given a subject that rejects with a String', () => {
+    describe('given a subject that rejects with a String', () => {
       it('runs its subject as a Promise, asserting a rejection with the given reason')
     })
 
-    context('given a subject that rejects with an Error', () => {
+    describe('given a subject that rejects with an Error', () => {
       it('runs its subject as a Promise, asserting a rejection with the given reason', () => {
         return rejects.run(example.hello.promise).then(result => {
           assert.deepStrictEqual(result, new purespec.Result(rejects, {
@@ -23,7 +23,7 @@ describe('Rejects matcher', () => {
       })
     })
 
-    context('given a subject that resolves', () => {
+    describe('given a subject that resolves', () => {
       it('runs its subject as a Promise, failing to assert a rejection with the given reason')
     })
   })

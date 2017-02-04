@@ -18,10 +18,10 @@ describe('Test', () => {
   })
 
   describe('.prototype.run()', () => {
-    context('given passing tests', () => {
+    describe('given passing tests', () => {
       it('returns a Promise resolving with a Result', () => {
         return test.run().then(result => {
-          assert.deepStrictEqual(result, new purespec.Result(test, {
+          assert.deepEqual(result, new purespec.Result(test, {
             results: [
               new purespec.Result(given, {
                 results: [
@@ -41,7 +41,7 @@ describe('Test', () => {
       })
     })
 
-    context('given failing tests', () => {
+    describe('given failing tests', () => {
       var sandbox
       var runnables = [new purespec.matchers.Returns()]
 
@@ -63,11 +63,11 @@ describe('Test', () => {
         })
       }
 
-      context('given a subject that throws a String', () => {
+      describe('given a subject that throws a String', () => {
         returnsARejectedPromise(() => { throw 'message' }) // eslint-disable-line no-throw-literal
       })
 
-      context('given a subject that throws an Error', () => {
+      describe('given a subject that throws an Error', () => {
         returnsARejectedPromise(() => { throw new Error('message') })
       })
     })

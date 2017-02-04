@@ -5,7 +5,7 @@ describe('Result', () => {
   var runnable = new purespec.matchers.Returns(1)
 
   describe('.prototype.constructor()', () => {
-    context('given a runnable', () => {
+    describe('given a runnable', () => {
       var result = new purespec.Result(runnable)
 
       it('returns Result with runnable, empty results, and a falsy error', () => {
@@ -15,7 +15,7 @@ describe('Result', () => {
       })
     })
 
-    context('given a runnable and passing results', () => {
+    describe('given a runnable and passing results', () => {
       var results = [
         new purespec.Result(runnable, {
           actual: 1,
@@ -31,7 +31,7 @@ describe('Result', () => {
       })
     })
 
-    context('given a runnable and failing results', () => {
+    describe('given a runnable and failing results', () => {
       var results = [
         new purespec.Result(runnable, {
           actual: 2,
@@ -47,7 +47,7 @@ describe('Result', () => {
       })
     })
 
-    context('given a runnable and an error', () => {
+    describe('given a runnable and an error', () => {
       var error = new Error()
       var result = new purespec.Result(runnable, { error })
 
@@ -58,7 +58,7 @@ describe('Result', () => {
       })
     })
 
-    context('given a runnable and equivalent actual and expected options', () => {
+    describe('given a runnable and equivalent actual and expected options', () => {
       var result = new purespec.Result(runnable, {
         actual: 1,
         expected: 1
@@ -72,7 +72,7 @@ describe('Result', () => {
       })
     })
 
-    context('given a runnable and nonequivalent actual and expected options', () => {
+    describe('given a runnable and nonequivalent actual and expected options', () => {
       var result = new purespec.Result(runnable, {
         actual: 2,
         expected: 1
@@ -88,7 +88,7 @@ describe('Result', () => {
   })
 
   describe('.prototype.toString()', () => {
-    context('when there is an error', () => {
+    describe('when there is an error', () => {
       var result = new purespec.Result(runnable, {
         actual: 2,
         expected: 1
@@ -99,7 +99,7 @@ describe('Result', () => {
       })
     })
 
-    context('when there is no error', () => {
+    describe('when there is no error', () => {
       var result = new purespec.Result(runnable, {
         actual: 1,
         expected: 1
@@ -112,7 +112,7 @@ describe('Result', () => {
   })
 
   describe('.prototype.toTree()', () => {
-    context('without results', () => {
+    describe('without results', () => {
       var result = new purespec.Result(runnable, {
         actual: 1,
         expected: 1
@@ -123,7 +123,7 @@ describe('Result', () => {
       })
     })
 
-    context('with results', () => {
+    describe('with results', () => {
       var test = new purespec.Test('test', () => {}, [runnable])
       var result = new purespec.Result(test, {
         results: [
