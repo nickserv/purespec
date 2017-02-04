@@ -9,6 +9,9 @@
     "upload-coverage": "nyc report --reporter text-lcov | coveralls",
     "watch": "nodemon --exec npm test"
   },
+  "eslintConfig": {
+    "extends": "standard"
+  },
   "repository": "nickmccurdy/purespec",
   "author": "Nick McCurdy <thenickperson@gmail.com> (http://nickmccurdy.com/)",
   "license": "ISC",
