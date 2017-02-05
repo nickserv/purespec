@@ -1,12 +1,12 @@
 /* global test, given, rejects, resolves, returns, throws */
 'use strict'
-require('.').dsl()
+require('./dsl')()
 
 exports.hello = {
   // Synchronous
   sync (name) {
     if (name) return `Hello, ${name}!`
-    else throw new Error('Missing name.')
+    else throw new Error('Missing name')
   },
 
   // Asynchronous with Promises

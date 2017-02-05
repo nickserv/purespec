@@ -1,12 +1,14 @@
-describe('example Test suite', () => {
+var purespec = require('..')
+
+describe('purespec.example Test suite', () => {
   it('constructs a Test', () => {
     var expected = new purespec.Test(
       'hello',
-      example.hello,
+      purespec.example.hello,
       [
         new purespec.Test(
           '#sync()',
-          example.hello.sync,
+          purespec.example.hello.sync,
           [
             new purespec.matchers.Given(
               'Nick',
@@ -17,7 +19,7 @@ describe('example Test suite', () => {
         ),
         new purespec.Test(
           '#promise()',
-          example.hello.promise,
+          purespec.example.hello.promise,
           [
             new purespec.matchers.Given(
               'Nick',
@@ -29,10 +31,10 @@ describe('example Test suite', () => {
       ]
     )
 
-    assert.deepStrictEqual(example.tests, expected)
+    expect(purespec.example.tests).toEqual(expected)
   })
 
   it('has a string representation', () => {
-    assert.strictEqual(example.tests.toTree(), 'hello\n  #sync()\n    given Nick\n      returns Hello, Nick!\n    throws Missing name\n  #promise()\n    given Nick\n      resolves with Hello, Nick!\n    rejects with Missing name')
+    expect(purespec.example.tests.toTree()).toBe('hello\n  #sync()\n    given Nick\n      returns Hello, Nick!\n    throws Missing name\n  #promise()\n    given Nick\n      resolves with Hello, Nick!\n    rejects with Missing name')
   })
 })
