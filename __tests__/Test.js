@@ -1,4 +1,5 @@
-var sinon = require('sinon')
+console.error = jest.fn()
+process.exit = jest.fn()
 
 describe('Test', () => {
   var name = 'hello'
@@ -42,23 +43,14 @@ describe('Test', () => {
     })
 
     describe('given failing tests', () => {
-      var sandbox
       var runnables = [new purespec.matchers.Returns()]
-
-      beforeEach(() => {
-        sandbox = sinon.sandbox.create()
-        sandbox.stub(console, 'error')
-        sandbox.stub(process, 'exit')
-      })
-      afterEach(() => sandbox.restore())
 
       function returnsARejectedPromise (subject) {
         it('returns a rejected Promise', () => {
           var test = new purespec.Test(name, subject, runnables)
-
           return test.run().then(() => {
-            sinon.assert.calledWithExactly(console.error, 'message')
-            sinon.assert.calledWithExactly(process.exit, 1)
+            expect(console.error).toHaveBeenCalledWith('message')
+            expect(process.exit).toHaveBeenCalledWith(1)
           })
         })
       }
