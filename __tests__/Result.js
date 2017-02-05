@@ -1,3 +1,5 @@
+var purespec = require('..')
+
 var chalk = require('chalk')
 chalk.enabled = true
 

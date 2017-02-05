@@ -1,3 +1,5 @@
+var purespec = require('..')
+
 describe('indent()', () => {
   describe('given empty text', () => {
     it('returns whitespace for an indent', () => {

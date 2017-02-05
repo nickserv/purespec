@@ -1,3 +1,6 @@
+var example = require('../../example')
+var purespec = require('../..')
+
 describe('Throws matcher', () => {
   var throws = new purespec.matchers.Throws('Missing name')
 

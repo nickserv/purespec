@@ -1,3 +1,6 @@
+var example = require('../example')
+var purespec = require('..')
+
 describe('example Test suite', () => {
   it('constructs a Test', () => {
     var expected = new purespec.Test(

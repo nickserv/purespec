@@ -1,3 +1,5 @@
+var purespec = require('..')
+
 describe('dsl', () => {
   describe('()', () => {
     describe.skip('without a target', () => {

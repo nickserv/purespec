@@ -1,3 +1,6 @@
+var example = require('../example')
+var purespec = require('..')
+
 console.error = jest.fn()
 process.exit = jest.fn()
 

@@ -1,3 +1,6 @@
+var example = require('../../example')
+var purespec = require('../..')
+
 describe('Resolves matcher', () => {
   var resolves = new purespec.matchers.Resolves('Hello, Nick!')
   var given = new purespec.matchers.Given('Nick', resolves)

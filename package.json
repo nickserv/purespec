@@ -14,13 +14,7 @@
   },
   "jest": {
     "collectCoverage": true,
-    "setupFiles": [
-      "./__tests__/helper.js"
-    ],
     "testEnvironment": "node",
-    "testPathIgnorePatterns": [
-      "__tests__/helper.js"
-    ],
     "verbose": true
   },
   "repository": "nickmccurdy/purespec",

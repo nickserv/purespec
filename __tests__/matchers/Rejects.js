@@ -1,3 +1,6 @@
+var example = require('../../example')
+var purespec = require('../..')
+
 describe('Rejects matcher', () => {
   var rejects = new purespec.matchers.Rejects('Missing name')
 
