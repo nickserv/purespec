@@ -14,8 +14,7 @@
   },
   "jest": {
     "collectCoverage": true,
-    "testEnvironment": "node",
-    "verbose": true
+    "testEnvironment": "node"
   },
   "repository": "nickmccurdy/purespec",
   "author": "Nick McCurdy <thenickperson@gmail.com> (http://nickmccurdy.com/)",
