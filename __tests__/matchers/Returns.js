@@ -1,4 +1,3 @@
-var example = require('../../example')
 var purespec = require('../..')
 
 describe('Returns matcher', () => {
@@ -13,7 +12,7 @@ describe('Returns matcher', () => {
 
   describe('.prototype.run()', () => {
     it('asserts its subject\'s return value to equal its result', () => {
-      return given.run(example.hello.sync).then(result => {
+      return given.run(purespec.example.hello.sync).then(result => {
         expect(result).toEqual(new purespec.Result(given, {
           results: [
             new purespec.Result(returns, {

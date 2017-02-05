@@ -1,4 +1,3 @@
-var example = require('../example')
 var purespec = require('..')
 
 console.error = jest.fn()
@@ -6,7 +5,7 @@ process.exit = jest.fn()
 
 describe('Test', () => {
   var name = 'hello'
-  var subject = example.hello.sync
+  var subject = purespec.example.hello.sync
   var returns = new purespec.matchers.Returns('Hello, Nick!')
   var given = new purespec.matchers.Given('Nick', returns)
   var throws = new purespec.matchers.Throws('Missing name')

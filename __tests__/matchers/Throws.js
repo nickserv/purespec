@@ -1,4 +1,3 @@
-var example = require('../../example')
 var purespec = require('../..')
 
 describe('Throws matcher', () => {
@@ -13,7 +12,7 @@ describe('Throws matcher', () => {
   describe('.prototype.run()', () => {
     describe('given a subject that throws the given exception', () => {
       it('returns a passing Result', () => {
-        expect(throws.run(example.hello.sync)).toEqual(new purespec.Result(throws, {
+        expect(throws.run(purespec.example.hello.sync)).toEqual(new purespec.Result(throws, {
           actual: new Error('Missing name'),
           expected: new Error('Missing name')
         }))

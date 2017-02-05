@@ -1,4 +1,3 @@
-var example = require('../../example')
 var purespec = require('../..')
 
 describe('Rejects matcher', () => {
@@ -17,7 +16,7 @@ describe('Rejects matcher', () => {
 
     describe('given a subject that rejects with an Error', () => {
       it('runs its subject as a Promise, asserting a rejection with the given reason', () => {
-        return rejects.run(example.hello.promise).then(result => {
+        return rejects.run(purespec.example.hello.promise).then(result => {
           expect(result).toEqual(new purespec.Result(rejects, {
             actual: new Error('Missing name'),
             expected: new Error('Missing name')

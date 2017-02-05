@@ -1,6 +1,6 @@
 /* global test, given, rejects, resolves, returns, throws */
 'use strict'
-require('.').dsl()
+require('./dsl')()
 
 exports.hello = {
   // Synchronous

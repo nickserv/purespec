@@ -1,4 +1,3 @@
-var example = require('../../example')
 var purespec = require('../..')
 
 describe('Given matcher', () => {
@@ -16,7 +15,7 @@ describe('Given matcher', () => {
 
   describe('.prototype.run()', () => {
     it('run its matcher with its args and returns a Promise with a Result', () => {
-      return given.run(example.hello.sync).then(result => {
+      return given.run(purespec.example.hello.sync).then(result => {
         expect(result).toEqual(new purespec.Result(given, {
           results: [
             new purespec.Result(returns, {
