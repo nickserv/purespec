@@ -7,8 +7,10 @@ describe('Given matcher', () => {
 
   describe('.prototype.constructor()', () => {
     it('returns a new Given with the given args and matcher', () => {
-      expect(given.args).toEqual(['Nick'])
-      expect(given.matcher).toEqual(new purespec.matchers.Returns('Hello, Nick!'))
+      expect(given).toMatchObject({
+        args: ['Nick'],
+        matcher: new purespec.matchers.Returns('Hello, Nick!')
+      })
     })
   })
 

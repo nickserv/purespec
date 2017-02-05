@@ -11,9 +11,11 @@ describe('Result', () => {
       var result = new purespec.Result(runnable)
 
       it('returns Result with runnable, empty results, and a falsy error', () => {
-        expect(result.runnable).toBe(runnable)
-        expect(result.results).toHaveLength(0)
-        expect(result.error).toBe(false)
+        expect(result).toMatchObject({
+          runnable,
+          results: [],
+          error: false
+        })
       })
     })
 
@@ -27,9 +29,11 @@ describe('Result', () => {
       var result = new purespec.Result(runnable, { results })
 
       it('returns Result with runnable, results, and a falsy error', () => {
-        expect(result.runnable).toBe(runnable)
-        expect(result.results).toBe(results)
-        expect(result.error).toBe(false)
+        expect(result).toMatchObject({
+          runnable,
+          results,
+          error: false
+        })
       })
     })
 
@@ -43,9 +47,11 @@ describe('Result', () => {
       var result = new purespec.Result(runnable, { results })
 
       it('returns Result with runnable, results, and a truthy error', () => {
-        expect(result.runnable).toBe(runnable)
-        expect(result.results).toBe(results)
-        expect(result.error).toBe(true)
+        expect(result).toMatchObject({
+          runnable,
+          results,
+          error: true
+        })
       })
     })
 
@@ -54,9 +60,11 @@ describe('Result', () => {
       var result = new purespec.Result(runnable, { error })
 
       it('returns Result with runnable, empty results, and error', () => {
-        expect(result.runnable).toBe(runnable)
-        expect(result.results).toHaveLength(0)
-        expect(result.error).toBe(error)
+        expect(result).toMatchObject({
+          runnable,
+          results: [],
+          error
+        })
       })
     })
 
@@ -67,10 +75,12 @@ describe('Result', () => {
       })
 
       it('returns Result with runnable, actual, expected, and a falsy error', () => {
-        expect(result.runnable).toBe(runnable)
-        expect(result.actual).toBe(1)
-        expect(result.expected).toBe(1)
-        expect(result.error).toBe(false)
+        expect(result).toMatchObject({
+          runnable,
+          actual: 1,
+          expected: 1,
+          error: false
+        })
       })
     })
 
@@ -81,10 +91,12 @@ describe('Result', () => {
       })
 
       it('returns Result with runnable, actual, expected, and a truthy error', () => {
-        expect(result.runnable).toBe(runnable)
-        expect(result.actual).toBe(2)
-        expect(result.expected).toBe(1)
-        expect(result.error).toBe(true)
+        expect(result).toMatchObject({
+          runnable,
+          actual: 2,
+          expected: 1,
+          error: true
+        })
       })
     })
   })

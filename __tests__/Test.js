@@ -15,9 +15,11 @@ describe('Test', () => {
 
   describe('.prototype.constructor()', () => {
     it('returns a new Test with the given data', () => {
-      expect(test.name).toBe(name)
-      expect(test.subject).toBe(subject)
-      expect(test.runnables).toBe(runnables)
+      expect(test).toMatchObject({
+        name,
+        subject,
+        runnables
+      })
     })
   })
 
