@@ -2,24 +2,11 @@ var purespec = require('..')
 
 describe('dsl', () => {
   describe('()', () => {
-    describe.skip('without a target', () => {
-      var oldGlobal = global
-      beforeEach(() => { global = {} }) // eslint-disable-line
-      afterEach(() => { global = oldGlobal }) // eslint-disable-line
+    var target = {}
 
-      it('assigns properties to the global object', () => {
-        purespec.dsl()
-        expect(Object.keys(global)).not.toHaveLength(0)
-      })
-    })
-
-    describe('given a target', () => {
-      var target = {}
-
-      it('assigns properties to the given target', () => {
-        purespec.dsl(target)
-        expect(Object.keys(target)).not.toHaveLength(0)
-      })
+    it('assigns properties to the given target', () => {
+      purespec.dsl(target)
+      expect(Object.keys(target)).not.toHaveLength(0)
     })
   })
 
