@@ -11,9 +11,9 @@ describe('Test', () => {
 
   describe('.prototype.constructor()', () => {
     it('returns a new Test with the given data', () => {
-      assert.strictEqual(test.name, name)
-      assert.strictEqual(test.subject, subject)
-      assert.strictEqual(test.runnables, runnables)
+      expect(test.name).toBe(name)
+      expect(test.subject).toBe(subject)
+      expect(test.runnables).toBe(runnables)
     })
   })
 
@@ -21,7 +21,7 @@ describe('Test', () => {
     describe('given passing tests', () => {
       it('returns a Promise resolving with a Result', () => {
         return test.run().then(result => {
-          assert.deepEqual(result, new purespec.Result(test, {
+          expect(result).toEqual(new purespec.Result(test, {
             results: [
               new purespec.Result(given, {
                 results: [
@@ -75,13 +75,13 @@ describe('Test', () => {
 
   describe('.prototype.toString()', () => {
     it('returns its name', () => {
-      assert.equal(test.toString(), 'hello')
+      expect(test.toString()).toBe('hello')
     })
   })
 
   describe('.prototype.toTree()', () => {
     it('returns a nested String of the Test and its runnables', () => {
-      assert.equal(test.toTree(), 'hello\n  given Nick\n    returns Hello, Nick!\n  throws Missing name')
+      expect(test.toTree()).toBe('hello\n  given Nick\n    returns Hello, Nick!\n  throws Missing name')
     })
   })
 })

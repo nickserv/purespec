@@ -3,7 +3,6 @@
    "jest": true
   },
   "globals": {
-    "assert": false,
     "example": false,
     "purespec": false
   }

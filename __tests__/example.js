@@ -29,10 +29,10 @@ describe('example Test suite', () => {
       ]
     )
 
-    assert.deepStrictEqual(example.tests, expected)
+    expect(example.tests).toEqual(expected)
   })
 
   it('has a string representation', () => {
-    assert.strictEqual(example.tests.toTree(), 'hello\n  #sync()\n    given Nick\n      returns Hello, Nick!\n    throws Missing name\n  #promise()\n    given Nick\n      resolves with Hello, Nick!\n    rejects with Missing name')
+    expect(example.tests.toTree()).toBe('hello\n  #sync()\n    given Nick\n      returns Hello, Nick!\n    throws Missing name\n  #promise()\n    given Nick\n      resolves with Hello, Nick!\n    rejects with Missing name')
   })
 })

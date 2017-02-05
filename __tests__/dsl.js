@@ -7,7 +7,7 @@ describe('dsl', () => {
 
       it('assigns properties to the global object', () => {
         purespec.dsl()
-        assert(Object.keys(global).length)
+        expect(Object.keys(global)).not.toHaveLength(0)
       })
     })
 
@@ -16,7 +16,7 @@ describe('dsl', () => {
 
       it('assigns properties to the given target', () => {
         purespec.dsl(target)
-        assert(Object.keys(target).length)
+        expect(Object.keys(target)).not.toHaveLength(0)
       })
     })
   })
@@ -26,11 +26,11 @@ describe('dsl', () => {
       var matchers = Object.keys(purespec.matchers)
                            .map(key => purespec.matchers[key])
       var dslMatchers = purespec.dsl.matchers()
-      assert(typeof dslMatchers === 'object')
-      assert.notEqual(Object.keys(dslMatchers).length, 0)
+      expect(dslMatchers).toBeInstanceOf(Object)
+      expect(Object.keys(dslMatchers)).not.toHaveLength(0)
       Object.keys(dslMatchers).forEach(key => {
-        assert(matchers.some(matcher =>
-          matcher === dslMatchers[key]().constructor))
+        expect(matchers.some(matcher =>
+          matcher === dslMatchers[key]().constructor)).toBeTruthy()
       })
     })
   })
@@ -43,7 +43,7 @@ describe('dsl', () => {
       var returns = new purespec.matchers.Returns()
 
       var test = new purespec.Test(name, subject, [given, returns])
-      assert.deepEqual(purespec.dsl.test(name, subject, given, returns), test)
+      expect(purespec.dsl.test(name, subject, given, returns)).toEqual(test)
     })
   })
 })
