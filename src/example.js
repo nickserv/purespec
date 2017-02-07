@@ -1,6 +1,6 @@
 /* global test, given, returns */
 'use strict'
-require('.').dsl()
+require('./dsl')()
 
 module.exports = test('Math.round()',
                       Math.round,
