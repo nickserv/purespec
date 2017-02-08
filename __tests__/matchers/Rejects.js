@@ -2,9 +2,7 @@ var purespec = require('../..')
 
 describe('Rejects matcher', function () {
   beforeEach(function () {
-    this.subject = () => new Promise(setTimeout).then(() => {
-      throw new Error('Missing name')
-    })
+    this.subject = () => Promise.reject('Missing name')
     this.rejects = new purespec.matchers.Rejects('Missing name')
   })
 
@@ -27,7 +25,18 @@ describe('Rejects matcher', function () {
     })
 
     describe('given a subject that resolves', function () {
-      it('runs its subject as a Promise, failing to assert a rejection with the given reason')
+      beforeEach(function () {
+        this.subject = () => Promise.resolve()
+      })
+
+      it('runs its subject as a Promise, failing to assert a rejection with the given reason', function (done) {
+        this.rejects.run(this.subject)
+          .then(() => done(true))
+          .catch(reason => {
+            expect(reason).toBe('Expected a rejection but resolved with World')
+            done()
+          })
+      })
     })
   })
 
