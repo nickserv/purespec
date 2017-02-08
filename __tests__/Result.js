@@ -79,14 +79,14 @@ describe('Result', function () {
     })
 
     describe('given a runnable and equivalent actual and expected options', function () {
-      beforeAll(function () {
+      beforeEach(function () {
         this.result = new purespec.Result(this.returns, {
           actual: 1,
           expected: 1
         })
       })
 
-      it('returns Result with runnable, actual, expected, and a falsy error', () => {
+      it('returns Result with runnable, actual, expected, and a falsy error', function () {
         expect(this.result).toMatchObject({
           runnable: this.returns,
           actual: 1,
@@ -97,14 +97,14 @@ describe('Result', function () {
     })
 
     describe('given a runnable and nonequivalent actual and expected options', function () {
-      beforeAll(function () {
+      beforeEach(function () {
         this.result = new purespec.Result(this.returns, {
           actual: 2,
           expected: 1
         })
       })
 
-      it('returns Result with runnable, actual, expected, and a truthy error', () => {
+      it('returns Result with runnable, actual, expected, and a truthy error', function () {
         expect(this.result).toMatchObject({
           runnable: this.returns,
           actual: 2,

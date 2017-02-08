@@ -1,6 +1,6 @@
 var purespec = require('../..')
 
-describe('Rejects matcher', () => {
+describe('Rejects matcher', function () {
   beforeEach(function () {
     this.subject = () => new Promise(setTimeout).then(() => {
       throw new Error('Missing name')
