@@ -15,11 +15,7 @@ describe('Rejects matcher', () => {
   })
 
   describe('.prototype.run()', function () {
-    describe('given a subject that rejects with a String', function () {
-      it('runs its subject as a Promise, asserting a rejection with the given reason')
-    })
-
-    describe('given a subject that rejects with an Error', function () {
+    describe('given a subject that rejects', function () {
       it('runs its subject as a Promise, asserting a rejection with the given reason', function () {
         return this.rejects.run(this.subject).then(result => {
           expect(result).toEqual(new purespec.Result(this.rejects, {

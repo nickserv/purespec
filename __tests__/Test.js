@@ -43,25 +43,15 @@ describe('Test', function () {
     describe('given failing tests', function () {
       beforeEach(function () {
         this.runnables = [new purespec.matchers.Returns()]
+        this.subject = () => { throw new Error('message') }
+        this.test = new purespec.Test(this.name, this.subject, this.runnables)
       })
 
-      function returnsARejectedPromise (subject) {
-        it('returns a rejected Promise', function () {
-          var test = new purespec.Test(this.name, subject, this.runnables)
-
-          return test.run().then(() => {
-            expect(console.error).toHaveBeenCalledWith('message')
-            expect(process.exit).toHaveBeenCalledWith(1)
-          })
+      it('returns a rejected Promise', function () {
+        return this.test.run().then(() => {
+          expect(console.error).toHaveBeenCalledWith('message')
+          expect(process.exit).toHaveBeenCalledWith(1)
         })
-      }
-
-      describe('given a subject that throws a String', function () {
-        returnsARejectedPromise(() => { throw 'message' }) // eslint-disable-line no-throw-literal
-      })
-
-      describe('given a subject that throws an Error', function () {
-        returnsARejectedPromise(() => { throw new Error('message') })
       })
     })
   })
