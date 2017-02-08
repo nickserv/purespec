@@ -1,40 +1,20 @@
 var purespec = require('..')
 
-describe('purespec.example Test suite', () => {
-  it('constructs a Test', () => {
+describe('example Test suite', function () {
+  it('constructs a Test', function () {
     var expected = new purespec.Test(
-      'hello',
-      purespec.example.hello,
+      'Math.round()',
+      Math.round,
       [
-        new purespec.Test(
-          '#sync()',
-          purespec.example.hello.sync,
-          [
-            new purespec.matchers.Given(
-              'Nick',
-              new purespec.matchers.Returns('Hello, Nick!')
-            ),
-            new purespec.matchers.Throws('Missing name')
-          ]
-        ),
-        new purespec.Test(
-          '#promise()',
-          purespec.example.hello.promise,
-          [
-            new purespec.matchers.Given(
-              'Nick',
-              new purespec.matchers.Resolves('Hello, Nick!')
-            ),
-            new purespec.matchers.Rejects('Missing name')
-          ]
-        )
+        new purespec.matchers.Given(1, new purespec.matchers.Returns(1)),
+        new purespec.matchers.Given(1.5, new purespec.matchers.Returns(2))
       ]
     )
 
-    expect(purespec.example.tests).toEqual(expected)
+    expect(purespec.example).toEqual(expected)
   })
 
-  it('has a string representation', () => {
-    expect(purespec.example.tests.toTree()).toBe('hello\n  #sync()\n    given Nick\n      returns Hello, Nick!\n    throws Missing name\n  #promise()\n    given Nick\n      resolves with Hello, Nick!\n    rejects with Missing name')
+  it('has a string representation', function () {
+    expect(purespec.example.toTree()).toBe('Math.round()\n  given 1\n    returns 1\n  given 1.5\n    returns 2')
   })
 })

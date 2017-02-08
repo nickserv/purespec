@@ -1,33 +1,31 @@
 var purespec = require('../..')
 
-describe('Resolves matcher', () => {
-  var resolves = new purespec.matchers.Resolves('Hello, Nick!')
-  var given = new purespec.matchers.Given('Nick', resolves)
+describe('Resolves matcher', function () {
+  beforeEach(function () {
+    this.subject = () => new Promise(setTimeout).then(() => 'Hello, World!')
+    this.resolves = new purespec.matchers.Resolves('Hello, World!')
+  })
 
-  describe('.prototype.constructor()', () => {
-    it('returns a new Resolves with the given result', () => {
-      expect(resolves.result).toBe('Hello, Nick!')
+  describe('.prototype.constructor()', function () {
+    it('returns a new Resolves with the given result', function () {
+      expect(this.resolves.result).toBe('Hello, World!')
     })
   })
 
-  describe('.prototype.run()', () => {
-    it('runs its subject as a Promise, asserting its actual result equals its expected result', () => {
-      return given.run(purespec.example.hello.promise).then(result => {
-        expect(result).toEqual(new purespec.Result(given, {
-          results: [
-            new purespec.Result(resolves, {
-              actual: 'Hello, Nick!',
-              expected: 'Hello, Nick!'
-            })
-          ]
+  describe('.prototype.run()', function () {
+    it('runs its subject as a Promise, asserting its actual result equals its expected result', function () {
+      return this.resolves.run(this.subject).then(result => {
+        expect(result).toEqual(new purespec.Result(this.resolves, {
+          actual: 'Hello, World!',
+          expected: 'Hello, World!'
         }))
       })
     })
   })
 
-  describe('.prototype.toString()', () => {
-    it('returns a String representation with its result', () => {
-      expect(resolves.toString()).toBe('resolves with Hello, Nick!')
+  describe('.prototype.toString()', function () {
+    it('returns a String representation with its result', function () {
+      expect(this.resolves.toString()).toBe('resolves with Hello, World!')
     })
   })
 })

@@ -1,33 +1,29 @@
 var purespec = require('../..')
 
-describe('Returns matcher', () => {
-  var returns = new purespec.matchers.Returns('Hello, Nick!')
-  var given = new purespec.matchers.Given('Nick', returns)
+describe('Returns matcher', function () {
+  beforeEach(function () {
+    this.subject = () => 'Hello, World!'
+    this.returns = new purespec.matchers.Returns('Hello, World!')
+  })
 
-  describe('.prototype.constructor()', () => {
-    it('returns a new Returns with the given result', () => {
-      expect(returns.result).toBe('Hello, Nick!')
+  describe('.prototype.constructor()', function () {
+    it('returns a new Returns with the given result', function () {
+      expect(this.returns.result).toBe('Hello, World!')
     })
   })
 
-  describe('.prototype.run()', () => {
-    it('asserts its subject\'s return value to equal its result', () => {
-      return given.run(purespec.example.hello.sync).then(result => {
-        expect(result).toEqual(new purespec.Result(given, {
-          results: [
-            new purespec.Result(returns, {
-              actual: 'Hello, Nick!',
-              expected: 'Hello, Nick!'
-            })
-          ]
-        }))
-      })
+  describe('.prototype.run()', function () {
+    it('asserts its subject\'s return value to equal its result', function () {
+      expect(this.returns.run(this.subject)).toEqual(new purespec.Result(this.returns, {
+        actual: 'Hello, World!',
+        expected: 'Hello, World!'
+      }))
     })
   })
 
-  describe('.prototype.toString()', () => {
-    it('returns a String representation with its result', () => {
-      expect(returns.toString()).toBe('returns Hello, Nick!')
+  describe('.prototype.toString()', function () {
+    it('returns a String representation with its result', function () {
+      expect(this.returns.toString()).toBe('returns Hello, World!')
     })
   })
 })

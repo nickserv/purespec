@@ -1,17 +1,17 @@
 var purespec = require('..')
 
-describe('dsl', () => {
-  describe('()', () => {
+describe('dsl', function () {
+  describe('()', function () {
     var target = {}
 
-    it('assigns properties to the given target', () => {
+    it('assigns properties to the given target', function () {
       purespec.dsl(target)
       expect(Object.keys(target)).not.toHaveLength(0)
     })
   })
 
-  describe('.matchers()', () => {
-    it('returns an Object of matcher shortcuts', () => {
+  describe('.matchers()', function () {
+    it('returns an Object of matcher shortcuts', function () {
       var matchers = Object.keys(purespec.matchers)
                            .map(key => purespec.matchers[key])
       var dslMatchers = purespec.dsl.matchers()
@@ -24,8 +24,8 @@ describe('dsl', () => {
     })
   })
 
-  describe('.test()', () => {
-    it('returns a new Test using the given constructor arguments', () => {
+  describe('.test()', function () {
+    it('returns a new Test using the given constructor arguments', function () {
       var name = 'name'
       function subject () {}
       var given = new purespec.matchers.Given()

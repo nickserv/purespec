@@ -3,153 +3,175 @@ var purespec = require('..')
 var chalk = require('chalk')
 chalk.enabled = true
 
-describe('Result', () => {
-  var runnable = new purespec.matchers.Returns(1)
+describe('Result', function () {
+  beforeEach(function () {
+    this.returns = new purespec.matchers.Returns(1)
+  })
 
-  describe('.prototype.constructor()', () => {
-    describe('given a runnable', () => {
-      var result = new purespec.Result(runnable)
+  describe('.prototype.constructor()', function () {
+    describe('given a runnable', function () {
+      beforeEach(function () {
+        this.result = new purespec.Result(this.returns)
+      })
 
-      it('returns Result with runnable, empty results, and a falsy error', () => {
-        expect(result).toMatchObject({
-          runnable,
+      it('returns Result with runnable, empty results, and a falsy error', function () {
+        expect(this.result).toMatchObject({
+          runnable: this.returns,
           results: [],
           error: false
         })
       })
     })
 
-    describe('given a runnable and passing results', () => {
-      var results = [
-        new purespec.Result(runnable, {
-          actual: 1,
-          expected: 1
-        })
-      ]
-      var result = new purespec.Result(runnable, { results })
-
-      it('returns Result with runnable, results, and a falsy error', () => {
-        expect(result).toMatchObject({
-          runnable,
-          results,
-          error: false
-        })
-      })
-    })
-
-    describe('given a runnable and failing results', () => {
-      var results = [
-        new purespec.Result(runnable, {
-          actual: 2,
-          expected: 1
-        })
-      ]
-      var result = new purespec.Result(runnable, { results })
-
-      it('returns Result with runnable, results, and a truthy error', () => {
-        expect(result).toMatchObject({
-          runnable,
-          results,
-          error: true
-        })
-      })
-    })
-
-    describe('given a runnable and an error', () => {
-      var error = new Error()
-      var result = new purespec.Result(runnable, { error })
-
-      it('returns Result with runnable, empty results, and error', () => {
-        expect(result).toMatchObject({
-          runnable,
-          results: [],
-          error
-        })
-      })
-    })
-
-    describe('given a runnable and equivalent actual and expected options', () => {
-      var result = new purespec.Result(runnable, {
-        actual: 1,
-        expected: 1
-      })
-
-      it('returns Result with runnable, actual, expected, and a falsy error', () => {
-        expect(result).toMatchObject({
-          runnable,
-          actual: 1,
-          expected: 1,
-          error: false
-        })
-      })
-    })
-
-    describe('given a runnable and nonequivalent actual and expected options', () => {
-      var result = new purespec.Result(runnable, {
-        actual: 2,
-        expected: 1
-      })
-
-      it('returns Result with runnable, actual, expected, and a truthy error', () => {
-        expect(result).toMatchObject({
-          runnable,
-          actual: 2,
-          expected: 1,
-          error: true
-        })
-      })
-    })
-  })
-
-  describe('.prototype.toString()', () => {
-    describe('when there is an error', () => {
-      var result = new purespec.Result(runnable, {
-        actual: 2,
-        expected: 1
-      })
-
-      it('returns a red String with a cross, its runnable, a newline, and its error', () => {
-        expect(result.toString()).toBe(`${chalk.red('✗ returns 1')}\ntrue`)
-      })
-    })
-
-    describe('when there is no error', () => {
-      var result = new purespec.Result(runnable, {
-        actual: 1,
-        expected: 1
-      })
-
-      it('returns a green String with a check and its runnable', () => {
-        expect(result.toString()).toBe(chalk.green('✓ returns 1'))
-      })
-    })
-  })
-
-  describe('.prototype.toTree()', () => {
-    describe('without results', () => {
-      var result = new purespec.Result(runnable, {
-        actual: 1,
-        expected: 1
-      })
-
-      it('returns the result of .prototype.toString()', () => {
-        expect(result.toTree()).toBe(chalk.green('✓ returns 1'))
-      })
-    })
-
-    describe('with results', () => {
-      var test = new purespec.Test('test', () => {}, [runnable])
-      var result = new purespec.Result(test, {
-        results: [
-          new purespec.Result(runnable, {
+    describe('given a runnable and passing results', function () {
+      beforeEach(function () {
+        this.results = [
+          new purespec.Result(this.returns, {
             actual: 1,
             expected: 1
           })
         ]
+        this.result = new purespec.Result(this.returns, { results: this.results })
       })
 
-      it('returns its String representation with the indented representations of its children', () => {
-        expect(result.toTree()).toBe(`${chalk.green('✓ test')}\n  ${chalk.green('✓ returns 1')}`)
+      it('returns Result with runnable, results, and a falsy error', function () {
+        expect(this.result).toMatchObject({
+          runnable: this.returns,
+          results: this.results,
+          error: false
+        })
+      })
+    })
+
+    describe('given a runnable and failing results', function () {
+      beforeEach(function () {
+        this.results = [
+          new purespec.Result(this.returns, {
+            actual: 2,
+            expected: 1
+          })
+        ]
+        this.result = new purespec.Result(this.returns, { results: this.results })
+      })
+
+      it('returns Result with runnable, results, and a truthy error', function () {
+        expect(this.result).toMatchObject({
+          runnable: this.returns,
+          results: this.results,
+          error: true
+        })
+      })
+    })
+
+    describe('given a runnable and an error', function () {
+      beforeEach(function () {
+        this.error = new Error()
+        this.result = new purespec.Result(this.returns, { error: this.error })
+      })
+
+      it('returns Result with runnable, empty results, and error', function () {
+        expect(this.result).toMatchObject({
+          runnable: this.returns,
+          results: [],
+          error: this.error
+        })
+      })
+    })
+
+    describe('given a runnable and equivalent actual and expected options', function () {
+      beforeEach(function () {
+        this.result = new purespec.Result(this.returns, {
+          actual: 1,
+          expected: 1
+        })
+      })
+
+      it('returns Result with runnable, actual, expected, and a falsy error', function () {
+        expect(this.result).toMatchObject({
+          runnable: this.returns,
+          actual: 1,
+          expected: 1,
+          error: false
+        })
+      })
+    })
+
+    describe('given a runnable and nonequivalent actual and expected options', function () {
+      beforeEach(function () {
+        this.result = new purespec.Result(this.returns, {
+          actual: 2,
+          expected: 1
+        })
+      })
+
+      it('returns Result with runnable, actual, expected, and a truthy error', function () {
+        expect(this.result).toMatchObject({
+          runnable: this.returns,
+          actual: 2,
+          expected: 1,
+          error: true
+        })
+      })
+    })
+  })
+
+  describe('.prototype.toString()', function () {
+    describe('when there is an error', function () {
+      beforeEach(function () {
+        this.result = new purespec.Result(this.returns, {
+          actual: 2,
+          expected: 1
+        })
+      })
+
+      it('returns a red String with a cross, its runnable, a newline, and its error', function () {
+        expect(this.result.toString()).toBe(`${chalk.red('✗ returns 1')}\ntrue`)
+      })
+    })
+
+    describe('when there is no error', function () {
+      beforeEach(function () {
+        this.result = new purespec.Result(this.returns, {
+          actual: 1,
+          expected: 1
+        })
+      })
+
+      it('returns a green String with a check and its runnable', function () {
+        expect(this.result.toString()).toBe(chalk.green('✓ returns 1'))
+      })
+    })
+  })
+
+  describe('.prototype.toTree()', function () {
+    describe('without results', function () {
+      beforeEach(function () {
+        this.result = new purespec.Result(this.returns, {
+          actual: 1,
+          expected: 1
+        })
+      })
+
+      it('returns the result of .prototype.toString()', function () {
+        expect(this.result.toTree()).toBe(chalk.green('✓ returns 1'))
+      })
+    })
+
+    describe('with results', function () {
+      beforeEach(function () {
+        this.test = new purespec.Test('test', function () {}, [this.returns])
+        this.result = new purespec.Result(this.test, {
+          results: [
+            new purespec.Result(this.returns, {
+              actual: 1,
+              expected: 1
+            })
+          ]
+        })
+      })
+
+      it('returns its String representation with the indented representations of its children', function () {
+        expect(this.result.toTree()).toBe(`${chalk.green('✓ test')}\n  ${chalk.green('✓ returns 1')}`)
       })
     })
   })
