@@ -6,20 +6,19 @@ describe('dsl', function () {
 
     it('assigns properties to the given target', function () {
       purespec.dsl(target)
-      expect(Object.keys(target)).not.toHaveLength(0)
+      expect(target).not.toEqual({})
     })
   })
 
   describe('.matchers()', function () {
     it('returns an Object of matcher shortcuts', function () {
-      var matchers = Object.keys(purespec.matchers)
-                           .map(key => purespec.matchers[key])
       var dslMatchers = purespec.dsl.matchers()
       expect(dslMatchers).toBeInstanceOf(Object)
-      expect(Object.keys(dslMatchers)).not.toHaveLength(0)
-      Object.keys(dslMatchers).forEach(key => {
-        expect(matchers.some(matcher =>
-          matcher === dslMatchers[key]().constructor)).toBeTruthy()
+      expect(dslMatchers).not.toEqual({})
+
+      var matchers = Object.values(purespec.matchers)
+      Object.values(dslMatchers).forEach(dslMatcher => {
+        expect(matchers).toContain(dslMatcher().constructor)
       })
     })
   })
