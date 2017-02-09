@@ -1,5 +1,4 @@
 /* global test, given, returns */
-'use strict'
 require('./dsl')()
 
 module.exports = test('Math.round()',

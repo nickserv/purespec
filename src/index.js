@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = {
   dsl: require('./dsl'),
   example: require('./example'),

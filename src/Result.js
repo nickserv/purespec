@@ -1,5 +1,3 @@
-'use strict'
-
 var chalk = require('chalk')
 var deepEqual = require('deep-equal')
 var indent = require('./indent')

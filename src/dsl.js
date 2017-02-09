@@ -1,4 +1,3 @@
-'use strict'
 var matchers = require('./matchers')
 var Test = require('./Test')
 

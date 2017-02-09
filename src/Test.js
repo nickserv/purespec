@@ -1,4 +1,3 @@
-'use strict'
 var indent = require('./indent')
 var os = require('os')
 var Result = require('./Result')

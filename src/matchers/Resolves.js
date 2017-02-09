@@ -1,4 +1,3 @@
-'use strict'
 var Result = require('../Result')
 
 module.exports = class Resolves {
