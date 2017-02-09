@@ -3,6 +3,7 @@
   "description": "A declarative test framework for pure JavaScript.",
   "version": "0.0.0",
   "main": "src",
+  "bin": "src/cli.js",
   "scripts": {
     "pretest": "eslint .",
     "test": "jest",
