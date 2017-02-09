@@ -1,6 +1,11 @@
 #!/usr/bin/env node
+var modules = process.argv.slice(2)
 var path = require('path')
 
-var file = path.resolve(process.argv[2])
-var result = require(file).run()
-module.exports = result.then(result => console.log(result.toTree()))
+function runModule (module) {
+  return require(path.resolve(module))
+    .run()
+    .then(result => console.log(result.toTree()))
+}
+
+module.exports = Promise.all(modules.map(runModule))
