@@ -1,4 +1,5 @@
 var purespec = require('..')
+var _ = require('lodash/core')
 
 describe('dsl', function () {
   describe('()', function () {
@@ -16,8 +17,8 @@ describe('dsl', function () {
       expect(dslMatchers).toBeInstanceOf(Object)
       expect(dslMatchers).not.toEqual({})
 
-      var matchers = Object.values(purespec.matchers)
-      Object.values(dslMatchers).forEach(dslMatcher => {
+      var matchers = _.values(purespec.matchers)
+      _.values(dslMatchers).forEach(dslMatcher => {
         expect(matchers).toContain(dslMatcher().constructor)
       })
     })
