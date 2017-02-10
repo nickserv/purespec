@@ -5,12 +5,12 @@ describe('CLI', function () {
   beforeEach(function () {
     jest.resetAllMocks().resetModules()
     this.cli = '../src/cli'
-    this.example = require('../src/example')
+    this.example = require('../example')
     this.example.run = jest.fn(this.example.run)
     process.argv = [
       process.execPath,
       path.resolve(this.cli),
-      'src/example'
+      'example'
     ]
   })
 
@@ -25,7 +25,7 @@ describe('CLI', function () {
 
   describe('given multiple valid modules', function () {
     beforeEach(function () {
-      process.argv[3] = 'src/example'
+      process.argv[3] = 'example'
     })
 
     it('runs the given modules and prints their results', function () {

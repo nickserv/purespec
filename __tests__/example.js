@@ -1,3 +1,4 @@
+var example = require('../example')
 var purespec = require('..')
 
 describe('example Test suite', function () {
@@ -11,10 +12,10 @@ describe('example Test suite', function () {
       ]
     )
 
-    expect(purespec.example).toEqual(expected)
+    expect(example).toEqual(expected)
   })
 
   it('has a string representation', function () {
-    expect(purespec.example.toTree()).toBe('Math.round()\n  given 1\n    returns 1\n  given 1.5\n    returns 2')
+    expect(example.toTree()).toBe('Math.round()\n  given 1\n    returns 1\n  given 1.5\n    returns 2')
   })
 })

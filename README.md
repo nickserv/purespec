@@ -6,7 +6,7 @@
 
 A declarative test framework for pure JavaScript.
 
-## [Example](src/example.js)
+## [Example](./example.js)
 This executable example is meant to showcase what PureSpec tests will look like, and it also doubles as an integration test.
 
 ## Status
