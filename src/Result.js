@@ -1,5 +1,5 @@
+var _ = require('lodash/core')
 var chalk = require('chalk')
-var deepEqual = require('deep-equal')
 var indent = require('./indent')
 var os = require('os')
 
@@ -14,7 +14,7 @@ module.exports = class Result {
 
     if (this.error === undefined) {
       if (this.actual !== undefined || this.expected !== undefined) {
-        this.error = !deepEqual(this.actual, this.expected, { strict: true })
+        this.error = !_.isEqual(this.actual, this.expected)
       } else {
         this.error = this.results.some(result => result.error)
       }
