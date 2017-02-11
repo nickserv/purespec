@@ -31,6 +31,6 @@ module.exports = class Result {
 
   toTree () {
     var indented = this.results.map(result => indent(result.toTree()))
-    return [this.toString()].concat(indented).join(os.EOL)
+    return [this.toString(), ...indented].join(os.EOL)
   }
 }

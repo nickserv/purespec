@@ -1,10 +1,13 @@
+var _ = require('lodash/fp')
 var fs = require('fs')
 var path = require('path')
 
-module.exports = fs.readdirSync(__dirname)
-                   .map(file => path.basename(file, '.js'))
-                   .filter(file => file !== 'index')
-                   .reduce((memo, matcher) => {
-                     memo[matcher] = require(`./${matcher}`)
-                     return memo
-                   }, {})
+var matchers = _.flow(
+  _.map(file => path.basename(file, '.js')),
+  _.without(['index'])
+)(fs.readdirSync(__dirname))
+
+module.exports = _.flow(
+  _.map(matcher => require(`./${matcher}`)),
+  _.zipObject(matchers)
+)(matchers)

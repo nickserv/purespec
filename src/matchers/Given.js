@@ -1,16 +1,17 @@
+var _ = require('lodash/fp')
 var indent = require('../indent')
 var os = require('os')
 var Result = require('../Result')
 
 module.exports = class Given {
   constructor (...args) {
-    this.matcher = args.pop()
-    this.args = args
+    this.args = _.initial(args)
+    this.matcher = _.last(args)
   }
 
   run (subject) {
     return Promise
-      .resolve(this.matcher.run(() => subject.apply(null, this.args)))
+      .resolve(this.matcher.run(_.partial(subject)(this.args)))
       .then(result => new Result(this, { results: [result] }))
   }
 
@@ -19,7 +20,6 @@ module.exports = class Given {
   }
 
   toTree () {
-    var indented = indent(this.matcher.toString())
-    return [this.toString()].concat(indented).join(os.EOL)
+    return this.toString() + os.EOL + indent(this.matcher.toString())
   }
 }

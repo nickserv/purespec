@@ -32,6 +32,6 @@ module.exports = class Test {
       var method = runnable.toTree ? 'toTree' : 'toString'
       return indent(runnable[method]())
     })
-    return [this.toString()].concat(indented).join(os.EOL)
+    return [this.toString(), ...indented].join(os.EOL)
   }
 }
