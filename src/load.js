@@ -3,7 +3,7 @@ var fs = require('fs')
 var dsl = require('./dsl')
 var vm = require('vm')
 
-module.exports = function (module) {
-  return vm.runInNewContext(fs.readFileSync(module),
+module.exports = function (file) {
+  return vm.runInNewContext(fs.readFileSync(file),
                             _.assign(dsl, { module }))
 }
