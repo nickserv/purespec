@@ -1,5 +1,4 @@
 /* global test, given, returns */
-require('.').dsl()
 
 module.exports = test('Math.round()',
                       Math.round,

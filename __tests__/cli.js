@@ -5,19 +5,16 @@ describe('CLI', function () {
   beforeEach(function () {
     jest.resetAllMocks().resetModules()
     this.cli = '../src/cli'
-    this.example = require('../example')
-    this.example.run = jest.fn(this.example.run)
     process.argv = [
       process.execPath,
       path.resolve(this.cli),
-      'example'
+      'example.js'
     ]
   })
 
   describe('given a valid module', function () {
-    it('runs the given module and prints its results', function () {
+    it('prints its results', function () {
       return require(this.cli).then(() => {
-        expect(this.example.run).toHaveBeenCalled()
         expect(console.log).toHaveBeenCalled()
       })
     })
@@ -25,12 +22,11 @@ describe('CLI', function () {
 
   describe('given multiple valid modules', function () {
     beforeEach(function () {
-      process.argv[3] = 'example'
+      process.argv[3] = 'example.js'
     })
 
-    it('runs the given modules and prints their results', function () {
+    it('prints their results', function () {
       return require(this.cli).then(() => {
-        expect(this.example.run).toHaveBeenCalledTimes(2)
         expect(console.log).toHaveBeenCalledTimes(2)
       })
     })

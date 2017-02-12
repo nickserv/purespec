@@ -2,36 +2,25 @@ var purespec = require('..')
 var _ = require('lodash/fp')
 
 describe('dsl', function () {
-  describe('()', function () {
-    var target = {}
+  it('is a non-empty Object', function () {
+    expect(purespec.dsl).toBeInstanceOf(Object)
+    expect(purespec.dsl).not.toEqual({})
+  })
 
-    it('assigns properties to the given target', function () {
-      purespec.dsl(target)
-      expect(target).not.toEqual({})
+  it('includes matcher shortcuts', function () {
+    var matchers = _.values(purespec.matchers)
+    _.forEach(purespec.dsl)(dslMatcher => {
+      expect(matchers).toContain(dslMatcher().constructor)
     })
   })
 
-  describe('.functions', function () {
-    it('is a non-empty Object', function () {
-      expect(purespec.dsl.functions).toBeInstanceOf(Object)
-      expect(purespec.dsl.functions).not.toEqual({})
-    })
+  it('includes a test function that returns a new Test using the given constructor arguments', function () {
+    var name = 'name'
+    function subject () {}
+    var given = new purespec.matchers.Given()
+    var returns = new purespec.matchers.Returns()
 
-    it('includes matcher shortcuts', function () {
-      var matchers = _.values(purespec.matchers)
-      _.forEach(purespec.dsl.functions)(dslMatcher => {
-        expect(matchers).toContain(dslMatcher().constructor)
-      })
-    })
-
-    it('includes a test function that returns a new Test using the given constructor arguments', function () {
-      var name = 'name'
-      function subject () {}
-      var given = new purespec.matchers.Given()
-      var returns = new purespec.matchers.Returns()
-
-      var test = new purespec.Test(name, subject, [given, returns])
-      expect(purespec.dsl.functions.test(name, subject, given, returns)).toEqual(test)
-    })
+    var test = new purespec.Test(name, subject, [given, returns])
+    expect(purespec.dsl.test(name, subject, given, returns)).toEqual(test)
   })
 })
