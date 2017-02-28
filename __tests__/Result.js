@@ -159,7 +159,7 @@ describe('Result', function () {
 
     describe('with results', function () {
       beforeEach(function () {
-        this.test = new purespec.Test('test', function () {}, [this.returns])
+        this.test = new purespec.matchers.Test('test', function () {}, [this.returns])
         this.result = new purespec.Result(this.test, {
           results: [
             new purespec.Result(this.returns, {

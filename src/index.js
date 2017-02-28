@@ -3,6 +3,5 @@ module.exports = {
   indent: require('./indent'),
   load: require('./load'),
   matchers: require('./matchers'),
-  Result: require('./Result'),
-  Test: require('./Test')
+  Result: require('./Result')
 }

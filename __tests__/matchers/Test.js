@@ -1,9 +1,9 @@
-var purespec = require('..')
+var purespec = require('../..')
 
 console.error = jest.fn()
 process.exit = jest.fn()
 
-describe('Test', function () {
+describe('Test matcher', function () {
   beforeEach(function () {
     this.name = 'hello'
     this.subject = function hello () { return 'Hello, World!' }
@@ -11,7 +11,7 @@ describe('Test', function () {
     this.given = new purespec.matchers.Given('World', this.returns)
     this.throws = new purespec.matchers.Throws('Missing name')
     this.runnables = [this.returns]
-    this.test = new purespec.Test(this.name, this.subject, this.runnables)
+    this.test = new purespec.matchers.Test(this.name, this.subject, ...this.runnables)
   })
 
   describe('.prototype.constructor()', function () {
@@ -44,7 +44,7 @@ describe('Test', function () {
       beforeEach(function () {
         this.runnables = [new purespec.matchers.Returns()]
         this.subject = () => { throw new Error('message') }
-        this.test = new purespec.Test(this.name, this.subject, this.runnables)
+        this.test = new purespec.matchers.Test(this.name, this.subject, ...this.runnables)
       })
 
       it('returns a rejected Promise', function () {

@@ -1,9 +1,9 @@
-var indent = require('./indent')
+var indent = require('../indent')
 var os = require('os')
-var Result = require('./Result')
+var Result = require('../Result')
 
 module.exports = class Test {
-  constructor (name, subject, runnables) {
+  constructor (name, subject, ...runnables) {
     this.name = name
     this.subject = subject
     this.runnables = runnables
