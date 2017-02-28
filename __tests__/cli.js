@@ -29,6 +29,10 @@ describe('CLI', () => {
     })
   })
 
+  describe('given a failing module', () => {
+    it('prints an error and exits with a non-zero status')
+  })
+
   describe('given an invalid module', () => {
     it('throws an error', () => {
       process.argv[2] = ''

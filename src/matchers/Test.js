@@ -17,10 +17,6 @@ module.exports = class Test {
     return Promise
       .all(promises)
       .then(results => new Result(this, { results }))
-      .catch(reason => {
-        console.error(reason instanceof Error ? reason.message : reason)
-        process.exit(1)
-      })
   }
 
   toString () {

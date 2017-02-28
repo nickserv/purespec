@@ -1,8 +1,5 @@
 const purespec = require('../..')
 
-console.error = jest.fn()
-process.exit = jest.fn()
-
 describe('Test matcher', () => {
   const name = 'hello'
   const subject = () => 'Hello, World!'
@@ -37,15 +34,17 @@ describe('Test matcher', () => {
     })
 
     describe('given failing tests', () => {
-      it('returns a rejected Promise', () => {
+      it('returns a rejected Promise', done => {
         const runnables = [new purespec.matchers.Returns()]
         const subject = () => { throw new Error('message') }
         const test = new purespec.matchers.Test(name, subject, ...runnables)
 
-        return test.run().then(() => {
-          expect(console.error).toHaveBeenCalledWith('message')
-          expect(process.exit).toHaveBeenCalledWith(1)
-        })
+        test.run()
+          .then(() => done(true))
+          .catch(reason => {
+            expect(reason).toEqual(new Error('message'))
+            done()
+          })
       })
     })
   })
