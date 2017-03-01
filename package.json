@@ -27,10 +27,10 @@
     "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "coveralls": "^2.11.15",
-    "eslint": "^3.13.0",
+    "coveralls": "^2.11.16",
+    "eslint": "^3.16.1",
     "eslint-config-standard": "^7.0.0",
-    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^2.0.1",
     "jest": "^19.0.2",
     "nodemon": "^1.11.0"
