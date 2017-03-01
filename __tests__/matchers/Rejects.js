@@ -2,7 +2,7 @@ var purespec = require('../..')
 
 describe('Rejects matcher', function () {
   beforeEach(function () {
-    this.subject = () => Promise.reject('Missing name')
+    this.subject = () => { throw new Error('Missing name') }
     this.rejects = new purespec.matchers.Rejects('Missing name')
   })
 

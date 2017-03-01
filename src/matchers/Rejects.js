@@ -7,7 +7,7 @@ module.exports = class Rejects {
   }
 
   run (subject) {
-    return subject()
+    return new Promise(resolve => resolve(subject()))
       .then(actual => new Result(this, { error: true }))
       .catch(reason => {
         var error = _.isError(reason) ? reason : new Error(reason)
