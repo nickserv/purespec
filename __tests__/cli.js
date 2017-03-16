@@ -1,44 +1,39 @@
 console.log = jest.fn()
 var path = require('path')
 
-describe('CLI', function () {
-  beforeEach(function () {
+describe('CLI', () => {
+  var cli = '../src/cli'
+
+  beforeEach(() => {
     jest.resetAllMocks().resetModules()
-    this.cli = '../src/cli'
     process.argv = [
       process.execPath,
-      path.resolve(this.cli),
+      path.resolve(cli),
       'example.js'
     ]
   })
 
-  describe('given a valid module', function () {
-    it('prints its results', function () {
-      return require(this.cli).then(() => {
-        expect(console.log).toHaveBeenCalled()
-      })
+  describe('given a valid module', () => {
+    it('prints its results', () => {
+      return require(cli)
+        .then(() => expect(console.log).toHaveBeenCalled())
     })
   })
 
-  describe('given multiple valid modules', function () {
-    beforeEach(function () {
+  describe('given multiple valid modules', () => {
+    it('prints their results', () => {
       process.argv[3] = 'example.js'
-    })
 
-    it('prints their results', function () {
-      return require(this.cli).then(() => {
-        expect(console.log).toHaveBeenCalledTimes(2)
-      })
+      return require(cli)
+        .then(() => expect(console.log).toHaveBeenCalledTimes(2))
     })
   })
 
-  describe('given an invalid module', function () {
-    beforeEach(function () {
+  describe('given an invalid module', () => {
+    it('throws an error', () => {
       process.argv[2] = ''
-    })
 
-    it('throws an error', function () {
-      expect(() => require(this.cli)).toThrow()
+      expect(() => require(cli)).toThrow()
     })
   })
 })
