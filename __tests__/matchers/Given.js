@@ -1,8 +1,8 @@
-var purespec = require('../..')
+const purespec = require('../..')
 
 describe('Given matcher', () => {
-  var returns = new purespec.matchers.Returns('Hello, World!')
-  var given = new purespec.matchers.Given('World', returns)
+  const returns = new purespec.matchers.Returns('Hello, World!')
+  const given = new purespec.matchers.Given('World', returns)
 
   describe('.prototype.constructor()', () => {
     it('returns a new Given with the given args and matcher', () => {

@@ -1,7 +1,7 @@
-var _ = require('lodash/core')
-var chalk = require('chalk')
-var indent = require('./indent')
-var os = require('os')
+const _ = require('lodash/core')
+const chalk = require('chalk')
+const indent = require('./indent')
+const os = require('os')
 
 module.exports = class Result {
   constructor (runnable, options) {
@@ -22,15 +22,15 @@ module.exports = class Result {
   }
 
   toString () {
-    var status = this.error ? '✗' : '✓'
-    var color = this.error ? 'red' : 'green'
+    const status = this.error ? '✗' : '✓'
+    const color = this.error ? 'red' : 'green'
 
-    var item = chalk[color](`${status} ${this.runnable}`)
+    const item = chalk[color](`${status} ${this.runnable}`)
     return this.error ? item + os.EOL + this.error : item
   }
 
   toTree () {
-    var indented = this.results.map(result => indent(result.toTree()))
+    const indented = this.results.map(result => indent(result.toTree()))
     return [this.toString(), ...indented].join(os.EOL)
   }
 }

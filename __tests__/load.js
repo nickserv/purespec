@@ -1,9 +1,9 @@
-var _ = require('lodash/fp')
-var purespec = require('..')
+const _ = require('lodash/fp')
+const purespec = require('..')
 
 describe('load()', () => {
   it('returns tests loaded from the given PureSpec module', () => {
-    var actual = purespec.load('example.js')
+    const actual = purespec.load('example.js')
 
     expect(actual).toBeInstanceOf(purespec.matchers.Test)
     expect(_.isFunction(actual.subject)).toBeTruthy()

@@ -1,8 +1,8 @@
 console.log = jest.fn()
-var path = require('path')
+const path = require('path')
 
 describe('CLI', () => {
-  var cli = '../src/cli'
+  const cli = '../src/cli'
 
   beforeEach(() => {
     jest.resetAllMocks().resetModules()

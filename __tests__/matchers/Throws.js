@@ -1,7 +1,7 @@
-var purespec = require('../..')
+const purespec = require('../..')
 
 describe('Throws matcher', () => {
-  var throws = new purespec.matchers.Throws('Invalid')
+  const throws = new purespec.matchers.Throws('Invalid')
 
   describe('.prototype.constructor()', () => {
     it('returns a new Throws with the given exception', () => {
@@ -12,7 +12,7 @@ describe('Throws matcher', () => {
   describe('.prototype.run()', () => {
     describe('given a subject that throws the given exception', () => {
       it('returns a passing Result', () => {
-        var subject = () => { throw new Error('Invalid') }
+        const subject = () => { throw new Error('Invalid') }
 
         expect(throws.run(subject)).toEqual(new purespec.Result(throws, {
           actual: new Error('Invalid'),

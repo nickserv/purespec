@@ -1,6 +1,6 @@
-var indent = require('../indent')
-var os = require('os')
-var Result = require('../Result')
+const indent = require('../indent')
+const os = require('os')
+const Result = require('../Result')
 
 module.exports = class Test {
   constructor (name, subject, ...runnables) {
@@ -10,7 +10,7 @@ module.exports = class Test {
   }
 
   run () {
-    var promises = this.runnables.map(runnable =>
+    const promises = this.runnables.map(runnable =>
       new Promise(resolve => resolve(runnable.run(this.subject)))
     )
 
@@ -28,8 +28,8 @@ module.exports = class Test {
   }
 
   toTree () {
-    var indented = this.runnables.map(runnable => {
-      var method = runnable.toTree ? 'toTree' : 'toString'
+    const indented = this.runnables.map(runnable => {
+      const method = runnable.toTree ? 'toTree' : 'toString'
       return indent(runnable[method]())
     })
     return [this.toString(), ...indented].join(os.EOL)

@@ -1,7 +1,7 @@
-var _ = require('lodash/fp')
-var indent = require('../indent')
-var os = require('os')
-var Result = require('../Result')
+const _ = require('lodash/fp')
+const indent = require('../indent')
+const os = require('os')
+const Result = require('../Result')
 
 module.exports = class Given {
   constructor (...args) {

@@ -1,8 +1,8 @@
-var _ = require('lodash/fp')
-var fs = require('fs')
-var path = require('path')
+const _ = require('lodash/fp')
+const fs = require('fs')
+const path = require('path')
 
-var matchers = _.flow(
+const matchers = _.flow(
   _.map(file => path.basename(file, '.js')),
   _.without(['index'])
 )(fs.readdirSync(__dirname))

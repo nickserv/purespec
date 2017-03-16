@@ -1,14 +1,14 @@
-var purespec = require('../..')
+const purespec = require('../..')
 
 console.error = jest.fn()
 process.exit = jest.fn()
 
 describe('Test matcher', () => {
-  var name = 'hello'
-  var subject = () => 'Hello, World!'
-  var returns = new purespec.matchers.Returns('Hello, World!')
-  var runnables = [returns]
-  var test = new purespec.matchers.Test(name, subject, ...runnables)
+  const name = 'hello'
+  const subject = () => 'Hello, World!'
+  const returns = new purespec.matchers.Returns('Hello, World!')
+  const runnables = [returns]
+  const test = new purespec.matchers.Test(name, subject, ...runnables)
 
   describe('.prototype.constructor()', () => {
     it('returns a new Test with the given data', () => {
@@ -38,9 +38,9 @@ describe('Test matcher', () => {
 
     describe('given failing tests', () => {
       it('returns a rejected Promise', () => {
-        var runnables = [new purespec.matchers.Returns()]
-        var subject = () => { throw new Error('message') }
-        var test = new purespec.matchers.Test(name, subject, ...runnables)
+        const runnables = [new purespec.matchers.Returns()]
+        const subject = () => { throw new Error('message') }
+        const test = new purespec.matchers.Test(name, subject, ...runnables)
 
         return test.run().then(() => {
           expect(console.error).toHaveBeenCalledWith('message')

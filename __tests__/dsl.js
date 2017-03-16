@@ -1,5 +1,5 @@
-var purespec = require('..')
-var _ = require('lodash/fp')
+const purespec = require('..')
+const _ = require('lodash/fp')
 
 describe('dsl', () => {
   it('is a non-empty Object', () => {
@@ -8,7 +8,7 @@ describe('dsl', () => {
   })
 
   it('includes matcher shortcuts', () => {
-    var matchers = _.values(purespec.matchers)
+    const matchers = _.values(purespec.matchers)
     _.forEach(purespec.dsl)(dslMatcher => {
       expect(matchers).toContain(dslMatcher().constructor)
     })

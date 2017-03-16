@@ -1,15 +1,15 @@
-var purespec = require('..')
+const purespec = require('..')
 
-var chalk = require('chalk')
+const chalk = require('chalk')
 chalk.enabled = true
 
 describe('Result', () => {
-  var returns = new purespec.matchers.Returns(1)
+  const returns = new purespec.matchers.Returns(1)
 
   describe('.prototype.constructor()', () => {
     describe('given a runnable', () => {
       it('returns Result with runnable, empty results, and a falsy error', () => {
-        var result = new purespec.Result(returns)
+        const result = new purespec.Result(returns)
 
         expect(result).toMatchObject({
           runnable: returns,
@@ -21,13 +21,13 @@ describe('Result', () => {
 
     describe('given a runnable and passing results', () => {
       it('returns Result with runnable, results, and a falsy error', () => {
-        var results = [
+        const results = [
           new purespec.Result(returns, {
             actual: 1,
             expected: 1
           })
         ]
-        var result = new purespec.Result(returns, { results: results })
+        const result = new purespec.Result(returns, { results: results })
 
         expect(result).toMatchObject({
           runnable: returns,
@@ -39,13 +39,13 @@ describe('Result', () => {
 
     describe('given a runnable and failing results', () => {
       it('returns Result with runnable, results, and a truthy error', () => {
-        var results = [
+        const results = [
           new purespec.Result(returns, {
             actual: 2,
             expected: 1
           })
         ]
-        var result = new purespec.Result(returns, { results: results })
+        const result = new purespec.Result(returns, { results: results })
 
         expect(result).toMatchObject({
           runnable: returns,
@@ -57,8 +57,8 @@ describe('Result', () => {
 
     describe('given a runnable and an error', () => {
       it('returns Result with runnable, empty results, and error', () => {
-        var error = new Error()
-        var result = new purespec.Result(returns, { error })
+        const error = new Error()
+        const result = new purespec.Result(returns, { error })
 
         expect(result).toMatchObject({
           runnable: returns,
@@ -70,7 +70,7 @@ describe('Result', () => {
 
     describe('given a runnable and equivalent actual and expected options', () => {
       it('returns Result with runnable, actual, expected, and a falsy error', () => {
-        var result = new purespec.Result(returns, {
+        const result = new purespec.Result(returns, {
           actual: 1,
           expected: 1
         })
@@ -86,7 +86,7 @@ describe('Result', () => {
 
     describe('given a runnable and nonequivalent actual and expected options', () => {
       it('returns Result with runnable, actual, expected, and a truthy error', () => {
-        var result = new purespec.Result(returns, {
+        const result = new purespec.Result(returns, {
           actual: 2,
           expected: 1
         })
@@ -104,7 +104,7 @@ describe('Result', () => {
   describe('.prototype.toString()', () => {
     describe('when there is an error', () => {
       it('returns a red String with a cross, its runnable, a newline, and its error', () => {
-        var result = new purespec.Result(returns, {
+        const result = new purespec.Result(returns, {
           actual: 2,
           expected: 1
         })
@@ -115,7 +115,7 @@ describe('Result', () => {
 
     describe('when there is no error', () => {
       it('returns a green String with a check and its runnable', () => {
-        var result = new purespec.Result(returns, {
+        const result = new purespec.Result(returns, {
           actual: 1,
           expected: 1
         })
@@ -128,7 +128,7 @@ describe('Result', () => {
   describe('.prototype.toTree()', () => {
     describe('without results', () => {
       it('returns the result of .prototype.toString()', () => {
-        var result = new purespec.Result(returns, {
+        const result = new purespec.Result(returns, {
           actual: 1,
           expected: 1
         })
@@ -139,8 +139,8 @@ describe('Result', () => {
 
     describe('with results', () => {
       it('returns its String representation with the indented representations of its children', () => {
-        var test = new purespec.matchers.Test('test', () => {}, [returns])
-        var result = new purespec.Result(test, {
+        const test = new purespec.matchers.Test('test', () => {}, [returns])
+        const result = new purespec.Result(test, {
           results: [
             new purespec.Result(returns, {
               actual: 1,

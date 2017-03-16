@@ -1,5 +1,5 @@
-var Result = require('../Result')
-var _ = require('lodash/fp')
+const Result = require('../Result')
+const _ = require('lodash/fp')
 
 module.exports = class Rejects {
   constructor (reason) {
@@ -10,7 +10,7 @@ module.exports = class Rejects {
     return new Promise(resolve => resolve(subject()))
       .then(actual => new Result(this, { error: true }))
       .catch(reason => {
-        var error = _.isError(reason) ? reason : new Error(reason)
+        const error = _.isError(reason) ? reason : new Error(reason)
         return new Result(this, { actual: error, expected: new Error(this.reason) })
       })
   }

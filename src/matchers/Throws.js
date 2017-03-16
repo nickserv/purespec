@@ -1,4 +1,4 @@
-var Result = require('../Result')
+const Result = require('../Result')
 
 module.exports = class Throws {
   constructor (exception) {

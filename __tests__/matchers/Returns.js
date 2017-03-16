@@ -1,7 +1,7 @@
-var purespec = require('../..')
+const purespec = require('../..')
 
 describe('Returns matcher', () => {
-  var returns = new purespec.matchers.Returns('Hello, World!')
+  const returns = new purespec.matchers.Returns('Hello, World!')
 
   describe('.prototype.constructor()', () => {
     it('returns a new Returns with the given result', () => {
@@ -11,7 +11,7 @@ describe('Returns matcher', () => {
 
   describe('.prototype.run()', () => {
     it('asserts its subject\'s return value to equal its result', () => {
-      var subject = () => 'Hello, World!'
+      const subject = () => 'Hello, World!'
 
       expect(returns.run(subject)).toEqual(new purespec.Result(returns, {
         actual: 'Hello, World!',

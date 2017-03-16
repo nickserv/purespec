@@ -1,4 +1,4 @@
-var purespec = require('..')
+const purespec = require('..')
 
 describe('indent()', () => {
   describe('given empty text', () => {

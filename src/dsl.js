@@ -1,5 +1,5 @@
-var _ = require('lodash/fp')
-var matchers = require('./matchers')
+const _ = require('lodash/fp')
+const matchers = require('./matchers')
 
 module.exports = _.flow(
   _.mapKeys(_.toLower),
