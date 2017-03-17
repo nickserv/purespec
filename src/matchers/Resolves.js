@@ -1,4 +1,4 @@
-const Result = require('../Result')
+const ComparisonResult = require('../ComparisonResult')
 
 module.exports = class Resolves {
   constructor (result) {
@@ -7,7 +7,7 @@ module.exports = class Resolves {
 
   run (subject) {
     return subject().then(actual => {
-      return new Result(this, { actual, expected: this.result })
+      return new ComparisonResult(this, actual, this.result)
     })
   }
 

@@ -21,14 +21,11 @@ describe('Test matcher', () => {
     describe('given passing tests', () => {
       it('returns a Promise resolving with a Result', () => {
         return test.run().then(result => {
-          expect(result).toEqual(new purespec.Result(test, {
-            results: [
-              new purespec.Result(returns, {
-                actual: 'Hello, World!',
-                expected: 'Hello, World!'
-              })
-            ]
-          }))
+          expect(result).toEqual(new purespec.NestedResult(test, [
+            new purespec.ComparisonResult(returns,
+                                          'Hello, World!',
+                                          'Hello, World!')
+          ]))
         })
       })
     })

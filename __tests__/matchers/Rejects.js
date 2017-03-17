@@ -15,10 +15,11 @@ describe('Rejects matcher', () => {
         const subject = () => { throw new Error('Missing name') }
 
         return rejects.run(subject).then(result => {
-          expect(result).toEqual(new purespec.Result(rejects, {
-            actual: new Error('Missing name'),
-            expected: new Error('Missing name')
-          }))
+          expect(result).toEqual(new purespec.ComparisonResult(
+            rejects,
+            new Error('Missing name'),
+            new Error('Missing name')
+          ))
         })
       })
     })

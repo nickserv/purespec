@@ -1,7 +1,7 @@
 const _ = require('lodash/fp')
 const indent = require('../indent')
+const NestedResult = require('../NestedResult')
 const os = require('os')
-const Result = require('../Result')
 
 module.exports = class Given {
   constructor (...args) {
@@ -12,7 +12,7 @@ module.exports = class Given {
   run (subject) {
     return Promise
       .resolve(this.matcher.run(_.partial(subject)(this.args)))
-      .then(result => new Result(this, { results: [result] }))
+      .then(result => new NestedResult(this, [result]))
   }
 
   toString () {

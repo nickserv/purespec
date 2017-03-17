@@ -1,3 +1,4 @@
+const ComparisonResult = require('../ComparisonResult')
 const Result = require('../Result')
 
 module.exports = class Throws {
@@ -8,9 +9,9 @@ module.exports = class Throws {
   run (subject) {
     try {
       subject()
-      return new Result(this, { error: true })
+      return new Result(this, true)
     } catch (err) {
-      return new Result(this, { actual: err, expected: new Error(this.exception) })
+      return new ComparisonResult(this, err, new Error(this.exception))
     }
   }
 

@@ -1,6 +1,6 @@
 const indent = require('../indent')
+const NestedResult = require('../NestedResult')
 const os = require('os')
-const Result = require('../Result')
 
 module.exports = class Test {
   constructor (name, subject, ...runnables) {
@@ -16,7 +16,7 @@ module.exports = class Test {
 
     return Promise
       .all(promises)
-      .then(results => new Result(this, { results }))
+      .then(results => new NestedResult(this, results))
   }
 
   toString () {

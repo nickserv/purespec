@@ -14,10 +14,9 @@ describe('Resolves matcher', () => {
       const subject = () => new Promise(setTimeout).then(() => 'Hello, World!')
 
       return resolves.run(subject).then(result => {
-        expect(result).toEqual(new purespec.Result(resolves, {
-          actual: 'Hello, World!',
-          expected: 'Hello, World!'
-        }))
+        expect(result).toEqual(new purespec.ComparisonResult(resolves,
+                                                             'Hello, World!',
+                                                             'Hello, World!'))
       })
     })
   })

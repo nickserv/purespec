@@ -3,5 +3,7 @@ module.exports = {
   indent: require('./indent'),
   load: require('./load'),
   matchers: require('./matchers'),
-  Result: require('./Result')
+  Result: require('./Result'),
+  ComparisonResult: require('./ComparisonResult'),
+  NestedResult: require('./NestedResult')
 }
