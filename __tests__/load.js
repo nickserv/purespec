@@ -6,14 +6,11 @@ describe('load()', () => {
     const actual = purespec.load('example.js')
 
     expect(actual).toBeInstanceOf(purespec.matchers.Test)
+    expect(actual.name).toBe('Math.round()')
     expect(_.isFunction(actual.subject)).toBeTruthy()
-
-    expect(actual).toMatchObject({
-      name: 'Math.round()',
-      runnables: [
-        new purespec.matchers.Given(1, new purespec.matchers.Returns(1)),
-        new purespec.matchers.Given(1.5, new purespec.matchers.Returns(2))
-      ]
-    })
+    expect(actual.runnables).toEqual([
+      new purespec.matchers.Given(1, new purespec.matchers.Returns(1)),
+      new purespec.matchers.Given(1.5, new purespec.matchers.Returns(2))
+    ])
   })
 })
