@@ -1,4 +1,6 @@
+console.error = jest.fn()
 console.log = jest.fn()
+process.exit = jest.fn()
 const path = require('path')
 
 describe('CLI', () => {
@@ -30,14 +32,21 @@ describe('CLI', () => {
   })
 
   describe('given a failing module', () => {
-    it('prints an error and exits with a non-zero status')
+    it('prints an error and exits with a non-zero status', () => {
+      process.argv[3] = 'example_failing.js'
+
+      return require(cli).then(() => {
+        expect(console.error).toHaveBeenCalled()
+        expect(process.exit).toHaveBeenCalled()
+      })
+    })
   })
 
   describe('given an invalid module', () => {
     it('throws an error', () => {
       process.argv[2] = ''
 
-      expect(() => require(cli)).toThrow()
+      expect(() => require(cli)).toThrow('ENOENT')
     })
   })
 })
