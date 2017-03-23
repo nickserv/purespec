@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const _ = require('lodash/fp')
 const modules = process.argv.slice(2)
 const purespec = require('..')
 
@@ -11,6 +12,6 @@ function runModule (module) {
 module.exports = Promise
   .all(modules.map(runModule))
   .catch(reason => {
-    console.error(reason instanceof Error ? reason.message : reason)
+    console.error(_.isError(reason) ? reason.message : reason)
     process.exit(1)
   })
