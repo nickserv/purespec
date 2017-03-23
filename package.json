@@ -11,7 +11,13 @@
     "watch": "nodemon --exec npm test"
   },
   "eslintConfig": {
-    "extends": "standard"
+    "plugins": [
+      "filenames"
+    ],
+    "extends": "standard",
+    "rules": {
+      "filenames/match-exported": 2
+    }
   },
   "jest": {
     "collectCoverage": true,
@@ -30,6 +36,7 @@
     "coveralls": "^2.11.16",
     "eslint": "^3.16.1",
     "eslint-config-standard": "^7.0.0",
+    "eslint-plugin-filenames": "^1.1.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^2.0.1",
     "jest": "^19.0.2",
