@@ -12,9 +12,13 @@
   },
   "eslintConfig": {
     "plugins": [
-      "filenames"
+      "filenames",
+      "lodash-fp"
     ],
-    "extends": "standard",
+    "extends": [
+      "standard",
+      "plugin:lodash-fp/recommended"
+    ],
     "rules": {
       "filenames/match-exported": 2
     }
@@ -37,6 +41,7 @@
     "eslint": "^3.16.1",
     "eslint-config-standard": "^7.0.0",
     "eslint-plugin-filenames": "^1.1.0",
+    "eslint-plugin-lodash-fp": "^2.1.3",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^2.0.1",
     "jest": "^19.0.2",
