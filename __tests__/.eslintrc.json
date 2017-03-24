@@ -1,6 +1,6 @@
 {
- "env": {
-   "jest": true
+  "env": {
+    "jest": true
   },
   "rules": {
     "fp/no-mutation": [
@@ -19,6 +19,8 @@
           }
         ]
       }
-    ]
+    ],
+    "fp/no-nil": 0,
+    "fp/no-unused-expression": 0
   }
 }
