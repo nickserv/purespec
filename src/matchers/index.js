@@ -9,5 +9,5 @@ const matchers = _.flow(
 
 module.exports = _.flow(
   _.map(matcher => require(`./${matcher}`)),
-  _.zipObject(matchers)
+  _.zipObject(_.map(_.startCase)(matchers))
 )(matchers)
