@@ -1,16 +1,14 @@
 const purespec = require('../..')
 
 describe('Test matcher', () => {
-  const name = 'hello'
-  const subject = () => 'Hello, World!'
+  const subject = function hello () { return 'Hello, World!' } // eslint-disable-line lodash-fp/prefer-constant
   const returns = new purespec.matchers.Returns('Hello, World!')
   const runnables = [returns]
-  const test = new purespec.matchers.Test(name, subject, ...runnables)
+  const test = new purespec.matchers.Test(subject, ...runnables)
 
   describe('.prototype.constructor()', () => {
     it('returns a new Test with the given data', () => {
       expect(test).toMatchObject({
-        name,
         subject,
         runnables
       })
@@ -34,7 +32,7 @@ describe('Test matcher', () => {
       it('returns a rejected Promise', done => {
         const runnables = [new purespec.matchers.Returns()]
         const subject = () => { throw new Error('message') }
-        const test = new purespec.matchers.Test(name, subject, ...runnables)
+        const test = new purespec.matchers.Test(subject, ...runnables)
 
         test.run()
           .then(() => done(true))
