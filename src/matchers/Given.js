@@ -4,12 +4,10 @@ const NestedResult = require('../NestedResult')
 const os = require('os')
 
 module.exports = class Given {
-  /* eslint-disable fp/no-nil */
   constructor (...args) {
     this.args = _.initial(args)
     this.matcher = _.last(args)
   }
-  /* eslint-enable */
 
   run (subject) {
     return Promise

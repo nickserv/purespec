@@ -5,7 +5,6 @@ module.exports = class Test extends Nested {
     super(...runnables)
     this.subject = subject
   }
-  /* eslint-enable */
 
   run () {
     return Nested.prototype.run.call(this, this.subject)

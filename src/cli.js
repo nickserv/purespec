@@ -11,9 +11,7 @@ function runModule (module) {
 
 module.exports = Promise
   .all(modules.map(runModule))
-  /* eslint-disable fp/no-nil, fp/no-unused-expression */
   .catch(reason => {
     console.error(_.isError(reason) ? reason.message : reason)
     process.exit(1)
   })
-  /* eslint-enable */

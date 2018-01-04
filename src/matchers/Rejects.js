@@ -3,11 +3,9 @@ const Result = require('../Result')
 const _ = require('lodash/fp')
 
 module.exports = class Rejects {
-  /* eslint-disable fp/no-nil */
   constructor (reason) {
     this.reason = reason
   }
-  /* eslint-enable */
 
   run (subject) {
     return new Promise(resolve => resolve(subject()))
