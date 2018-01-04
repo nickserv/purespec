@@ -20,9 +20,11 @@ describe('Test matcher', () => {
       it('returns a Promise resolving with a Result', () => {
         return test.run().then(result => {
           expect(result).toEqual(new purespec.NestedResult(test, [
-            new purespec.ComparisonResult(returns,
-                                          'Hello, World!',
-                                          'Hello, World!')
+            new purespec.ComparisonResult(
+              returns,
+              'Hello, World!',
+              'Hello, World!'
+            )
           ]))
         })
       })
@@ -34,7 +36,8 @@ describe('Test matcher', () => {
         const subject = () => { throw new Error('message') }
         const test = new purespec.matchers.Test(subject, ...runnables)
 
-        test.run()
+        test
+          .run()
           .then(() => done(true))
           .catch(reason => {
             expect(reason).toEqual(new Error('message'))

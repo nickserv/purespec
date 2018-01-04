@@ -26,7 +26,8 @@ describe('Rejects matcher', () => {
 
     describe('given a subject that resolves', () => {
       it('runs its subject as a Promise, failing to assert a rejection with the given reason', (done) => {
-        rejects.run(() => Promise.resolve())
+        rejects
+          .run(() => Promise.resolve())
           .then(() => done(true))
           .catch(reason => {
             expect(reason).toBe('Expected a rejection but resolved with World')
