@@ -48,7 +48,7 @@
     "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "coveralls": "^2.13.3",
+    "coveralls": "^3.0.0",
     "eslint": "^3.16.1",
     "eslint-config-standard": "^7.0.0",
     "eslint-plugin-filenames": "^1.2.0",
