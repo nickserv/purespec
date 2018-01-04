@@ -7,8 +7,7 @@
   "scripts": {
     "pretest": "eslint .",
     "test": "jest",
-    "upload-coverage": "coveralls < coverage/lcov.info",
-    "watch": "nodemon --exec npm test"
+    "upload-coverage": "coveralls < coverage/lcov.info"
   },
   "eslintConfig": {
     "plugins": [
@@ -57,8 +56,7 @@
     "eslint-plugin-lodash-fp": "^2.1.3",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^2.0.1",
-    "jest": "^19.0.2",
-    "nodemon": "^1.11.0"
+    "jest": "^19.0.2"
   },
   "engines": {
     "node": ">=6"
