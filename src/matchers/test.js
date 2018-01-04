@@ -4,8 +4,7 @@ const os = require('os')
 
 module.exports = class Test {
   /* eslint-disable fp/no-nil */
-  constructor (name, subject, ...runnables) {
-    this.name = name
+  constructor (subject, ...runnables) {
     this.subject = subject
     this.runnables = runnables
   }
@@ -22,7 +21,7 @@ module.exports = class Test {
   }
 
   toString () {
-    return this.name
+    return this.subject.name
   }
 
   toTree () {
