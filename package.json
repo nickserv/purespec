@@ -11,7 +11,6 @@
   },
   "eslintConfig": {
     "plugins": [
-      "filenames",
       "fp",
       "lodash-fp"
     ],
@@ -21,7 +20,6 @@
       "plugin:lodash-fp/recommended"
     ],
     "rules": {
-      "filenames/match-exported": 2,
       "fp/no-class": 0,
       "fp/no-mutation": [
         2,
@@ -36,7 +34,10 @@
   },
   "jest": {
     "collectCoverage": true,
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/__tests__/**/*.js"
+    ]
   },
   "repository": "nickmccurdy/purespec",
   "author": "Nick McCurdy <nick@nickmccurdy.com> (http://nickmccurdy.com/)",
@@ -51,7 +52,6 @@
     "coveralls": "^3.0.0",
     "eslint": "^4.14.0",
     "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-filenames": "^1.2.0",
     "eslint-plugin-fp": "^2.3.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-lodash-fp": "^2.1.3",
