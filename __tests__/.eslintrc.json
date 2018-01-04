@@ -1,26 +1,5 @@
 {
   "env": {
     "jest": true
-  },
-  "rules": {
-    "fp/no-mutation": [
-      2,
-      {
-        "exceptions": [
-          {
-            "object": "chalk",
-            "property": "enabled"
-          },
-          {
-            "object": "console"
-          },
-          {
-            "object": "process"
-          }
-        ]
-      }
-    ],
-    "fp/no-nil": 0,
-    "fp/no-unused-expression": 0
   }
 }

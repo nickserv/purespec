@@ -1,11 +1,9 @@
 const ComparisonResult = require('../ComparisonResult')
 
 module.exports = class Resolves {
-  /* eslint-disable fp/no-nil */
   constructor (result) {
     this.result = result
   }
-  /* eslint-enable */
 
   run (subject) {
     return subject().then(actual => {

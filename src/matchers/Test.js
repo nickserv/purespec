@@ -3,12 +3,10 @@ const NestedResult = require('../NestedResult')
 const os = require('os')
 
 module.exports = class Test {
-  /* eslint-disable fp/no-nil */
   constructor (subject, ...runnables) {
     this.subject = subject
     this.runnables = runnables
   }
-  /* eslint-enable */
 
   run () {
     const promises = this.runnables.map(runnable =>

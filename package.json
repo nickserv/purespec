@@ -12,26 +12,14 @@
   "eslintConfig": {
     "plugins": [
       "filenames",
-      "fp",
       "lodash-fp"
     ],
     "extends": [
       "standard",
-      "plugin:fp/recommended",
       "plugin:lodash-fp/recommended"
     ],
     "rules": {
-      "filenames/match-exported": 2,
-      "fp/no-class": 0,
-      "fp/no-mutation": [
-        2,
-        {
-          "commonjs": true,
-          "allowThis": true
-        }
-      ],
-      "fp/no-rest-parameters": 0,
-      "fp/no-this": 0
+      "filenames/match-exported": 2
     }
   },
   "jest": {
@@ -52,7 +40,6 @@
     "eslint": "^4.14.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-filenames": "^1.2.0",
-    "eslint-plugin-fp": "^2.3.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-lodash-fp": "^2.1.3",
     "eslint-plugin-node": "^5.2.1",
