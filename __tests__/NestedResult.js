@@ -52,7 +52,7 @@ describe('NestedResult', () => {
         const test = new purespec.matchers.Test(function test () {}, [returns])
         const result = new purespec.NestedResult(test, [new purespec.ComparisonResult(returns, 1, 1)])
 
-        expect(result.toTree()).toBe(`${chalk.green('✓ test')}\n  ${chalk.green('✓ returns 1')}`)
+        expect(result.toTree()).toBe(chalk`{green ✓ test}\n  {green ✓ returns 1}`)
       })
     })
   })

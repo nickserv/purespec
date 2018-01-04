@@ -36,7 +36,7 @@ describe('Result', () => {
       it('returns a red String with a cross, its runnable, a newline, and its error', () => {
         const result = new purespec.Result(returns, true)
 
-        expect(result.toString()).toBe(`${chalk.red('✗ returns 1')}\ntrue`)
+        expect(result.toString()).toBe(chalk`{red ✗ returns 1}\ntrue`)
       })
     })
 
