@@ -1,4 +1,4 @@
-var purespec = require('../..')
+const purespec = require('../..')
 
 describe('Required matcher', function () {
   beforeEach(function () {

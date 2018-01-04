@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const _ = require('lodash/fp')
 const modules = process.argv.slice(2)
 const purespec = require('..')
 
@@ -10,7 +11,9 @@ function runModule (module) {
 
 module.exports = Promise
   .all(modules.map(runModule))
+  /* eslint-disable fp/no-nil, fp/no-unused-expression */
   .catch(reason => {
-    console.error(reason instanceof Error ? reason.message : reason)
+    console.error(_.isError(reason) ? reason.message : reason)
     process.exit(1)
   })
+  /* eslint-enable */

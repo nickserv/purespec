@@ -1,4 +1,4 @@
-var purespec = require('../..')
+const purespec = require('../..')
 
 describe('Prop matcher', function () {
   beforeEach(function () {

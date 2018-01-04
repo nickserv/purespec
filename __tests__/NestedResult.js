@@ -49,10 +49,10 @@ describe('NestedResult', () => {
 
     describe('with results', () => {
       it('returns its String representation with the indented representations of its children', () => {
-        const test = new purespec.matchers.Test('test', () => {}, [returns])
+        const test = new purespec.matchers.Test(function test () {}, [returns])
         const result = new purespec.NestedResult(test, [new purespec.ComparisonResult(returns, 1, 1)])
 
-        expect(result.toTree()).toBe(`${chalk.green('✓ test')}\n  ${chalk.green('✓ returns 1')}`)
+        expect(result.toTree()).toBe(chalk`{green ✓ test}\n  {green ✓ returns 1}`)
       })
     })
   })

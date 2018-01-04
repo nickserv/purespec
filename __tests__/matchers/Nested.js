@@ -18,9 +18,11 @@ describe('Nested matcher', () => {
       it('returns a Promise resolving with a Result', () => {
         return nested.run(subject).then(result => {
           expect(result).toEqual(new purespec.NestedResult(nested, [
-            new purespec.ComparisonResult(returns,
-                                          'Hello, World!',
-                                          'Hello, World!')
+            new purespec.ComparisonResult(
+              returns,
+              'Hello, World!',
+              'Hello, World!'
+            )
           ]))
         })
       })

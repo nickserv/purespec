@@ -3,8 +3,7 @@ const NestedResult = require('../NestedResult')
 const os = require('os')
 
 module.exports = class Nested {
-  constructor (name, ...runnables) {
-    this.name = name
+  constructor (...runnables) {
     this.runnables = runnables
   }
 
@@ -19,7 +18,7 @@ module.exports = class Nested {
   }
 
   toString () {
-    return this.name
+    return this.subject.name
   }
 
   toTree () {

@@ -2,10 +2,12 @@ const chalk = require('chalk')
 const os = require('os')
 
 module.exports = class Result {
+  /* eslint-disable fp/no-nil */
   constructor (runnable, error) {
     this.runnable = runnable
     this.error = error
   }
+  /* eslint-enable */
 
   toString () {
     const status = this.error ? '✗' : '✓'
