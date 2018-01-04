@@ -18,31 +18,23 @@ describe('Test matcher', () => {
   describe('.prototype.run()', () => {
     describe('given passing tests', () => {
       it('returns a Promise resolving with a Result', () => {
-        return test.run().then(result => {
-          expect(result).toEqual(new purespec.NestedResult(test, [
-            new purespec.ComparisonResult(
-              returns,
-              'Hello, World!',
-              'Hello, World!'
-            )
-          ]))
-        })
+        return expect(test.run()).resolves.toEqual(new purespec.NestedResult(test, [
+          new purespec.ComparisonResult(
+            returns,
+            'Hello, World!',
+            'Hello, World!'
+          )
+        ]))
       })
     })
 
     describe('given failing tests', () => {
-      it('returns a rejected Promise', done => {
+      it('returns a rejected Promise', () => {
         const runnables = [new purespec.matchers.Returns()]
         const subject = () => { throw new Error('message') }
         const test = new purespec.matchers.Test(subject, ...runnables)
 
-        test
-          .run()
-          .then(() => done(true))
-          .catch(reason => {
-            expect(reason).toEqual(new Error('message'))
-            done()
-          })
+        return expect(test.run()).rejects.toThrow('message')
       })
     })
   })

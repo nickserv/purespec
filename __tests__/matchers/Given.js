@@ -15,11 +15,9 @@ describe('Given matcher', () => {
 
   describe('.prototype.run()', () => {
     it('run its matcher with its args and returns a Promise with a NestedResult', () => {
-      return given.run(name => `Hello, ${name}!`).then(result => {
-        expect(result).toEqual(new purespec.NestedResult(given, [
-          new purespec.ComparisonResult(returns, 'Hello, World!', 'Hello, World!')
-        ]))
-      })
+      return expect(given.run(name => `Hello, ${name}!`)).resolves.toEqual(new purespec.NestedResult(given, [
+        new purespec.ComparisonResult(returns, 'Hello, World!', 'Hello, World!')
+      ]))
     })
   })
 

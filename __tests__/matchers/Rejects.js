@@ -14,25 +14,17 @@ describe('Rejects matcher', () => {
       it('runs its subject as a Promise, asserting a rejection with the given reason', () => {
         const subject = () => { throw new Error('Missing name') }
 
-        return rejects.run(subject).then(result => {
-          expect(result).toEqual(new purespec.ComparisonResult(
-            rejects,
-            new Error('Missing name'),
-            new Error('Missing name')
-          ))
-        })
+        return expect(rejects.run(subject)).resolves.toEqual(new purespec.ComparisonResult(
+          rejects,
+          new Error('Missing name'),
+          new Error('Missing name')
+        ))
       })
     })
 
     describe('given a subject that resolves', () => {
-      it('runs its subject as a Promise, failing to assert a rejection with the given reason', (done) => {
-        rejects
-          .run(() => Promise.resolve())
-          .then(() => done(true))
-          .catch(reason => {
-            expect(reason).toBe('Expected a rejection but resolved with World')
-            done()
-          })
+      it('runs its subject as a Promise, failing to assert a rejection with the given reason', () => {
+        return expect(rejects.run(() => Promise.resolve())).resolves.toEqual(new purespec.Result(rejects, true))
       })
     })
   })
