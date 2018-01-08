@@ -1,19 +1,17 @@
 const purespec = require('../..')
 
 describe('Prop matcher', function () {
-  beforeEach(function () {
-    this.name = 'hello'
-    this.returns = new purespec.matchers.Returns('Hello, World!')
-    this.runnables = [this.returns]
-    this.test = new purespec.matchers.Prop(this.name, ...this.runnables)
-  })
+  const name = 'hello'
+  const returns = new purespec.matchers.Returns('Hello, World!')
+  const runnables = [returns]
+  const test = new purespec.matchers.Prop(name, ...runnables)
 
   describe('.prototype.constructor()', function () {
     it('returns a new Prop with the given property', function () {
-      expect(this.test).toMatchObject({
-        name: `.${this.name}`,
+      expect(test).toMatchObject({
+        name: `.${name}`,
         subject: null,
-        runnables: this.runnables
+        runnables
       })
     })
   })
