@@ -38,4 +38,10 @@ describe('Test matcher', () => {
       })
     })
   })
+
+  describe('.prototype.toString()', () => {
+    it('returns its name', () => {
+      expect(test.toString()).toBe('hello')
+    })
+  })
 })

@@ -16,4 +16,10 @@ describe('Required matcher', function () {
       })
     })
   })
+
+  describe('.prototype.toString()', function () {
+    it('returns a String representation with its name', function () {
+      expect(required.toString()).toBe('purespec-hello')
+    })
+  })
 })

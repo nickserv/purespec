@@ -17,10 +17,6 @@ module.exports = class Nested {
       .then(results => new NestedResult(this, results))
   }
 
-  toString () {
-    return this.subject.name
-  }
-
   toTree () {
     const indented = this.runnables.map(runnable => {
       const method = runnable.toTree ? 'toTree' : 'toString'
