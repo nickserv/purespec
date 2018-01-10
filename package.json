@@ -16,7 +16,6 @@
     ],
     "extends": [
       "standard",
-      "plugin:jest/recommended",
       "plugin:lodash-fp/recommended"
     ],
     "rules": {

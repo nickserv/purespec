@@ -4,7 +4,7 @@ const vm = require('vm')
 
 module.exports = function (file) {
   return vm.runInNewContext(
-    fs.readFileSync(file),
+    fs.readFileSync(file, 'utf8'),
     Object.assign({ module, require }, global, dsl),
     { filename: file }
   )
