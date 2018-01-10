@@ -8,4 +8,5 @@ cache:
   directories:
     - node_modules
 before_install: npm install --global npm
+after_install: npm link
 after_success: npm run upload-coverage
