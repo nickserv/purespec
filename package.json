@@ -7,7 +7,7 @@
   "scripts": {
     "eslint": "eslint .",
     "jest": "jest",
-    "purespec": "purespec example.js",
+    "purespec": "purespec example.js pure_test.js",
     "test": "npm-run-all eslint jest purespec",
     "upload-coverage": "coveralls < coverage/lcov.info"
   },
