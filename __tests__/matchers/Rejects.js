@@ -10,9 +10,21 @@ describe('Rejects matcher', () => {
   })
 
   describe('.prototype.run()', () => {
-    describe('given a subject that rejects', () => {
+    describe('given a subject that rejects with an Error', () => {
       it('runs its subject as a Promise, asserting a rejection with the given reason', () => {
         const subject = () => { throw new Error('Missing name') }
+
+        return expect(rejects.run(subject)).resolves.toEqual(new purespec.ComparisonResult(
+          rejects,
+          new Error('Missing name'),
+          new Error('Missing name')
+        ))
+      })
+    })
+
+    describe('given a subject that rejects with a String', () => {
+      it('runs its subject as a Promise, asserting a rejection with the given reason', () => {
+        const subject = () => Promise.reject('Missing name') // eslint-disable-line prefer-promise-reject-errors
 
         return expect(rejects.run(subject)).resolves.toEqual(new purespec.ComparisonResult(
           rejects,

@@ -45,8 +45,22 @@ describe('Nested matcher', () => {
   })
 
   describe('.prototype.toTree()', () => {
-    it('returns a nested String of the Nested and its runnables', () => {
-      expect(nested.toTree()).toBe('hello\n  returns Hello, World!')
+    describe('given nesteds with toTree', () => {
+      test('returns a nested String of the Nested and its runnables', () => {
+        const innerNested = new purespec.matchers.Nested()
+        innerNested.toString = () => 'inner'
+        const runnables = [innerNested]
+        const nested = new purespec.matchers.Nested(...runnables)
+        nested.toString = () => 'outer'
+
+        expect(nested.toTree()).toBe('outer\n  inner')
+      })
+    })
+
+    describe('given nesteds with toString', () => {
+      it('returns a nested String of the Nested and its runnables', () => {
+        expect(nested.toTree()).toBe('hello\n  returns Hello, World!')
+      })
     })
   })
 })
