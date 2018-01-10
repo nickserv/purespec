@@ -8,11 +8,26 @@ describe('Required matcher', function () {
   const required = new purespec.matchers.Required(name, ...runnables)
 
   describe('.prototype.constructor()', function () {
-    it('returns a new Required with the given name and a required subject', function () {
-      expect(required).toMatchObject({
-        name,
-        subject,
-        runnables
+    describe('given a package', () => {
+      it('returns a new Required with the given name and a required subject', function () {
+        expect(required).toMatchObject({
+          name,
+          subject,
+          runnables
+        })
+      })
+    })
+
+    describe('given a relative module path', () => {
+      it('returns a new Required with the given name and a required subject', function () {
+        const name = '../..'
+        const subject = purespec
+
+        expect(new purespec.matchers.Required(name, ...runnables)).toMatchObject({
+          name,
+          subject,
+          runnables
+        })
       })
     })
   })
