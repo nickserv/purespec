@@ -20,7 +20,7 @@ describe('Required matcher', function () {
 
     describe('given a relative module path', () => {
       it('returns a new Required with the given name and a required subject', function () {
-        const name = '../..'
+        const name = '.'
         const subject = purespec
 
         expect(new purespec.matchers.Required(name, ...runnables)).toMatchObject({

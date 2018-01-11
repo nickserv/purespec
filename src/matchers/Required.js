@@ -1,9 +1,9 @@
 const Test = require('./Test')
+const importCwd = require('import-cwd')
 
 module.exports = class Required extends Test {
   constructor (name, ...runnables) {
-    const subject = require(require.resolve(name, { paths: [process.cwd()] }))
-    super(subject, ...runnables)
+    super(importCwd(name), ...runnables)
     this.name = name
   }
 
