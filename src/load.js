@@ -2,10 +2,13 @@ const fs = require('fs')
 const dsl = require('./dsl')
 const vm = require('vm')
 
+const sandbox = Object.assign({ module, require }, global, dsl)
+vm.createContext(sandbox, { name: 'PureSpec' })
+
 module.exports = function (file) {
-  return vm.runInNewContext(
+  return vm.runInContext(
     fs.readFileSync(file, 'utf8'),
-    Object.assign({ module, require }, global, dsl),
+    sandbox,
     { filename: file }
   )
 }
