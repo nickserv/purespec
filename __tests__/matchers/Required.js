@@ -1,8 +1,8 @@
 const purespec = require('../..')
 
 describe('Required matcher', function () {
-  const name = 'purespec-hello'
-  const subject = require('purespec-hello')
+  const name = 'util'
+  const subject = require('util')
   const returns = new purespec.matchers.Returns('Hello, World!')
   const runnables = [returns]
   const required = new purespec.matchers.Required(name, ...runnables)
@@ -34,7 +34,7 @@ describe('Required matcher', function () {
 
   describe('.prototype.toString()', function () {
     it('returns a String representation with its name', function () {
-      expect(required.toString()).toBe('purespec-hello')
+      expect(required.toString()).toBe('util')
     })
   })
 })
