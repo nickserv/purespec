@@ -7,7 +7,7 @@
   "scripts": {
     "eslint": "eslint .",
     "jest": "jest",
-    "purespec": "purespec example.js",
+    "purespec": "purespec example.js pure_test.js",
     "test": "npm-run-all eslint jest purespec",
     "upload-coverage": "coveralls < coverage/lcov.info"
   },
@@ -35,6 +35,7 @@
   "homepage": "https://github.com/nickmccurdy/purespec#readme",
   "dependencies": {
     "chalk": "^2.3.0",
+    "import-cwd": "^2.1.0",
     "lodash": "^4.17.4"
   },
   "devDependencies": {

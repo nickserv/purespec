@@ -44,10 +44,4 @@ describe('Test matcher', () => {
       expect(test.toString()).toBe('hello')
     })
   })
-
-  describe('.prototype.toTree()', () => {
-    it('returns a nested String of the Test and its runnables', () => {
-      expect(test.toTree()).toBe('hello\n  returns Hello, World!')
-    })
-  })
 })

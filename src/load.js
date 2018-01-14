@@ -1,12 +1,14 @@
-const _ = require('lodash/fp')
 const fs = require('fs')
 const dsl = require('./dsl')
 const vm = require('vm')
 
-module.exports = function (file) {
-  return vm.runInNewContext(
+const sandbox = Object.assign({ module }, dsl)
+vm.createContext(sandbox, { name: 'PureSpec' })
+
+module.exports = (file) => {
+  return vm.runInContext(
     fs.readFileSync(file, 'utf8'),
-    _.assign(dsl, { module }),
+    sandbox,
     { filename: file }
   )
 }
