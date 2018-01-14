@@ -5,7 +5,7 @@ const vm = require('vm')
 const sandbox = Object.assign({ module, require }, global, dsl)
 vm.createContext(sandbox, { name: 'PureSpec' })
 
-module.exports = function (file) {
+module.exports = (file) => {
   return vm.runInContext(
     fs.readFileSync(file, 'utf8'),
     sandbox,
