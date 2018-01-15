@@ -11,7 +11,7 @@ describe('CLI', () => {
     process.argv = [
       process.execPath,
       path.resolve(cli),
-      'example.js'
+      'examples/round.js'
     ]
   })
 
@@ -24,7 +24,7 @@ describe('CLI', () => {
 
   describe('given multiple valid modules', () => {
     it('prints their results', () => {
-      process.argv[3] = 'example.js'
+      process.argv[3] = 'examples/round.js'
 
       return require(cli)
         .then(() => expect(console.log).toHaveBeenCalledTimes(2))
@@ -33,7 +33,7 @@ describe('CLI', () => {
 
   describe('given a failing module', () => {
     it('prints an error and exits with a non-zero status', () => {
-      process.argv[3] = 'example_failing.js'
+      process.argv[3] = 'examples/failing.js'
 
       return require(cli).then(() => {
         expect(console.error).toHaveBeenCalled()
