@@ -5,8 +5,8 @@
 
 A declarative test framework for pure JavaScript.
 
-## [Example](./example.js)
-This executable example is meant to showcase what PureSpec tests will look like, and it also doubles as an integration test.
+## [Examples](examples)
+These executable examples are meant to showcase what PureSpec tests will look like, and they also double as integration tests.
 
 ## Status
 __Experimental.__ There is a unit test suite so it should be at least somewhat stable, but it may undergo frequent redesigns and API breakages.

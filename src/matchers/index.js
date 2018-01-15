@@ -1,13 +1,11 @@
-const _ = require('lodash/fp')
-const fs = require('fs')
-const path = require('path')
-
-const matchers = _.flow(
-  _.map(file => path.basename(file, '.js')),
-  _.without(['index'])
-)(fs.readdirSync(__dirname))
-
-module.exports = _.flow(
-  _.map(matcher => require(`./${matcher}`)),
-  _.zipObject(matchers)
-)(matchers)
+module.exports = {
+  Given: require('./Given'),
+  Nested: require('./Nested'),
+  Prop: require('./Prop'),
+  Rejects: require('./Rejects'),
+  Required: require('./Required'),
+  Resolves: require('./Resolves'),
+  Returns: require('./Returns'),
+  Test: require('./Test'),
+  Throws: require('./Throws')
+}

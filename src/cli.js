@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const modules = process.argv.slice(2)
-const purespec = require('..')
+const purespec = require('.')
 
 function runModule (module) {
   return purespec.load(module)

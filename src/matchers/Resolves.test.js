@@ -1,4 +1,4 @@
-const purespec = require('../..')
+const purespec = require('..')
 
 describe('Resolves matcher', () => {
   const resolves = new purespec.matchers.Resolves('Hello, World!')

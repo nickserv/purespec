@@ -7,7 +7,7 @@
   "scripts": {
     "eslint": "eslint .",
     "jest": "jest",
-    "purespec": "purespec example.js pure_test.js",
+    "purespec": "purespec examples/round.js examples/purespec.js",
     "test": "npm-run-all eslint jest purespec",
     "upload-coverage": "coveralls < coverage/lcov.info"
   },
@@ -18,12 +18,16 @@
     ],
     "extends": [
       "standard",
+      "plugin:jest/recommended",
       "plugin:lodash-fp/recommended"
     ],
     "rules": {
       "filenames/match-exported": 2
     }
   },
+  "eslintIgnore": [
+    "coverage"
+  ],
   "jest": {
     "collectCoverage": true,
     "testEnvironment": "node"

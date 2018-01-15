@@ -1,4 +1,4 @@
-const purespec = require('../..')
+const purespec = require('..')
 
 describe('Test matcher', () => {
   const subject = function hello () { return 'Hello, World!' } // eslint-disable-line lodash-fp/prefer-constant

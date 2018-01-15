@@ -1,4 +1,4 @@
-const purespec = require('..')
+const purespec = require('.')
 
 describe('ComparisonResult', () => {
   const returns = new purespec.matchers.Returns(1)
