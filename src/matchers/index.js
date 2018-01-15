@@ -1,5 +1,6 @@
 module.exports = {
   Given: require('./Given'),
+  Matcher: require('./Matcher'),
   Nested: require('./Nested'),
   Prop: require('./Prop'),
   Rejects: require('./Rejects'),
