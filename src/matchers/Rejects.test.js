@@ -1,4 +1,4 @@
-const purespec = require('../..')
+const purespec = require('..')
 
 describe('Rejects matcher', () => {
   const rejects = new purespec.matchers.Rejects('Missing name')

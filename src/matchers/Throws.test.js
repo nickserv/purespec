@@ -1,4 +1,4 @@
-const purespec = require('../..')
+const purespec = require('..')
 
 describe('Throws matcher', () => {
   const throws = new purespec.matchers.Throws('Invalid')

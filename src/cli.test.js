@@ -4,7 +4,7 @@ process.exit = jest.fn()
 const path = require('path')
 
 describe('CLI', () => {
-  const cli = '../src/cli'
+  const cli = './cli'
 
   beforeEach(() => {
     jest.resetAllMocks().resetModules()

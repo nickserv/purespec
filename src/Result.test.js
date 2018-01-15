@@ -1,4 +1,4 @@
-const purespec = require('..')
+const purespec = require('.')
 
 const chalk = require('chalk')
 chalk.enabled = true

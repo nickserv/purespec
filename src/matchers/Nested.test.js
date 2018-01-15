@@ -1,4 +1,4 @@
-const purespec = require('../..')
+const purespec = require('..')
 
 describe('Nested matcher', () => {
   const subject = () => 'Hello, World!'

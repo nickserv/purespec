@@ -1,5 +1,5 @@
 const _ = require('lodash/fp')
-const purespec = require('..')
+const purespec = require('.')
 
 describe('load()', () => {
   it('returns tests loaded from the given PureSpec module', () => {
