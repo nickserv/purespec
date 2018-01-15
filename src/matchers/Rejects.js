@@ -1,9 +1,11 @@
 const ComparisonResult = require('../ComparisonResult')
+const Matcher = require('./Matcher')
 const Result = require('../Result')
 const _ = require('lodash/fp')
 
-module.exports = class Rejects {
+module.exports = class Rejects extends Matcher {
   constructor (reason) {
+    super()
     this.reason = reason
   }
 

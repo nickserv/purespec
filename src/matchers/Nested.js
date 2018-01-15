@@ -1,9 +1,11 @@
 const indent = require('../indent')
+const Matcher = require('./Matcher')
 const NestedResult = require('../NestedResult')
 const os = require('os')
 
-module.exports = class Nested {
+module.exports = class Nested extends Matcher {
   constructor (...runnables) {
+    super()
     this.runnables = runnables
   }
 

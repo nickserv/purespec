@@ -1,7 +1,9 @@
 const ComparisonResult = require('../ComparisonResult')
+const Matcher = require('./Matcher')
 
-module.exports = class Resolves {
+module.exports = class Resolves extends Matcher {
   constructor (result) {
+    super()
     this.result = result
   }
 
