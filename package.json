@@ -24,6 +24,9 @@
       "filenames/match-exported": 2
     }
   },
+  "eslintIgnore": [
+    "coverage"
+  ],
   "jest": {
     "collectCoverage": true,
     "testEnvironment": "node"
