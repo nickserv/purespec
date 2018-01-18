@@ -14,7 +14,7 @@ describe('Throws matcher', () => {
       it('returns a passing ComparisonResult', () => {
         const subject = () => { throw new Error('Invalid') }
 
-        expect(throws.run(subject)).toEqual(new purespec.ComparisonResult(
+        expect(throws.run(subject)).toEqual(new purespec.results.ComparisonResult(
           throws,
           new Error('Invalid'),
           new Error('Invalid')
@@ -24,7 +24,7 @@ describe('Throws matcher', () => {
 
     describe('given a subject that doesn\'t throw an exception', () => {
       it('returns a failing Result', () => {
-        expect(throws.run(() => 1)).toEqual(new purespec.Result(throws, true))
+        expect(throws.run(() => 1)).toEqual(new purespec.results.Result(throws, true))
       })
     })
   })

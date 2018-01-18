@@ -1,4 +1,4 @@
-const ComparisonResult = require('../ComparisonResult')
+const ComparisonResult = require('../results/ComparisonResult')
 
 module.exports = class Returns {
   constructor (result) {

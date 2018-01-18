@@ -18,8 +18,8 @@ describe('Test matcher', () => {
   describe('.prototype.run()', () => {
     describe('given passing tests', () => {
       it('returns a Promise resolving with a Result', () => {
-        return expect(test.run()).resolves.toEqual(new purespec.NestedResult(test, [
-          new purespec.ComparisonResult(
+        return expect(test.run()).resolves.toEqual(new purespec.results.NestedResult(test, [
+          new purespec.results.ComparisonResult(
             returns,
             'Hello, World!',
             'Hello, World!'

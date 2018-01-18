@@ -13,7 +13,7 @@ describe('Returns matcher', () => {
     it('asserts its subject\'s return value to equal its result', () => {
       const subject = () => 'Hello, World!'
 
-      expect(returns.run(subject)).toEqual(new purespec.ComparisonResult(
+      expect(returns.run(subject)).toEqual(new purespec.results.ComparisonResult(
         returns,
         'Hello, World!',
         'Hello, World!'

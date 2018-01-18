@@ -13,7 +13,7 @@ describe('Resolves matcher', () => {
     it('runs its subject as a Promise, asserting its actual result equals its expected result', () => {
       const subject = () => new Promise(setTimeout).then(() => 'Hello, World!')
 
-      return expect(resolves.run(subject)).resolves.toEqual(new purespec.ComparisonResult(
+      return expect(resolves.run(subject)).resolves.toEqual(new purespec.results.ComparisonResult(
         resolves,
         'Hello, World!',
         'Hello, World!'
