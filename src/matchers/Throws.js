@@ -1,6 +1,6 @@
-const ComparisonResult = require('../ComparisonResult')
+const ComparisonResult = require('../results/ComparisonResult')
 const Matcher = require('./Matcher')
-const Result = require('../Result')
+const Result = require('../results/Result')
 
 module.exports = class Throws extends Matcher {
   constructor (exception) {

@@ -1,4 +1,4 @@
-const ComparisonResult = require('../ComparisonResult')
+const ComparisonResult = require('../results/ComparisonResult')
 const Matcher = require('./Matcher')
 
 module.exports = class Resolves extends Matcher {

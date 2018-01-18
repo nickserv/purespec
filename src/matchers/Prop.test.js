@@ -18,8 +18,8 @@ describe('Prop matcher', () => {
 
   describe('.prototype.run()', () => {
     it('returns the result of its property', () => {
-      return expect(test.run(subject)).resolves.toEqual(new purespec.NestedResult(test, [
-        new purespec.ComparisonResult(
+      return expect(test.run(subject)).resolves.toEqual(new purespec.results.NestedResult(test, [
+        new purespec.results.ComparisonResult(
           returns,
           'Hello, World!',
           'Hello, World!'

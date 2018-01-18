@@ -8,7 +8,7 @@ describe('Matcher matcher', () => {
       it('returns a failing result', () => {
         const subject = () => { throw new Error('Missing name') }
 
-        expect(matcher.run(subject)).toEqual(new purespec.Result(matcher, new Error('Missing name')))
+        expect(matcher.run(subject)).toEqual(new purespec.results.Result(matcher, new Error('Missing name')))
       })
     })
 
@@ -16,7 +16,7 @@ describe('Matcher matcher', () => {
       it('returns a passing result', () => {
         const subject = () => 'Hello, World!'
 
-        expect(matcher.run(subject)).toEqual(new purespec.Result(matcher))
+        expect(matcher.run(subject)).toEqual(new purespec.results.Result(matcher))
       })
     })
   })

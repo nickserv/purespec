@@ -1,4 +1,4 @@
-const Result = require('../Result')
+const Result = require('../results/Result')
 
 module.exports = class Matcher {
   run (subject) {

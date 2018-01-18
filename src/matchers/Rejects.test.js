@@ -14,7 +14,7 @@ describe('Rejects matcher', () => {
       it('runs its subject as a Promise, asserting a rejection with the given reason', () => {
         const subject = () => { throw new Error('Missing name') }
 
-        return expect(rejects.run(subject)).resolves.toEqual(new purespec.ComparisonResult(
+        return expect(rejects.run(subject)).resolves.toEqual(new purespec.results.ComparisonResult(
           rejects,
           new Error('Missing name'),
           new Error('Missing name')
@@ -26,7 +26,7 @@ describe('Rejects matcher', () => {
       it('runs its subject as a Promise, asserting a rejection with the given reason', () => {
         const subject = () => Promise.reject('Missing name') // eslint-disable-line prefer-promise-reject-errors
 
-        return expect(rejects.run(subject)).resolves.toEqual(new purespec.ComparisonResult(
+        return expect(rejects.run(subject)).resolves.toEqual(new purespec.results.ComparisonResult(
           rejects,
           new Error('Missing name'),
           new Error('Missing name')
@@ -36,7 +36,7 @@ describe('Rejects matcher', () => {
 
     describe('given a subject that resolves', () => {
       it('runs its subject as a Promise, failing to assert a rejection with the given reason', () => {
-        return expect(rejects.run(() => Promise.resolve())).resolves.toEqual(new purespec.Result(rejects, true))
+        return expect(rejects.run(() => Promise.resolve())).resolves.toEqual(new purespec.results.Result(rejects, true))
       })
     })
   })

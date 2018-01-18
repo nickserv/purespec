@@ -10,9 +10,9 @@ describe('NestedResult', () => {
     describe('given a runnable and passing results', () => {
       it('returns NestedResult with runnable, results, and a falsy error', () => {
         const results = [
-          new purespec.ComparisonResult(returns, 1, 1)
+          new purespec.results.ComparisonResult(returns, 1, 1)
         ]
-        const result = new purespec.NestedResult(returns, results)
+        const result = new purespec.results.NestedResult(returns, results)
 
         expect(result).toMatchObject({
           runnable: returns,
@@ -25,9 +25,9 @@ describe('NestedResult', () => {
     describe('given a runnable and failing results', () => {
       it('returns NestedResult with runnable, results, and a truthy error', () => {
         const results = [
-          new purespec.ComparisonResult(returns, 2, 1)
+          new purespec.results.ComparisonResult(returns, 2, 1)
         ]
-        const result = new purespec.NestedResult(returns, results)
+        const result = new purespec.results.NestedResult(returns, results)
 
         expect(result).toMatchObject({
           runnable: returns,
@@ -41,7 +41,7 @@ describe('NestedResult', () => {
   describe('.prototype.toTree()', () => {
     describe('without results', () => {
       it('returns the result of .prototype.toString()', () => {
-        const result = new purespec.NestedResult(returns)
+        const result = new purespec.results.NestedResult(returns)
 
         expect(result.toTree()).toBe(chalk.green('✓ returns 1'))
       })
@@ -50,7 +50,7 @@ describe('NestedResult', () => {
     describe('with results', () => {
       it('returns its String representation with the indented representations of its children', () => {
         const test = new purespec.matchers.Test(function test () {}, [returns])
-        const result = new purespec.NestedResult(test, [new purespec.ComparisonResult(returns, 1, 1)])
+        const result = new purespec.results.NestedResult(test, [new purespec.results.ComparisonResult(returns, 1, 1)])
 
         expect(result.toTree()).toBe(chalk`{green ✓ test}\n  {green ✓ returns 1}`)
       })

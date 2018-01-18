@@ -1,6 +1,6 @@
 const indent = require('../indent')
 const Matcher = require('./Matcher')
-const NestedResult = require('../NestedResult')
+const NestedResult = require('../results/NestedResult')
 const os = require('os')
 
 module.exports = class Nested extends Matcher {

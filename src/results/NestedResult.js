@@ -1,5 +1,5 @@
 const _ = require('lodash/fp')
-const indent = require('./indent')
+const indent = require('../indent')
 const os = require('os')
 const Result = require('./Result')
 
