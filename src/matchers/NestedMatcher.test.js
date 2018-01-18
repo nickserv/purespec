@@ -1,14 +1,14 @@
 const purespec = require('..')
 
-describe('Nested matcher', () => {
+describe('NestedMatcher matcher', () => {
   const subject = () => 'Hello, World!'
   const returns = new purespec.matchers.Returns('Hello, World!')
   const runnables = [returns]
-  const nested = new purespec.matchers.Nested(...runnables)
+  const nested = new purespec.matchers.NestedMatcher(...runnables)
   nested.toString = () => 'hello'
 
   describe('.prototype.constructor()', () => {
-    it('returns a new Nested with the given data', () => {
+    it('returns a new NestedMatcher with the given data', () => {
       expect(nested).toMatchObject({ runnables })
     })
   })
@@ -32,7 +32,7 @@ describe('Nested matcher', () => {
       it('returns a rejected Promise', done => {
         const runnables = [new purespec.matchers.Returns()]
         const subject = () => { throw new Error('message') }
-        const nested = new purespec.matchers.Nested(...runnables)
+        const nested = new purespec.matchers.NestedMatcher(...runnables)
 
         nested.run(subject)
           .then(() => done(true))
@@ -46,11 +46,11 @@ describe('Nested matcher', () => {
 
   describe('.prototype.toTree()', () => {
     describe('given nesteds with toTree', () => {
-      test('returns a nested String of the Nested and its runnables', () => {
-        const innerNested = new purespec.matchers.Nested()
+      test('returns a nested String of the NestedMatcher and its runnables', () => {
+        const innerNested = new purespec.matchers.NestedMatcher()
         innerNested.toString = () => 'inner'
         const runnables = [innerNested]
-        const nested = new purespec.matchers.Nested(...runnables)
+        const nested = new purespec.matchers.NestedMatcher(...runnables)
         nested.toString = () => 'outer'
 
         expect(nested.toTree()).toBe('outer\n  inner')
@@ -58,7 +58,7 @@ describe('Nested matcher', () => {
     })
 
     describe('given nesteds with toString', () => {
-      it('returns a nested String of the Nested and its runnables', () => {
+      it('returns a nested String of the NestedMatcher and its runnables', () => {
         expect(nested.toTree()).toBe('hello\n  returns Hello, World!')
       })
     })

@@ -1,7 +1,7 @@
 module.exports = {
   Given: require('./Given'),
   Matcher: require('./Matcher'),
-  Nested: require('./Nested'),
+  NestedMatcher: require('./NestedMatcher'),
   Prop: require('./Prop'),
   Rejects: require('./Rejects'),
   Required: require('./Required'),

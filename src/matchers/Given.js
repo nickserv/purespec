@@ -1,7 +1,7 @@
 const _ = require('lodash/fp')
-const Nested = require('./Nested')
+const NestedMatcher = require('./NestedMatcher')
 
-module.exports = class Given extends Nested {
+module.exports = class Given extends NestedMatcher {
   constructor (...args) {
     super(_.last(args))
     this.args = _.initial(args)

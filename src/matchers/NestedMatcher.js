@@ -3,7 +3,7 @@ const Matcher = require('./Matcher')
 const NestedResult = require('../results/NestedResult')
 const os = require('os')
 
-module.exports = class Nested extends Matcher {
+module.exports = class NestedMatcher extends Matcher {
   constructor (...runnables) {
     super()
     this.runnables = runnables
