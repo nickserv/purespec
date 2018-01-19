@@ -10,18 +10,16 @@ const dsl = _.flow(
 
 vm.createContext(dsl, { name: 'PureSpec' })
 
-function load (file) {
-  return vm.runInContext(
-    fs.readFileSync(file, 'utf8'),
-    dsl,
-    { filename: file }
-  )
-}
-
 module.exports = {
   dsl,
   indent: require('./indent'),
-  load,
+  load (file) {
+    return vm.runInContext(
+      fs.readFileSync(file, 'utf8'),
+      dsl,
+      { filename: file }
+    )
+  },
   matchers,
   results: require('./results')
 }
