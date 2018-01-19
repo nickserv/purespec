@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 const modules = process.argv.slice(2)
-const load = require('./load')
+const purespec = require('.')
 
 function runModule (module) {
-  return new Promise(resolve => resolve(load(module).run()))
+  return new Promise(resolve => resolve(purespec.load(module).run()))
     .then(result => {
       console.log(result.toTree())
       if (result.error) process.exitCode = 1

@@ -1,6 +1,6 @@
 /* global test, returns */
 
-module.exports = test(
+test(
   function failing () { throw new Error() },
   returns()
 )

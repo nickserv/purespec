@@ -1,6 +1,6 @@
 /* global required, prop, given, returns */
 
-module.exports = required(
+required(
   '.',
   prop('ComparisonResult'),
   prop('NestedResult'),
