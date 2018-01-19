@@ -1,19 +1,17 @@
+const Result = require('../results/Result')
 const ComparisonResult = require('../results/ComparisonResult')
-const Matcher = require('./Matcher')
 
-module.exports = class Returns extends Matcher {
+module.exports = class Returns {
   constructor (result) {
-    super()
     this.result = result
   }
 
   run (subject) {
-    const result = super.run(subject)
-
-    if (result.error) {
-      return result
-    } else {
+    try {
+      subject()
       return new ComparisonResult(this, subject(), this.result)
+    } catch (error) {
+      return new Result(this, error)
     }
   }
 
