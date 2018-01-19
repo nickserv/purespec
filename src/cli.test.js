@@ -17,8 +17,7 @@ describe('CLI', () => {
 
   describe('given a valid module', () => {
     it('prints its results', () => {
-      return require(cli)
-        .then(() => expect(console.log).toHaveBeenCalled())
+      return require(cli).then(() => expect(console.log).toHaveBeenCalled())
     })
   })
 
@@ -26,27 +25,26 @@ describe('CLI', () => {
     it('prints their results', () => {
       process.argv[3] = 'examples/round.js'
 
-      return require(cli)
-        .then(() => expect(console.log).toHaveBeenCalledTimes(2))
+      return require(cli).then(() => expect(console.log).toHaveBeenCalledTimes(2))
     })
   })
 
   describe('given a failing module', () => {
-    it('prints an error and exits with a non-zero status', () => {
+    it('prints its results', () => {
       process.argv[3] = 'examples/failing.js'
+
+      return require(cli).then(() => expect(console.log).toHaveBeenCalledTimes(2))
+    })
+  })
+
+  describe('given an invalid module', () => {
+    it('prints an error and exits with a non-zero status', () => {
+      process.argv[2] = ''
 
       return require(cli).then(() => {
         expect(console.error).toHaveBeenCalled()
         expect(process.exit).toHaveBeenCalled()
       })
-    })
-  })
-
-  describe('given an invalid module', () => {
-    it('throws an error', () => {
-      process.argv[2] = ''
-
-      expect(() => require(cli)).toThrow('ENOENT')
     })
   })
 })

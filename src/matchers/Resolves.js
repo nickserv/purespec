@@ -1,5 +1,6 @@
 const ComparisonResult = require('../results/ComparisonResult')
 const Matcher = require('./Matcher')
+const Result = require('../results/Result')
 
 module.exports = class Resolves extends Matcher {
   constructor (result) {
@@ -8,9 +9,13 @@ module.exports = class Resolves extends Matcher {
   }
 
   run (subject) {
-    return subject().then(actual => {
-      return new ComparisonResult(this, actual, this.result)
-    })
+    try {
+      return subject()
+        .then(actual => new ComparisonResult(this, actual, this.result))
+        .catch(reason => new Result(this, reason))
+    } catch (error) {
+      return new Result(this, error)
+    }
   }
 
   toString () {

@@ -10,14 +10,35 @@ describe('Resolves matcher', () => {
   })
 
   describe('.prototype.run()', () => {
-    it('runs its subject as a Promise, asserting its actual result equals its expected result', () => {
-      const subject = () => new Promise(setTimeout).then(() => 'Hello, World!')
+    describe('given subject that throws', () => {
+      it('returns a failing result', () => {
+        const subject = () => { throw new Error('Missing name') }
 
-      return expect(resolves.run(subject)).resolves.toEqual(new purespec.results.ComparisonResult(
-        resolves,
-        'Hello, World!',
-        'Hello, World!'
-      ))
+        expect(resolves.run(subject)).toEqual(new purespec.results.Result(resolves, new Error('Missing name')))
+      })
+    })
+
+    describe('given subject that rejects', () => {
+      it('returns a failing test', () => {
+        const subject = () => Promise.reject(new Error('Missing name'))
+
+        return expect(resolves.run(subject)).resolves.toEqual(new purespec.results.Result(
+          resolves,
+          new Error('Missing name')
+        ))
+      })
+    })
+
+    describe('given subject that returns', () => {
+      it('runs its subject as a Promise, asserting its actual result equals its expected result', () => {
+        const subject = () => new Promise(setTimeout).then(() => 'Hello, World!')
+
+        return expect(resolves.run(subject)).resolves.toEqual(new purespec.results.ComparisonResult(
+          resolves,
+          'Hello, World!',
+          'Hello, World!'
+        ))
+      })
     })
   })
 

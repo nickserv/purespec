@@ -12,7 +12,7 @@ describe('Rejects matcher', () => {
   describe('.prototype.run()', () => {
     describe('given a subject that rejects with an Error', () => {
       it('runs its subject as a Promise, asserting a rejection with the given reason', () => {
-        const subject = () => { throw new Error('Missing name') }
+        const subject = () => Promise.reject(new Error('Missing name'))
 
         return expect(rejects.run(subject)).resolves.toEqual(new purespec.results.ComparisonResult(
           rejects,
@@ -31,6 +31,14 @@ describe('Rejects matcher', () => {
           new Error('Missing name'),
           new Error('Missing name')
         ))
+      })
+    })
+
+    describe('given subject that throws', () => {
+      it('returns a failing result', () => {
+        const subject = () => { throw new Error('Missing name') }
+
+        expect(rejects.run(subject)).toEqual(new purespec.results.Result(rejects, new Error('Missing name')))
       })
     })
 

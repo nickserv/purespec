@@ -8,7 +8,13 @@ module.exports = class Returns extends Matcher {
   }
 
   run (subject) {
-    return new ComparisonResult(this, subject(), this.result)
+    const result = super.run(subject)
+
+    if (result.error) {
+      return result
+    } else {
+      return new ComparisonResult(this, subject(), this.result)
+    }
   }
 
   toString () {

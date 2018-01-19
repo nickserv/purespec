@@ -4,7 +4,7 @@ describe('Matcher matcher', () => {
   const matcher = new purespec.matchers.Matcher()
 
   describe('.prototype.run()', () => {
-    describe('given a subject that throws', () => {
+    describe('given subject that throws', () => {
       it('returns a failing result', () => {
         const subject = () => { throw new Error('Missing name') }
 
@@ -12,7 +12,7 @@ describe('Matcher matcher', () => {
       })
     })
 
-    describe('given a subject that returns', () => {
+    describe('given subject that returns', () => {
       it('returns a passing result', () => {
         const subject = () => 'Hello, World!'
 

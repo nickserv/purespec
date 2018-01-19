@@ -10,12 +10,16 @@ module.exports = class Rejects extends Matcher {
   }
 
   run (subject) {
-    return new Promise(resolve => resolve(subject()))
-      .then(actual => new Result(this, true))
-      .catch(reason => {
-        const error = _.isError(reason) ? reason : new Error(reason)
-        return new ComparisonResult(this, error, new Error(this.reason))
-      })
+    try {
+      return subject()
+        .then(actual => new Result(this, true))
+        .catch(reason => {
+          const error = _.isError(reason) ? reason : new Error(reason)
+          return new ComparisonResult(this, error, new Error(this.reason))
+        })
+    } catch (error) {
+      return new Result(this, error)
+    }
   }
 
   toString () {

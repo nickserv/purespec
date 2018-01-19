@@ -14,32 +14,37 @@ describe('NestedMatcher matcher', () => {
   })
 
   describe('.prototype.run()', () => {
+    describe('given subject that throws', () => {
+      it('returns a failing result', () => {
+        const subject = () => { throw new Error('Missing name') }
+        const nested = new purespec.matchers.NestedMatcher(...runnables)
+
+        return expect(nested.run(subject)).resolves.toEqual(new purespec.results.NestedResult(nested, [
+          new purespec.results.Result(returns, new Error('Missing name'))
+        ]))
+      })
+    })
+
     describe('given passing nesteds', () => {
       it('returns a Promise resolving with a Result', () => {
-        return nested.run(subject).then(result => {
-          expect(result).toEqual(new purespec.results.NestedResult(nested, [
-            new purespec.results.ComparisonResult(
-              returns,
-              'Hello, World!',
-              'Hello, World!'
-            )
-          ]))
-        })
+        return expect(nested.run(subject)).resolves.toEqual(new purespec.results.NestedResult(nested, [
+          new purespec.results.ComparisonResult(
+            returns,
+            'Hello, World!',
+            'Hello, World!'
+          )
+        ]))
       })
     })
 
     describe('given failing nesteds', () => {
-      it('returns a rejected Promise', done => {
-        const runnables = [new purespec.matchers.Returns()]
+      it('returns a Promise resolving with a failing Result', () => {
         const subject = () => { throw new Error('message') }
         const nested = new purespec.matchers.NestedMatcher(...runnables)
 
-        nested.run(subject)
-          .then(() => done(true))
-          .catch(reason => {
-            expect(reason).toEqual(new Error('message'))
-            done()
-          })
+        return expect(nested.run(subject)).resolves.toEqual(new purespec.results.NestedResult(nested, [
+          new purespec.results.Result(returns, new Error('message'))
+        ]))
       })
     })
   })

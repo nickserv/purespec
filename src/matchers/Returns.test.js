@@ -10,14 +10,24 @@ describe('Returns matcher', () => {
   })
 
   describe('.prototype.run()', () => {
-    it('asserts its subject\'s return value to equal its result', () => {
-      const subject = () => 'Hello, World!'
+    describe('given subject that throws', () => {
+      it('returns a failing result', () => {
+        const subject = () => { throw new Error('Missing name') }
 
-      expect(returns.run(subject)).toEqual(new purespec.results.ComparisonResult(
-        returns,
-        'Hello, World!',
-        'Hello, World!'
-      ))
+        expect(returns.run(subject)).toEqual(new purespec.results.Result(returns, new Error('Missing name')))
+      })
+    })
+
+    describe('given subject that returns', () => {
+      it('asserts its subject\'s return value to equal its result', () => {
+        const subject = () => 'Hello, World!'
+
+        expect(returns.run(subject)).toEqual(new purespec.results.ComparisonResult(
+          returns,
+          'Hello, World!',
+          'Hello, World!'
+        ))
+      })
     })
   })
 

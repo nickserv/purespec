@@ -29,12 +29,13 @@ describe('Test matcher', () => {
     })
 
     describe('given failing tests', () => {
-      it('returns a rejected Promise', () => {
-        const runnables = [new purespec.matchers.Returns()]
+      it('returns a failing result', () => {
         const subject = () => { throw new Error('message') }
         const test = new purespec.matchers.Test(subject, ...runnables)
 
-        return expect(test.run()).rejects.toThrow('message')
+        return expect(test.run()).resolves.toEqual(new purespec.results.NestedResult(test, [
+          new purespec.results.Result(returns, new Error('message'))
+        ]))
       })
     })
   })

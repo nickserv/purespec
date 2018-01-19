@@ -10,9 +10,7 @@ module.exports = class NestedMatcher extends Matcher {
   }
 
   run (subject) {
-    const promises = this.runnables.map(runnable =>
-      new Promise(resolve => resolve(runnable.run(subject)))
-    )
+    const promises = this.runnables.map(runnable => runnable.run(subject))
 
     return Promise
       .all(promises)
