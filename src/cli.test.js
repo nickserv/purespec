@@ -16,7 +16,10 @@ describe('CLI', () => {
 
   describe('given a valid module', () => {
     it('prints its results', () => {
-      return require(cli).then(() => expect(console.log).toHaveBeenCalled())
+      return require(cli).then(() => {
+        expect(console.log).toHaveBeenCalled()
+        expect(process.exitCode).toBeUndefined()
+      })
     })
   })
 
@@ -24,7 +27,10 @@ describe('CLI', () => {
     it('prints their results', () => {
       process.argv[3] = 'examples/round.js'
 
-      return require(cli).then(() => expect(console.log).toHaveBeenCalledTimes(2))
+      return require(cli).then(() => {
+        expect(console.log).toHaveBeenCalledTimes(2)
+        expect(process.exitCode).toBeUndefined()
+      })
     })
   })
 
@@ -32,7 +38,10 @@ describe('CLI', () => {
     it('prints its results', () => {
       process.argv[3] = 'examples/failing.js'
 
-      return require(cli).then(() => expect(console.log).toHaveBeenCalledTimes(2))
+      return require(cli).then(() => {
+        expect(console.log).toHaveBeenCalledTimes(2)
+        expect(process.exitCode).toBe(1)
+      })
     })
   })
 

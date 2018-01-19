@@ -4,7 +4,10 @@ const purespec = require('.')
 
 function runModule (module) {
   return new Promise(resolve => resolve(purespec.load(module).run()))
-    .then(result => console.log(result.toTree()))
+    .then(result => {
+      console.log(result.toTree())
+      if (result.error) process.exitCode = 1
+    })
 }
 
 module.exports = Promise
