@@ -1,6 +1,5 @@
 console.error = jest.fn()
 console.log = jest.fn()
-process.exit = jest.fn()
 const path = require('path')
 
 describe('CLI', () => {
@@ -43,7 +42,7 @@ describe('CLI', () => {
 
       return require(cli).then(() => {
         expect(console.error).toHaveBeenCalled()
-        expect(process.exit).toHaveBeenCalled()
+        expect(process.exitCode).toBe(1)
       })
     })
   })
