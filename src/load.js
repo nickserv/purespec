@@ -1,8 +1,8 @@
 const fs = require('fs')
-const dsl = require('./dsl')
+const purespec = require('.')
 const vm = require('vm')
 
-const sandbox = Object.assign({ module }, dsl)
+const sandbox = Object.assign({ module }, purespec.dsl)
 vm.createContext(sandbox, { name: 'PureSpec' })
 
 module.exports = (file) => {
