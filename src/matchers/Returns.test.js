@@ -1,7 +1,9 @@
-const purespec = require('..')
+const ComparisonResult = require('../results/ComparisonResult')
+const Result = require('../results/Result')
+const Returns = require('./Returns')
 
 describe('Returns matcher', () => {
-  const returns = new purespec.matchers.Returns('Hello, World!')
+  const returns = new Returns('Hello, World!')
 
   describe('.prototype.constructor()', () => {
     it('returns a new Returns with the given result', () => {
@@ -14,7 +16,7 @@ describe('Returns matcher', () => {
       it('returns a failing result', () => {
         const subject = () => { throw new Error('Missing name') }
 
-        expect(returns.run(subject)).toEqual(new purespec.results.Result(returns, new Error('Missing name')))
+        expect(returns.run(subject)).toEqual(new Result(returns, new Error('Missing name')))
       })
     })
 
@@ -22,7 +24,7 @@ describe('Returns matcher', () => {
       it('asserts its subject\'s return value to equal its result', () => {
         const subject = () => 'Hello, World!'
 
-        expect(returns.run(subject)).toEqual(new purespec.results.ComparisonResult(
+        expect(returns.run(subject)).toEqual(new ComparisonResult(
           returns,
           'Hello, World!',
           'Hello, World!'

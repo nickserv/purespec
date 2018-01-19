@@ -1,7 +1,9 @@
-const purespec = require('..')
+const ComparisonResult = require('../results/ComparisonResult')
+const Result = require('../results/Result')
+const Resolves = require('./Resolves')
 
 describe('Resolves matcher', () => {
-  const resolves = new purespec.matchers.Resolves('Hello, World!')
+  const resolves = new Resolves('Hello, World!')
 
   describe('.prototype.constructor()', () => {
     it('returns a new Resolves with the given result', () => {
@@ -14,7 +16,7 @@ describe('Resolves matcher', () => {
       it('returns a failing result', () => {
         const subject = () => { throw new Error('Missing name') }
 
-        expect(resolves.run(subject)).toEqual(new purespec.results.Result(resolves, new Error('Missing name')))
+        expect(resolves.run(subject)).toEqual(new Result(resolves, new Error('Missing name')))
       })
     })
 
@@ -22,7 +24,7 @@ describe('Resolves matcher', () => {
       it('returns a failing test', () => {
         const subject = () => Promise.reject(new Error('Missing name'))
 
-        return expect(resolves.run(subject)).resolves.toEqual(new purespec.results.Result(
+        return expect(resolves.run(subject)).resolves.toEqual(new Result(
           resolves,
           new Error('Missing name')
         ))
@@ -33,7 +35,7 @@ describe('Resolves matcher', () => {
       it('runs its subject as a Promise, asserting its actual result equals its expected result', () => {
         const subject = () => new Promise(setTimeout).then(() => 'Hello, World!')
 
-        return expect(resolves.run(subject)).resolves.toEqual(new purespec.results.ComparisonResult(
+        return expect(resolves.run(subject)).resolves.toEqual(new ComparisonResult(
           resolves,
           'Hello, World!',
           'Hello, World!'

@@ -1,16 +1,16 @@
-const purespec = require('..')
 const _ = require('lodash/fp')
+const dsl = require('./dsl')
+const matchers = require('./matchers')
 
 describe('dsl', () => {
   it('is a non-empty Object', () => {
-    expect(purespec.dsl).toBeInstanceOf(Object)
-    expect(purespec.dsl).not.toEqual({})
+    expect(dsl).toBeInstanceOf(Object)
+    expect(dsl).not.toEqual({})
   })
 
   it('includes matcher shortcuts', () => {
-    const matchers = _.values(purespec.matchers)
-    _.forEach(purespec.dsl)(dslMatcher => {
-      expect(matchers).toContain(dslMatcher().constructor)
+    _.forEach(dsl)(dslMatcher => {
+      expect(_.values(matchers)).toContain(dslMatcher().constructor)
     })
   })
 })

@@ -1,11 +1,13 @@
-const purespec = require('..')
+const Required = require('./Required')
+const Returns = require('./Returns')
+const path = require('path')
 
 describe('Required matcher', () => {
   const name = 'util'
   const subject = require('util')
-  const returns = new purespec.matchers.Returns('Hello, World!')
+  const returns = new Returns('Hello, World!')
   const runnables = [returns]
-  const required = new purespec.matchers.Required(name, ...runnables)
+  const required = new Required(name, ...runnables)
 
   describe('.prototype.constructor()', () => {
     describe('given a package', () => {
@@ -20,10 +22,10 @@ describe('Required matcher', () => {
 
     describe('given a relative module path', () => {
       it('returns a new Required with the given name and a required subject', () => {
-        const name = '.'
-        const subject = purespec
+        const name = path.resolve(__dirname, './Required')
+        const subject = Required
 
-        expect(new purespec.matchers.Required(name, ...runnables)).toMatchObject({
+        expect(new Required(name, ...runnables)).toMatchObject({
           name,
           subject,
           runnables

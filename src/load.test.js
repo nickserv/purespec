@@ -1,15 +1,18 @@
 const _ = require('lodash/fp')
-const purespec = require('.')
+const Given = require('./matchers/Given')
+const Returns = require('./matchers/Returns')
+const Test = require('./matchers/Test')
+const load = require('./load')
 
 describe('load()', () => {
   it('returns tests loaded from the given PureSpec module', () => {
-    const actual = purespec.load('examples/round.js')
+    const actual = load('examples/round.js')
 
-    expect(actual).toBeInstanceOf(purespec.matchers.Test)
+    expect(actual).toBeInstanceOf(Test)
     expect(_.isFunction(actual.subject)).toBeTruthy()
     expect(actual.runnables).toEqual([
-      new purespec.matchers.Given(1, new purespec.matchers.Returns(1)),
-      new purespec.matchers.Given(1.5, new purespec.matchers.Returns(2))
+      new Given(1, new Returns(1)),
+      new Given(1.5, new Returns(2))
     ])
   })
 })

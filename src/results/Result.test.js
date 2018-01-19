@@ -1,15 +1,16 @@
-const purespec = require('..')
+const Result = require('./Result')
+const Returns = require('../matchers/Returns')
 
 const chalk = require('chalk')
 chalk.enabled = true
 
 describe('Result', () => {
-  const returns = new purespec.matchers.Returns(1)
+  const returns = new Returns(1)
 
   describe('.prototype.constructor()', () => {
     describe('given a runnable', () => {
       it('returns Result with runnable and no error', () => {
-        const result = new purespec.results.Result(returns)
+        const result = new Result(returns)
 
         expect(result).toMatchObject({
           runnable: returns,
@@ -21,7 +22,7 @@ describe('Result', () => {
     describe('given a runnable and an error', () => {
       it('returns Result with runnable and error', () => {
         const error = new Error()
-        const result = new purespec.results.Result(returns, error)
+        const result = new Result(returns, error)
 
         expect(result).toMatchObject({
           runnable: returns,
@@ -34,7 +35,7 @@ describe('Result', () => {
   describe('.prototype.toString()', () => {
     describe('when there is an error', () => {
       it('returns a red String with a cross, its runnable, a newline, and its error', () => {
-        const result = new purespec.results.Result(returns, true)
+        const result = new Result(returns, true)
 
         expect(result.toString()).toBe(chalk`{red ✗ returns 1}\ntrue`)
       })
@@ -42,7 +43,7 @@ describe('Result', () => {
 
     describe('when there is no error', () => {
       it('returns a green String with a check and its runnable', () => {
-        const result = new purespec.results.Result(returns)
+        const result = new Result(returns)
 
         expect(result.toString()).toBe(chalk.green('✓ returns 1'))
       })
@@ -51,7 +52,7 @@ describe('Result', () => {
 
   describe('.prototype.toTree()', () => {
     it('returns the result of .prototype.toString()', () => {
-      const result = new purespec.results.Result(returns)
+      const result = new Result(returns)
 
       expect(result.toTree()).toBe(chalk.green('✓ returns 1'))
     })

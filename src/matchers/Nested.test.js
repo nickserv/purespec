@@ -1,10 +1,14 @@
-const purespec = require('..')
+const ComparisonResult = require('../results/ComparisonResult')
+const Nested = require('./Nested')
+const NestedResult = require('../results/NestedResult')
+const Result = require('../results/Result')
+const Returns = require('./Returns')
 
 describe('Nested matcher', () => {
   const subject = () => 'Hello, World!'
-  const returns = new purespec.matchers.Returns('Hello, World!')
+  const returns = new Returns('Hello, World!')
   const runnables = [returns]
-  const nested = new purespec.matchers.Nested(...runnables)
+  const nested = new Nested(...runnables)
   nested.toString = () => 'hello'
 
   describe('.prototype.constructor()', () => {
@@ -17,18 +21,18 @@ describe('Nested matcher', () => {
     describe('given subject that throws', () => {
       it('returns a failing result', () => {
         const subject = () => { throw new Error('Missing name') }
-        const nested = new purespec.matchers.Nested(...runnables)
+        const nested = new Nested(...runnables)
 
-        return expect(nested.run(subject)).resolves.toEqual(new purespec.results.NestedResult(nested, [
-          new purespec.results.Result(returns, new Error('Missing name'))
+        return expect(nested.run(subject)).resolves.toEqual(new NestedResult(nested, [
+          new Result(returns, new Error('Missing name'))
         ]))
       })
     })
 
     describe('given passing nesteds', () => {
       it('returns a Promise resolving with a Result', () => {
-        return expect(nested.run(subject)).resolves.toEqual(new purespec.results.NestedResult(nested, [
-          new purespec.results.ComparisonResult(
+        return expect(nested.run(subject)).resolves.toEqual(new NestedResult(nested, [
+          new ComparisonResult(
             returns,
             'Hello, World!',
             'Hello, World!'
@@ -40,10 +44,10 @@ describe('Nested matcher', () => {
     describe('given failing nesteds', () => {
       it('returns a Promise resolving with a failing Result', () => {
         const subject = () => { throw new Error('message') }
-        const nested = new purespec.matchers.Nested(...runnables)
+        const nested = new Nested(...runnables)
 
-        return expect(nested.run(subject)).resolves.toEqual(new purespec.results.NestedResult(nested, [
-          new purespec.results.Result(returns, new Error('message'))
+        return expect(nested.run(subject)).resolves.toEqual(new NestedResult(nested, [
+          new Result(returns, new Error('message'))
         ]))
       })
     })
@@ -52,10 +56,10 @@ describe('Nested matcher', () => {
   describe('.prototype.toTree()', () => {
     describe('given nesteds with toTree', () => {
       test('returns a nested String of the Nested and its runnables', () => {
-        const innerNested = new purespec.matchers.Nested()
+        const innerNested = new Nested()
         innerNested.toString = () => 'inner'
         const runnables = [innerNested]
-        const nested = new purespec.matchers.Nested(...runnables)
+        const nested = new Nested(...runnables)
         nested.toString = () => 'outer'
 
         expect(nested.toTree()).toBe('outer\n  inner')

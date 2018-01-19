@@ -1,11 +1,14 @@
-const purespec = require('..')
+const ComparisonResult = require('../results/ComparisonResult')
+const NestedResult = require('../results/NestedResult')
+const Prop = require('./Prop')
+const Returns = require('./Returns')
 
 describe('Prop matcher', () => {
   const name = 'hello'
   const subject = { hello () { return 'Hello, World!' } } // eslint-disable-line lodash-fp/prefer-constant
-  const returns = new purespec.matchers.Returns('Hello, World!')
+  const returns = new Returns('Hello, World!')
   const runnables = [returns]
-  const test = new purespec.matchers.Prop(name, ...runnables)
+  const test = new Prop(name, ...runnables)
 
   describe('.prototype.constructor()', () => {
     it('returns a new Prop with the given property', () => {
@@ -18,8 +21,8 @@ describe('Prop matcher', () => {
 
   describe('.prototype.run()', () => {
     it('returns the result of its property', () => {
-      return expect(test.run(subject)).resolves.toEqual(new purespec.results.NestedResult(test, [
-        new purespec.results.ComparisonResult(
+      return expect(test.run(subject)).resolves.toEqual(new NestedResult(test, [
+        new ComparisonResult(
           returns,
           'Hello, World!',
           'Hello, World!'

@@ -1,7 +1,9 @@
-const purespec = require('..')
+const ComparisonResult = require('../results/ComparisonResult')
+const Result = require('../results/Result')
+const Throws = require('./Throws')
 
 describe('Throws matcher', () => {
-  const throws = new purespec.matchers.Throws('Invalid')
+  const throws = new Throws('Invalid')
 
   describe('.prototype.constructor()', () => {
     it('returns a new Throws with the given exception', () => {
@@ -14,7 +16,7 @@ describe('Throws matcher', () => {
       it('returns a passing ComparisonResult', () => {
         const subject = () => { throw new Error('Invalid') }
 
-        expect(throws.run(subject)).toEqual(new purespec.results.ComparisonResult(
+        expect(throws.run(subject)).toEqual(new ComparisonResult(
           throws,
           new Error('Invalid'),
           new Error('Invalid')
@@ -24,7 +26,7 @@ describe('Throws matcher', () => {
 
     describe('given a subject that doesn\'t throw an exception', () => {
       it('returns a failing Result', () => {
-        expect(throws.run(() => 1)).toEqual(new purespec.results.Result(throws, true))
+        expect(throws.run(() => 1)).toEqual(new Result(throws, true))
       })
     })
   })
