@@ -13,9 +13,10 @@ describe('PureSpec', () => {
     })
 
     it('includes matcher shortcuts', () => {
-      _.forEach(dslMatcher => {
-        expect(_.values(matchers)).toContain(dslMatcher().constructor)
-      }, purespec.dsl)
+      expect(_.flow(
+        _.mapKeys(_.capitalize),
+        _.mapValues(dslMatcher => dslMatcher().constructor)
+      )(purespec.dsl)).toEqual(matchers)
     })
   })
 
