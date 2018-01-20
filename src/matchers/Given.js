@@ -8,7 +8,7 @@ module.exports = class Given extends Nested {
   }
 
   run (subject) {
-    return super.run(_.partial(subject)(this.args))
+    return super.run(_.partial(subject, this.args))
   }
 
   toString () {
