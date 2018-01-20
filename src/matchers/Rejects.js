@@ -1,6 +1,5 @@
 const ComparisonResult = require('../results/ComparisonResult')
 const Result = require('../results/Result')
-const _ = require('lodash/fp')
 
 module.exports = class Rejects {
   constructor (reason) {
@@ -12,7 +11,7 @@ module.exports = class Rejects {
       return subject()
         .then(actual => new Result(this, true))
         .catch(reason => {
-          const error = _.isError(reason) ? reason : new Error(reason)
+          const error = reason instanceof Error ? reason : new Error(reason)
           return new ComparisonResult(this, error, new Error(this.reason))
         })
     } catch (error) {

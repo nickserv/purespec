@@ -5,7 +5,7 @@ const Returns = require('./Returns')
 const Test = require('./Test')
 
 describe('Test matcher', () => {
-  const subject = function hello () { return 'Hello, World!' } // eslint-disable-line lodash-fp/prefer-constant
+  const subject = function hello () { return 'Hello, World!' }
   const returns = new Returns('Hello, World!')
   const runnables = [returns]
   const test = new Test(subject, ...runnables)

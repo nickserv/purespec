@@ -1,14 +1,13 @@
-const _ = require('lodash/fp')
 const Nested = require('./Nested')
 
 module.exports = class Given extends Nested {
   constructor (...args) {
-    super(_.last(args))
-    this.args = _.initial(args)
+    super(args[args.length - 1])
+    this.args = args.slice(0, -1)
   }
 
   run (subject) {
-    return super.run(_.partial(subject, this.args))
+    return super.run(subject.bind(null, ...this.args))
   }
 
   toString () {

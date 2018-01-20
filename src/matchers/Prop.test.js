@@ -5,7 +5,7 @@ const Returns = require('./Returns')
 
 describe('Prop matcher', () => {
   const name = 'hello'
-  const subject = { hello () { return 'Hello, World!' } } // eslint-disable-line lodash-fp/prefer-constant
+  const subject = { hello () { return 'Hello, World!' } }
   const returns = new Returns('Hello, World!')
   const runnables = [returns]
   const test = new Prop(name, ...runnables)
