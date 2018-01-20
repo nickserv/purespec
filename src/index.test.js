@@ -13,9 +13,9 @@ describe('PureSpec', () => {
     })
 
     it('includes matcher shortcuts', () => {
-      _.forEach(purespec.dsl)(dslMatcher => {
+      _.forEach(dslMatcher => {
         expect(_.values(matchers)).toContain(dslMatcher().constructor)
-      })
+      }, purespec.dsl)
     })
   })
 

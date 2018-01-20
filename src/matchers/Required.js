@@ -3,7 +3,7 @@ const importCwd = require('import-cwd')
 
 module.exports = class Required extends Test {
   constructor (name, ...runnables) {
-    super(importCwd(name), ...runnables)
+    super(name && importCwd(name), ...runnables)
     this.name = name
   }
 
