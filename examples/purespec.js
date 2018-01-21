@@ -1,5 +1,3 @@
-/* global required, prop, given, returns */
-
 required(
   '.',
   prop('ComparisonResult'),

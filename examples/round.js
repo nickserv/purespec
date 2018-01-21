@@ -1,5 +1,3 @@
-/* global test, given, returns */
-
 test(
   Math.round,
   given(1, returns(1)),
