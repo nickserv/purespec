@@ -11,12 +11,8 @@ const dsl =
 module.exports = {
   dsl,
   indent: require('./indent'),
-  load (file) {
-    return vm.runInContext(
-      fs.readFileSync(file, 'utf8'),
-      dsl,
-      { filename: file }
-    )
+  load (filename) {
+    return vm.runInContext(fs.readFileSync(filename, 'utf8'), dsl, { filename })
   },
   matchers,
   results: require('./results')

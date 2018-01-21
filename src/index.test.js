@@ -25,7 +25,7 @@ describe('PureSpec', () => {
       const actual = purespec.load('examples/round.js')
 
       expect(actual).toBeInstanceOf(Test)
-      expect(Math.round).toBeInstanceOf(Function)
+      expect(typeof actual.subject).toBe('function')
       expect(actual.runnables).toEqual([
         new Given(1, new Returns(1)),
         new Given(1.5, new Returns(2))
