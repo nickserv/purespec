@@ -1,5 +1,5 @@
-const ComparisonResult = require('../ComparisonResult')
-const Result = require('../Result')
+const ComparisonResult = require('../results/ComparisonResult')
+const Result = require('../results/Result')
 
 module.exports = class Throws {
   constructor (exception) {

@@ -1,11 +1,10 @@
-const _ = require('lodash/fp')
-const indent = require('./indent')
+const indent = require('../indent')
 const os = require('os')
 const Result = require('./Result')
 
 module.exports = class NestedResult extends Result {
   constructor (runnable, results = []) {
-    super(runnable, _.some('error')(results) || undefined)
+    super(runnable, results.some(result => result.error) || undefined)
     this.results = results
   }
 

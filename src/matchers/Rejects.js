@@ -1,6 +1,5 @@
-const ComparisonResult = require('../ComparisonResult')
-const Result = require('../Result')
-const _ = require('lodash/fp')
+const ComparisonResult = require('../results/ComparisonResult')
+const Result = require('../results/Result')
 
 module.exports = class Rejects {
   constructor (reason) {
@@ -8,12 +7,16 @@ module.exports = class Rejects {
   }
 
   run (subject) {
-    return new Promise(resolve => resolve(subject()))
-      .then(actual => new Result(this, true))
-      .catch(reason => {
-        const error = _.isError(reason) ? reason : new Error(reason)
-        return new ComparisonResult(this, error, new Error(this.reason))
-      })
+    try {
+      return subject()
+        .then(() => new Result(this, true))
+        .catch(reason => {
+          const error = reason instanceof Error ? reason : new Error(reason)
+          return new ComparisonResult(this, error, new Error(this.reason))
+        })
+    } catch (error) {
+      return new Result(this, error)
+    }
   }
 
   toString () {

@@ -1,25 +1,16 @@
-const _ = require('lodash/fp')
-const indent = require('../indent')
-const NestedResult = require('../NestedResult')
-const os = require('os')
+const Nested = require('./Nested')
 
-module.exports = class Given {
+module.exports = class Given extends Nested {
   constructor (...args) {
-    this.args = _.initial(args)
-    this.matcher = _.last(args)
+    super(args[args.length - 1])
+    this.args = args.slice(0, -1)
   }
 
   run (subject) {
-    return Promise
-      .resolve(this.matcher.run(_.partial(subject)(this.args)))
-      .then(result => new NestedResult(this, [result]))
+    return super.run(subject.bind(null, ...this.args))
   }
 
   toString () {
     return `given ${this.args}`
-  }
-
-  toTree () {
-    return this.toString() + os.EOL + indent(this.matcher.toString())
   }
 }
