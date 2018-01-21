@@ -9,7 +9,7 @@ module.exports = class Rejects {
   run (subject) {
     try {
       return subject()
-        .then(actual => new Result(this, true))
+        .then(() => new Result(this, true))
         .catch(reason => {
           const error = reason instanceof Error ? reason : new Error(reason)
           return new ComparisonResult(this, error, new Error(this.reason))
