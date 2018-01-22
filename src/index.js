@@ -1,6 +1,9 @@
 const fs = require('fs')
 const matchers = require('./matchers')
+const promisify = require('util.promisify')
 const vm = require('vm')
+
+const readFile = promisify(fs.readFile)
 
 const dsl =
   vm.createContext(Object.keys(matchers).reduce((memo, matcher) => {
@@ -12,7 +15,8 @@ module.exports = {
   dsl,
   indent: require('./indent'),
   load (filename) {
-    return vm.runInContext(fs.readFileSync(filename, 'utf8'), dsl, { filename })
+    return readFile(filename, 'utf8')
+      .then(code => vm.runInContext(code, dsl, { filename }))
   },
   matchers,
   results: require('./results')

@@ -22,14 +22,14 @@ describe('PureSpec', () => {
 
   describe('load()', () => {
     it('returns tests loaded from the given PureSpec module', () => {
-      const actual = purespec.load('examples/round.js')
-
-      expect(actual).toBeInstanceOf(Test)
-      expect(typeof actual.subject).toBe('function')
-      expect(actual.runnables).toEqual([
-        new Given(1, new Returns(1)),
-        new Given(1.5, new Returns(2))
-      ])
+      return purespec.load('examples/round.js').then(actual => {
+        expect(actual).toBeInstanceOf(Test)
+        expect(typeof actual.subject).toBe('function')
+        expect(actual.runnables).toEqual([
+          new Given(1, new Returns(1)),
+          new Given(1.5, new Returns(2))
+        ])
+      })
     })
   })
 })
