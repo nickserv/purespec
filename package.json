@@ -14,12 +14,15 @@
     "plugins": [
       "filenames"
     ],
-    "extends": [
-      "standard",
-      "plugin:jest/recommended"
-    ],
+    "extends": "standard",
     "rules": {
       "filenames/match-exported": 2
+    },
+    "overrides": {
+      "files": "*.test.js",
+      "env": {
+        "jest": true
+      }
     }
   },
   "eslintIgnore": [
@@ -44,7 +47,6 @@
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-filenames": "^1.2.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jest": "^21.6.2",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
