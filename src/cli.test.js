@@ -1,6 +1,6 @@
 console.error = jest.fn()
 console.log = jest.fn()
-const path = require('path')
+const { resolve } = require('path')
 
 describe('CLI', () => {
   const cli = './cli'
@@ -9,7 +9,7 @@ describe('CLI', () => {
     jest.resetAllMocks().resetModules()
     process.argv = [
       process.execPath,
-      path.resolve(cli),
+      resolve(cli),
       'examples/round.js'
     ]
   })

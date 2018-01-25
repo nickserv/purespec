@@ -1,7 +1,8 @@
-const { given, prop, returns, test } = require('..').dsl
+const purespec = require('..')
+const { given, prop, returns, test } = purespec.dsl
 
 module.exports = test(
-  require('..'),
+  purespec,
   prop('ComparisonResult'),
   prop('NestedResult'),
   prop('Result'),

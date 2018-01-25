@@ -1,5 +1,5 @@
 const indent = require('../indent')
-const os = require('os')
+const { EOL } = require('os')
 const Result = require('./Result')
 
 module.exports = class NestedResult extends Result {
@@ -10,6 +10,6 @@ module.exports = class NestedResult extends Result {
 
   toTree () {
     const indented = this.results.map(result => indent(result.toTree()))
-    return [this.toString(), ...indented].join(os.EOL)
+    return [this.toString(), ...indented].join(EOL)
   }
 }

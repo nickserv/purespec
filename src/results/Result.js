@@ -1,5 +1,5 @@
-const chalk = require('chalk')
-const os = require('os')
+const { green, red } = require('chalk')
+const { EOL } = require('os')
 
 module.exports = class Result {
   constructor (runnable, error) {
@@ -9,10 +9,10 @@ module.exports = class Result {
 
   toString () {
     const status = this.error ? '✗' : '✓'
-    const color = this.error ? 'red' : 'green'
+    const color = this.error ? red : green
 
-    const item = chalk[color](`${status} ${this.runnable}`)
-    return this.error ? item + os.EOL + this.error : item
+    const item = color(`${status} ${this.runnable}`)
+    return this.error ? item + EOL + this.error : item
   }
 
   toTree () {

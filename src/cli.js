@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 const modules = process.argv.slice(2)
-const path = require('path')
+const { resolve } = require('path')
 
 function runModule (module) {
-  return Promise.resolve(require(path.resolve(module)))
+  return Promise.resolve(require(resolve(module)))
     .then(runnable => runnable.run())
     .then(result => {
       console.log(result.toTree())
