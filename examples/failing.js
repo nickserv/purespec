@@ -1,4 +1,4 @@
-const { returns, test } = require('..').dsl
+const { returns, test } = require('../dsl')
 
 module.exports = test(
   function failing () { throw new Error() },

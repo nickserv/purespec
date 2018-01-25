@@ -1,4 +1,4 @@
-const { given, returns, test } = require('..').dsl
+const { given, returns, test } = require('../dsl')
 
 module.exports = test(
   Math.round,

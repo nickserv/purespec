@@ -2,8 +2,7 @@
   "name": "purespec",
   "description": "A declarative test framework for pure JavaScript.",
   "version": "0.0.0",
-  "main": "src",
-  "bin": "src/cli.js",
+  "bin": "cli.js",
   "scripts": {
     "eslint": "eslint .",
     "jest": "jest",
