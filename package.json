@@ -38,8 +38,7 @@
   "dependencies": {
     "chalk": "^2.3.0",
     "deep-equal": "^1.0.1",
-    "import-cwd": "^2.1.0",
-    "util.promisify": "^1.0.0"
+    "import-cwd": "^2.1.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",

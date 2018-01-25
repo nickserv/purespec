@@ -1,4 +1,6 @@
-required(
+const { given, prop, required, returns } = require('..').dsl
+
+module.exports = required(
   '.',
   prop('ComparisonResult'),
   prop('NestedResult'),

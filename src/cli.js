@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 const modules = process.argv.slice(2)
-const purespec = require('.')
+const path = require('path')
 
 function runModule (module) {
-  return purespec
-    .load(module)
+  return Promise.resolve(require(path.resolve(module)))
     .then(runnable => runnable.run())
     .then(result => {
       console.log(result.toTree())
