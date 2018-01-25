@@ -1,7 +1,7 @@
-const { given, prop, required, returns } = require('..').dsl
+const { given, prop, returns, test } = require('..').dsl
 
-module.exports = required(
-  '.',
+module.exports = test(
+  require('..'),
   prop('ComparisonResult'),
   prop('NestedResult'),
   prop('Result'),
@@ -21,7 +21,6 @@ module.exports = required(
     prop('Nested'),
     prop('Prop'),
     prop('Rejects'),
-    prop('Required'),
     prop('Resolves'),
     prop('Returns'),
     prop('Test'),

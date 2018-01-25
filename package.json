@@ -37,8 +37,7 @@
   "homepage": "https://github.com/nickmccurdy/purespec#readme",
   "dependencies": {
     "chalk": "^2.3.0",
-    "deep-equal": "^1.0.1",
-    "import-cwd": "^2.1.0"
+    "deep-equal": "^1.0.1"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
