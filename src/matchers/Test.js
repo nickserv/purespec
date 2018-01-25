@@ -11,6 +11,6 @@ module.exports = class Test extends Nested {
   }
 
   toString () {
-    return this.subject.name
+    return this.subject.name || this.subject.toString()
   }
 }
