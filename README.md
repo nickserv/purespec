@@ -14,7 +14,7 @@ __Experimental.__ There is a unit test suite so it should be at least somewhat s
 ## Development
 1. Install [Node](https://nodejs.org/en/download/) 6 or later (preferred).
 2. `npm install`
-3. `npm run watch`
+3. `npm test`
 
 ## Contributing
 - Use [JavaScript Standard Style](http://standardjs.com/). The test commands will run a compliant linter for you.
