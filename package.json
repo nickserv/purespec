@@ -2,8 +2,7 @@
   "name": "purespec",
   "description": "A declarative test framework for pure JavaScript.",
   "version": "0.0.0",
-  "main": "src",
-  "bin": "src/cli.js",
+  "bin": "cli.js",
   "scripts": {
     "eslint": "eslint .",
     "jest": "jest",
@@ -16,12 +15,15 @@
     "plugins": [
       "filenames"
     ],
-    "extends": [
-      "standard",
-      "plugin:jest/recommended"
-    ],
+    "extends": "standard",
     "rules": {
       "filenames/match-exported": 2
+    },
+    "overrides": {
+      "files": "*.test.js",
+      "env": {
+        "jest": true
+      }
     }
   },
   "eslintIgnore": [
@@ -38,8 +40,7 @@
   "homepage": "https://github.com/nickmccurdy/purespec#readme",
   "dependencies": {
     "chalk": "2.1.0",
-    "deep-equal": "^1.0.1",
-    "import-cwd": "^2.1.0"
+    "deep-equal": "^1.0.1"
   },
   "devDependencies": {
     "@types/jest": "^22.0.1",
@@ -48,7 +49,6 @@
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-filenames": "^1.2.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jest": "^21.6.2",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",

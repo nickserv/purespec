@@ -1,6 +1,6 @@
 const indent = require('../indent')
 const NestedResult = require('../results/NestedResult')
-const os = require('os')
+const { EOL } = require('os')
 
 module.exports = class Nested {
   constructor (...runnables) {
@@ -20,6 +20,6 @@ module.exports = class Nested {
       const method = runnable.toTree ? 'toTree' : 'toString'
       return indent(runnable[method]())
     })
-    return [this.toString(), ...indented].join(os.EOL)
+    return [this.toString(), ...indented].join(EOL)
   }
 }

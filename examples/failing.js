@@ -1,6 +1,6 @@
-/* global test, returns */
+const { returns, test } = require('../dsl')
 
-test(
+module.exports = test(
   function failing () { throw new Error() },
   returns()
 )

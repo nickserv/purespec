@@ -1,6 +1,6 @@
-/* global test, given, returns */
+const { given, returns, test } = require('../dsl')
 
-test(
+module.exports = test(
   Math.round,
   given(1, returns(1)),
   given(1.5, returns(2))

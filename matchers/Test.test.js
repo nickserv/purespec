@@ -45,8 +45,18 @@ describe('Test matcher', () => {
   })
 
   describe('.prototype.toString()', () => {
-    it('returns its name', () => {
-      expect(test.toString()).toBe('hello')
+    describe('given a named subject', () => {
+      it('returns its name', () => {
+        expect(test.toString()).toBe('hello')
+      })
+    })
+
+    describe('given an unnamed subject', () => {
+      it('returns a String representation of its subject', () => {
+        const test = new Test({}, ...runnables)
+
+        expect(test.toString()).toBe('[object Object]')
+      })
     })
   })
 })

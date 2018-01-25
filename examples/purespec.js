@@ -1,7 +1,8 @@
-/* global required, prop, given, returns */
+const purespec = require('..')
+const { given, prop, returns, test } = purespec.dsl
 
-required(
-  '.',
+module.exports = test(
+  purespec,
   prop('ComparisonResult'),
   prop('NestedResult'),
   prop('Result'),
@@ -21,7 +22,6 @@ required(
     prop('Nested'),
     prop('Prop'),
     prop('Rejects'),
-    prop('Required'),
     prop('Resolves'),
     prop('Returns'),
     prop('Test'),
