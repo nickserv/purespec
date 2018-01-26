@@ -3,10 +3,6 @@ const { given, prop, returns, test } = purespec.dsl
 
 module.exports = test(
   purespec,
-  prop('ComparisonResult'),
-  prop('NestedResult'),
-  prop('Result'),
-  prop('cli'),
   prop('dsl'),
   prop(
     'indent',
@@ -15,7 +11,6 @@ module.exports = test(
     given('one\ntwo', returns('  one\n  two')),
     given('  one', returns('    one'))
   ),
-  prop('load'),
   prop(
     'matchers',
     prop('Given'),
@@ -26,5 +21,11 @@ module.exports = test(
     prop('Returns'),
     prop('Test'),
     prop('Throws')
+  ),
+  prop(
+    'results',
+    prop('ComparisonResult'),
+    prop('NestedResult'),
+    prop('Result')
   )
 )
