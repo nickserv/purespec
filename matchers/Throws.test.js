@@ -26,7 +26,7 @@ describe('Throws matcher', () => {
 
     describe('given a subject that doesn\'t throw an exception', () => {
       it('returns a failing Result', () => {
-        expect(throws.run(() => 1)).toEqual(new Result(throws, true))
+        expect(throws.run(() => 1)).toEqual(new Result(throws, new Error()))
       })
     })
   })

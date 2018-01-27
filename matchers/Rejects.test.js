@@ -46,7 +46,7 @@ describe('Rejects matcher', () => {
 
     describe('given a subject that resolves', () => {
       it('runs its subject as a Promise, failing to assert a rejection with the given reason', () => {
-        return expect(rejects.run(() => Promise.resolve())).resolves.toEqual(new Result(rejects, true))
+        return expect(rejects.run(() => Promise.resolve())).resolves.toEqual(new Result(rejects, new Error()))
       })
     })
   })

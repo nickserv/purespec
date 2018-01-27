@@ -35,9 +35,9 @@ describe('Result', () => {
   describe('.prototype.toString()', () => {
     describe('when there is an error', () => {
       it('returns a red String with a cross, its matcher, a newline, and its error', () => {
-        const result = new Result(returns, true)
+        const result = new Result(returns, new Error())
 
-        expect(result.toString()).toBe(chalk`{red ✗ returns 1}\ntrue`)
+        expect(result.toString()).toBe(chalk`{red ✗ returns 1}\nError`)
       })
     })
 

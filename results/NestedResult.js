@@ -4,7 +4,7 @@ const Result = require('./Result')
 
 module.exports = class NestedResult extends Result {
   constructor (matcher, results = []) {
-    super(matcher, results.some(result => result.error) || undefined)
+    super(matcher, results.some(result => result.error) ? new Error() : undefined)
     this.results = results
   }
 

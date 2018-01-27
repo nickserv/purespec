@@ -9,7 +9,7 @@ module.exports = class Throws {
   run (subject) {
     try {
       subject()
-      return new Result(this, true)
+      return new Result(this, new Error())
     } catch (err) {
       return new ComparisonResult(this, err, new Error(this.exception))
     }

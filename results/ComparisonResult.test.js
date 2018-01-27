@@ -6,7 +6,7 @@ describe('ComparisonResult', () => {
 
   describe('.prototype.constructor()', () => {
     describe('given a matcher and equivalent actual and expected options', () => {
-      it('returns ComparisonResult with matcher, actual, expected, and a falsy error', () => {
+      it('returns ComparisonResult with matcher, actual, and expected', () => {
         const result = new ComparisonResult(returns, 1, 1)
 
         expect(result).toMatchObject({
@@ -19,14 +19,14 @@ describe('ComparisonResult', () => {
     })
 
     describe('given a matcher and nonequivalent actual and expected options', () => {
-      it('returns ComparisonResult with matcher, actual, expected, and a truthy error', () => {
+      it('returns ComparisonResult with matcher, actual, expected, and an error', () => {
         const result = new ComparisonResult(returns, 2, 1)
 
         expect(result).toMatchObject({
           matcher: returns,
           actual: 2,
           expected: 1,
-          error: true
+          error: new Error()
         })
       })
     })
