@@ -7,14 +7,14 @@ describe('Prop matcher', () => {
   const name = 'hello'
   const subject = { hello () { return 'Hello, World!' } }
   const returns = new Returns('Hello, World!')
-  const runnables = [returns]
-  const test = new Prop(name, ...runnables)
+  const matchers = [returns]
+  const test = new Prop(name, ...matchers)
 
   describe('.prototype.constructor()', () => {
     it('returns a new Prop with the given property', () => {
       expect(test).toMatchObject({
         name,
-        runnables
+        matchers
       })
     })
   })

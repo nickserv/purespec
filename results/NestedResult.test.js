@@ -10,30 +10,30 @@ describe('NestedResult', () => {
   const returns = new Returns(1)
 
   describe('.prototype.constructor()', () => {
-    describe('given a runnable and passing results', () => {
-      it('returns NestedResult with runnable, results, and a falsy error', () => {
+    describe('given a matcher and passing results', () => {
+      it('returns NestedResult with matcher, results, and a falsy error', () => {
         const results = [
           new ComparisonResult(returns, 1, 1)
         ]
         const result = new NestedResult(returns, results)
 
         expect(result).toMatchObject({
-          runnable: returns,
+          matcher: returns,
           results: results,
           error: undefined
         })
       })
     })
 
-    describe('given a runnable and failing results', () => {
-      it('returns NestedResult with runnable, results, and a truthy error', () => {
+    describe('given a matcher and failing results', () => {
+      it('returns NestedResult with matcher, results, and a truthy error', () => {
         const results = [
           new ComparisonResult(returns, 2, 1)
         ]
         const result = new NestedResult(returns, results)
 
         expect(result).toMatchObject({
-          runnable: returns,
+          matcher: returns,
           results: results,
           error: true
         })

@@ -1,8 +1,8 @@
 const Nested = require('./Nested')
 
 module.exports = class Prop extends Nested {
-  constructor (name, ...runnables) {
-    super(...runnables)
+  constructor (name, ...matchers) {
+    super(...matchers)
     this.name = name
   }
 

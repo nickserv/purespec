@@ -8,24 +8,24 @@ describe('Result', () => {
   const returns = new Returns(1)
 
   describe('.prototype.constructor()', () => {
-    describe('given a runnable', () => {
-      it('returns Result with runnable and no error', () => {
+    describe('given a matcher', () => {
+      it('returns Result with matcher and no error', () => {
         const result = new Result(returns)
 
         expect(result).toMatchObject({
-          runnable: returns,
+          matcher: returns,
           error: undefined
         })
       })
     })
 
-    describe('given a runnable and an error', () => {
-      it('returns Result with runnable and error', () => {
+    describe('given a matcher and an error', () => {
+      it('returns Result with matcher and error', () => {
         const error = new Error()
         const result = new Result(returns, error)
 
         expect(result).toMatchObject({
-          runnable: returns,
+          matcher: returns,
           error
         })
       })
@@ -34,7 +34,7 @@ describe('Result', () => {
 
   describe('.prototype.toString()', () => {
     describe('when there is an error', () => {
-      it('returns a red String with a cross, its runnable, a newline, and its error', () => {
+      it('returns a red String with a cross, its matcher, a newline, and its error', () => {
         const result = new Result(returns, true)
 
         expect(result.toString()).toBe(chalk`{red ✗ returns 1}\ntrue`)
@@ -42,7 +42,7 @@ describe('Result', () => {
     })
 
     describe('when there is no error', () => {
-      it('returns a green String with a check and its runnable', () => {
+      it('returns a green String with a check and its matcher', () => {
         const result = new Result(returns)
 
         expect(result.toString()).toBe(chalk.green('✓ returns 1'))

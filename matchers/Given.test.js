@@ -11,7 +11,7 @@ describe('Given matcher', () => {
     it('returns a new Given with the given args and matcher', () => {
       expect(given).toMatchObject({
         args: ['World'],
-        runnables: [new Returns('Hello, World!')]
+        matchers: [new Returns('Hello, World!')]
       })
     })
   })
