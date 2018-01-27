@@ -3,8 +3,8 @@ const { EOL } = require('os')
 const Result = require('./Result')
 
 module.exports = class NestedResult extends Result {
-  constructor (runnable, results = []) {
-    super(runnable, results.some(result => result.error) || undefined)
+  constructor (matcher, results = []) {
+    super(matcher, results.some(result => result.error) || undefined)
     this.results = results
   }
 

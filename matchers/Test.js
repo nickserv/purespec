@@ -1,8 +1,8 @@
 const Nested = require('./Nested')
 
 module.exports = class Test extends Nested {
-  constructor (subject, ...runnables) {
-    super(...runnables)
+  constructor (subject, ...matchers) {
+    super(...matchers)
     this.subject = subject
   }
 

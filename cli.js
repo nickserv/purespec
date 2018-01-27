@@ -4,7 +4,7 @@ const { resolve } = require('path')
 
 function runModule (module) {
   return Promise.resolve(require(resolve(module)))
-    .then(runnable => runnable.run())
+    .then(matcher => matcher.run())
     .then(result => {
       console.log(result.toTree())
       if (result.error) process.exitCode = 1

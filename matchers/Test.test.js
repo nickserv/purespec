@@ -7,14 +7,14 @@ const Test = require('./Test')
 describe('Test matcher', () => {
   const subject = function hello () { return 'Hello, World!' }
   const returns = new Returns('Hello, World!')
-  const runnables = [returns]
-  const test = new Test(subject, ...runnables)
+  const matchers = [returns]
+  const test = new Test(subject, ...matchers)
 
   describe('.prototype.constructor()', () => {
     it('returns a new Test with the given data', () => {
       expect(test).toMatchObject({
         subject,
-        runnables
+        matchers
       })
     })
   })
@@ -35,7 +35,7 @@ describe('Test matcher', () => {
     describe('given failing tests', () => {
       it('returns a failing result', () => {
         const subject = () => { throw new Error('message') }
-        const test = new Test(subject, ...runnables)
+        const test = new Test(subject, ...matchers)
 
         return expect(test.run()).resolves.toEqual(new NestedResult(test, [
           new Result(returns, new Error('message'))
@@ -53,7 +53,7 @@ describe('Test matcher', () => {
 
     describe('given an unnamed subject', () => {
       it('returns a String representation of its subject', () => {
-        const test = new Test({}, ...runnables)
+        const test = new Test({}, ...matchers)
 
         expect(test.toString()).toBe('[object Object]')
       })

@@ -3,12 +3,12 @@ const NestedResult = require('../results/NestedResult')
 const { EOL } = require('os')
 
 module.exports = class Nested {
-  constructor (...runnables) {
-    this.runnables = runnables
+  constructor (...matchers) {
+    this.matchers = matchers
   }
 
   run (subject) {
-    const promises = this.runnables.map(runnable => runnable.run(subject))
+    const promises = this.matchers.map(matcher => matcher.run(subject))
 
     return Promise
       .all(promises)
@@ -16,9 +16,9 @@ module.exports = class Nested {
   }
 
   toTree () {
-    const indented = this.runnables.map(runnable => {
-      const method = runnable.toTree ? 'toTree' : 'toString'
-      return indent(runnable[method]())
+    const indented = this.matchers.map(matcher => {
+      const method = matcher.toTree ? 'toTree' : 'toString'
+      return indent(matcher[method]())
     })
     return [this.toString(), ...indented].join(EOL)
   }
